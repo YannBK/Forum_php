@@ -51,7 +51,7 @@
                             <label for="confirmMdp">Confirmer le mot de passe </label>
                             <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15"/>
                         </li>
-                        <li>
+                        <li id="check">
                             <input type="checkbox" name="condUtilisat">
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
