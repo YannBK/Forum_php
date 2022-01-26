@@ -23,6 +23,8 @@ close.addEventListener("click", function() {
 window.addEventListener("click", function(event) {
     if (event.target == crea) {
         crea.style.animation = "slideOut 0.5s";
-        crea.style.display = "none";
+        setTimeout(function(){
+            crea.style.display = "none";
+        }, 500);
     }
 })
