@@ -1,8 +1,11 @@
+drop database forum;
 create database forum;
 use forum;
 
 create table users (
 	id_users int not null auto_increment primary Key,
+    date_user date,
+    mail_user varchar(100),
     login_user varchar(50),
     mdp_user varchar(255)
 );
@@ -53,10 +56,4 @@ add id_users int,
 add id_sujet int,
 add constraint fk_commentaire_users foreign key (id_users) references users(id_users),
 add constraint fk_commentaire_sujet foreign key (id_sujet) references sujet(id_sujet);
-
-
-
-
-
-
 
