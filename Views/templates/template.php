@@ -10,7 +10,7 @@
 <body>
     <header>
         <h1>Infofo</h1>
-        <input type="search" placeholder="Rechercher un sujet, un utilisateur...">
+        <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
         <nav>
             <ul>
                 <li id="creaCompte">Créer un compte</li>
