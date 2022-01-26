@@ -19,9 +19,6 @@
         }
 
         // setters
-        // public function setIdCat($newIdCat){   
-        //     $this->id = $newIdCat;
-        // }
         public function setNomCat($newNomCat){
             $this-> nomCat = $newNomCat;
         }
