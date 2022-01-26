@@ -19,14 +19,14 @@ create table sujet(
 	id_sujet int not null auto_increment primary Key,
     nom_sujet varchar(50),
     contenu_sujet text,
-    date_sujet date
+    date_sujet datetime
 );
 
 create table commentaire(
 	id_commentaire int not null auto_increment primary Key,
     nom_com varchar(50),
     contenu_com text,
-    date_com date
+    date_com datetime
 );
 
 create table categorie(
