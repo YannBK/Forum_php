@@ -17,9 +17,9 @@
                 }
         
                 //getters
-                public function getIdSujet(){
-                    return $this->id;
-                }
+                // public function getIdSujet(){
+                //     return $this->id;
+                // }
                 public function getNomSujet(){
                     return $this->nom;
                 }

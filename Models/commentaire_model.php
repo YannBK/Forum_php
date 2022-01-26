@@ -27,9 +27,9 @@
             return $this->dateCom;
         }
         // setters
-        public function setIdCom($newid){
-            $this->id = $newid;
-        }
+        // public function setIdCom($newid){
+        //     $this->id = $newid;
+        // }
         public function setNomCom($newNomCom){
             $this->nomCom = $newNomCom;
         }
