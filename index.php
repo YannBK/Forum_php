@@ -1,7 +1,8 @@
 <?php
-//c'est la page qui sera toujours affichée, avec des paramètres ("?p=") qui définissent la vue
+//http://localhost/forum_php/index.php : c'est la page qui sera toujours affichée, et qu'il faut appeler pour lancer le site
+//le changement de vue se fera avec un paramètre ?p=nomdelavue qui définira la vue
 
-// exemple si le lien cliqué = "index.php?p=compte", on récupère le "compte"
+// si on clique sur un lien : "index.php?p=compte", on récupère "compte" dans $p
 if (isset($_GET['p'])) {
     $p = $_GET['p'];
 } 

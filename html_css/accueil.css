@@ -10,6 +10,7 @@ html, body {
 header {
     display: flex;
     background-color: rgb(70, 122, 235);
+    align-items: center;
     top: 0;
     position: sticky; /* à tester */
 }
@@ -52,6 +53,57 @@ nav li {
 }
 
 /*---fin header---*/
+
+/*---mainContainer---*/
+
+.mainContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*---fin mainContainer---*/
+
+/*---page création d'un sujet---*/
+.mainContainer a{
+    align-self: flex-start;
+}
+.divCreerArticle,
+.divCreerArticle form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80vw;
+}
+.divCreerArticle div {
+    display: flex;
+    align-items: center;
+}
+.divCreerArticle form textarea{
+    width: 60%;
+}
+.divCreerArticle form input[type="submit"]{
+    margin: 15px;
+    width: 33%;
+}
+
+/*---fin page création d'un sujet---*/
+
+
+/*---footer---*/
+
+footer {
+    display: flex;
+    background-color: rgb(70, 122, 235);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    bottom: 0;
+    position: fixed; /* à tester */
+}
+
+/*--- fin footer---*/
 
 /*---modale création compte---*/
 
@@ -111,14 +163,20 @@ nav li {
     box-sizing: border-box;
 }
 
-.modal form label{
+label{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: bold;
     padding-top: 15px;
     padding-bottom: 5px;
 }
+/* .modal form label{
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: bold;
+    padding-top: 15px;
+    padding-bottom: 5px;
+} */
 
-.modal input {
+input {
     padding: 0;
     margin: 0;
     width: 50%;
@@ -129,6 +187,17 @@ nav li {
     border-radius: 5px;
     box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
 }
+/* .modal input {
+    padding: 0;
+    margin: 0;
+    width: 50%;
+    height: 40px;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+} */
 
 .modal form input, label {
     display: block;
