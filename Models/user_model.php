@@ -39,9 +39,6 @@
         }
 
         //setters
-        public function setIdUser($newid){
-            $this->id = $newid;
-        }
         public function setLoginUser($newlog){
             $this->login = $newlog;
         }
@@ -54,6 +51,7 @@
         public function setNaissanceUser($newnaissance){
             $this->naissance = $newnaissance;
         }
+        // setters Foreign Key
         public function setIdRoleUser($newrole){
             $this->id_role = $newrole;
         }

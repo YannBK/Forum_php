@@ -4,6 +4,7 @@
         private $id;
         private $nomCat;
 
+        // constructeur
         public function __construct($id,$nomCat){
             $this->id = $id;
             $this->nomCat = $nomCat;
