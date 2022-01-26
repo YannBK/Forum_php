@@ -10,13 +10,14 @@
 <body>
     <header>
         <h1>Infofo</h1>
-        <input type="search" placeholder="Rechercher un sujet, un utilisateur...">
+        <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
         <nav>
             <ul>
                 <li>Créer un compte</li>
                 <li>Se connecter</li>
                 <li>Mon compte</li>
             </ul>
+        </nav>
     </header>
 
     <!--modale de connexion-->
@@ -46,7 +47,7 @@
                             <label for="confirmMdp">Confirmer le mot de passe </label>
                             <input type="password" name="confirmMdp" minlength="8" maxlength="15"/>
                         </li>
-                        <li>
+                        <li id="check">
                             <input type="checkbox" name="condUtilisat">
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
@@ -62,6 +63,7 @@
             </div>
         </div>
     </div>
+    <!--fin demodale de connexion-->
 
     <div id="mainContainer">
         <!--les catégories-->
