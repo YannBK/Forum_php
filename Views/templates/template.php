@@ -4,34 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="accueil.css">
+    <link rel="stylesheet" href="html_css/accueil.css">
     <title>Document</title>
 </head>
 <body>
     <header>
         <h1>Infofo</h1>
-        <input type="search" placeholder="Rechercher un sujet, un utilisateur...">
+        <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
         <nav>
             <ul>
-                <li>Créer un compte</li>
+                <li id="creaCompte">Créer un compte</li>
                 <li>Se connecter</li>
                 <li><a href="index.php?p=compte">Mon compte</a></li>
             </ul>
         </nav>
     </header>
 
+
+
+    <div id="mainContainer">
+        <?php echo $content ?>
+    </div>
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
         <div>
             <div class="headerM">
                 <span id="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
-            </div>
-
-    <div id="mainContainer">
-        <?php echo $content ?>
-    </div>
-    
+            </div>    
             <div>
                 <form action="" method="POST">
                     <ul>
@@ -51,8 +51,8 @@
                             <label for="confirmMdp">Confirmer le mot de passe </label>
                             <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15"/>
                         </li>
-                        <li>
-                            <input type="checkbox" name="condUtilisat-crea">
+                        <li id="check">
+                            <input type="checkbox" name="condUtilisat">
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
                         <li>
@@ -99,5 +99,6 @@
         </div>
     </div>
     <footer>Footer</footer>
+    <script src="script/affichage_modale_crea_compte.js"></script>
 </body>
 </html>
