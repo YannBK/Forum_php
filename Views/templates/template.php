@@ -52,7 +52,7 @@
                             <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15"/>
                         </li>
                         <li>
-                            <input type="checkbox" name="condUtilisat-crea">
+                            <input type="checkbox" name="condUtilisat">
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
                         <li>
