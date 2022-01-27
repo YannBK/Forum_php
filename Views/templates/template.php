@@ -1,6 +1,7 @@
 
 <?php
     include('Controlers/create_user_controler.php');
+    include('Controlers/connexion_controler.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,27 +20,29 @@
     <header>
         <a href="index.php?p=home"><h1>Infofo</h1></a>
         <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
+        <?php echo $notif ?>
         <nav>
             <ul>
                 <li id="creaCompte">Créer un compte</li>
-                <li>Se connecter</li>
+                <li id="connCompte">Se connecter</li>
                 <li><a href="index.php?p=compte">Mon compte</a></li>
             </ul>
         </nav>
     </header>
-
+   
 
 
     <div id="mainContainer">
         <?php echo $content ?>
     </div>
 
+
     
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
         <div>
             <div class="headerM">
-                <span id="close">&times;</span>
+                <span class="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
             </div>    
             <div>
@@ -85,7 +88,7 @@
     <div id="modal-connexion" class="modal">
         <div>
             <div class="headerM">
-                <span id="close">&times;</span>
+                <span class="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
             </div>
 
@@ -93,11 +96,11 @@
                 <form action="" method="POST">
                     <ul>
                         <li>
-                            <label for="pseudo">Pseudo </label>
+                            <label for="pseudo-connect">Pseudo </label>
                             <input type="text" name="pseudo-connect" maxlength="50"/>
                         </li>
                         <li>
-                            <label for="mdp">Mot de passe </label>
+                            <label for="mdp-connect">Mot de passe </label>
                             <input type="password" name="mdp-connect" minlength="8" maxlength="15"/>
                         </li>
                         <li>
@@ -112,7 +115,7 @@
             </div>
         </div>
     </div>
-    <footer>Footer</footer>
+    <footer>Footer<?= $result ?></footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
 </body>
 </html>

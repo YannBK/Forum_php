@@ -182,7 +182,8 @@ footer {
 /*---modale création compte---*/
 
 /*affichage d'un curseur main lors du passage sur le bouton création de compte*/
-#creaCompte {
+#creaCompte,
+#connCompte {
     cursor: pointer;
 }
 
