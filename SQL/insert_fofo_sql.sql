@@ -5,11 +5,6 @@ values
 	('Administrateur'),
     ('Utilisateur');
 
-SELECT 
-    *
-FROM
-    role;
-
 Insert into
 	users (date_user,mail_user,login_user, mdp_user)
 values
@@ -18,7 +13,7 @@ values
 Insert into 
 	categorie (nom_cat)
 values
-	('jeux vidéos');
+	('jeux vidéos','développement','bières');
     
 
     
