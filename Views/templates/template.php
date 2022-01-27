@@ -35,13 +35,15 @@
     </div>
 
     
+    
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
         <div>
             <div class="headerM">
                 <span id="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
-            </div>    
+            </div> 
+
             <div>
                 <form action="" method="POST">
                     <ul>
