@@ -1,8 +1,5 @@
 <?php
 
-// check de condition si au moins un des champs est vide
-
-if ($login != "" && $mail != "" && $mdp != "" && $date != ""){
     //on tente l'insertion
     try {
         //via une requête préparée
@@ -37,10 +34,7 @@ if ($login != "" && $mail != "" && $mdp != "" && $date != ""){
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-}else{
-    // 
-    $result = '<p style="color:red;">Veuillez remplir tous les champs !!!!</p>';
-}
+
 
 ?>
 

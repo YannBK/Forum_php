@@ -1,6 +1,5 @@
 <?php
-    // création de compte 
-
+    // création de compte utilisateur
 
     //  ajout du paramètre de connexion
     include('Connect/connect.php');
@@ -14,12 +13,12 @@
         $date = $_POST['dateN'];
         $mail = $_POST['email-crea'];
         $mdp_user = $_POST['mdp-crea'];
-
+        var_dump($login);
         // insertion dans la classe
         include('Models/create_user_model.php');
 
     } else{
-        echo "<p>Erreur</p>";
+        echo "<p>Erreur veuillez remplir tous les champs !</p>";
     }
     
     

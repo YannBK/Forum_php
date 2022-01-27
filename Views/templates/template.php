@@ -54,6 +54,10 @@
                             <input type="email" name="email-crea"/>
                         </li>
                         <li>
+                            <label for="dateN">Date de naissance </label>
+                            <input type="date" name="dateN"/>
+                        </li>
+                        <li>
                             <label for="mdp">Mot de passe </label>
                             <input type="password" name="mdp-crea" minlength="8" maxlength="15"/>
                         </li>
