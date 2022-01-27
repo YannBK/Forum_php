@@ -10,10 +10,12 @@
 
     if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea'])){
 
-        $login = $_POST['pseudo-crea'];
-        $date = $_POST['dateN'];
-        $mail = $_POST['email-crea'];
-        $mdp = $_POST['mdp-crea'];
+        $login = valid_donnees($_POST['pseudo-crea']);
+        $date = valid_donnees($_POST['dateN']);
+        $mail = valid_donnees($_POST['email-crea']);
+        $mdp = valid_donnees($_POST['mdp-crea']);
+
+        // fonction de validation des données afin de vérifier
 
         function valid_donnees($donnees){
             $donnees = trim($donnees);
@@ -22,6 +24,7 @@
             return $donnees;
         }
 
+        // grosse moulinette de check des infos entrée par l'utilisateur login et mail
         if(strlen($login) <= 20 
             && preg_match("^[A-Za-z '-]+$",$login)
             && filter_var($mail, FILTER_VALIDATE_EMAIL)
