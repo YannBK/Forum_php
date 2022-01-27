@@ -10,7 +10,6 @@
     
 
 
-
         function valid_donnees($donnees){
             $donnees = trim($donnees);
             $donnees = stripslashes($donnees);
@@ -24,10 +23,10 @@
         $mdp = valid_donnees($_POST['mdp-crea']);
 
         // fonction de validation des données afin de vérifier
-
         
+        $crypt = password_hash($mdp, PASSWORD_BCRYPT);
+        $mdp = $crypt;
         
-
         // grosse moulinette de check des infos entrée par l'utilisateur login et mail
         if(strlen($login) <= 20 
             && preg_match("/^[A-Za-z '-]+$/",$login)
