@@ -2,7 +2,7 @@
     //récupération de la connection à la bdd
     include("Connect/connect.php");
 
-    //récupération du model
+    //récupération du modele
     include("Models/sujet_model.php");
 
     //recupération de la vue
