@@ -1,5 +1,4 @@
 
-<a href="index.php?p=home">Accueil</a>
 <div class="divCreerArticle">
     <div>        
         <h2>Rédigez votre sujet</h2>

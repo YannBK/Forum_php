@@ -24,10 +24,9 @@
             $sujetListe = "";
             $nbRep = 0;
             while ($donnees = $req->fetch()) {
-                $sujetListe .= "<li><a href=\"#\">" . $donnees['nom_sujet'] . "</a></li>
-                                <li><a href=\"#\"> Auteur </a></li>
-                                <li><a href=\"#\">Réponses : $nbRep</a></li>
-                                <li><a href=\"#\">" . $donnees['date_sujet'] . "</a></li>";
+                //TODO formatter la date => jj-mm-aa hh:mm
+                $sujetListe .= "<div><h3><a href=\"#\">" . $donnees['nom_sujet'] . "</a></h3>
+                                <p><a href=\"#\"> Auteur </a>  <a href=\"#\">" . $donnees['date_sujet'] . "</a>  Réponses : $nbRep</p></div>";
             }//TODO Auteur doit être remplacé par le nom de l'auteur, si si !
             //si l'insertion est réussie
             if (!$okselect) {

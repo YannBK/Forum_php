@@ -17,7 +17,7 @@
 
 <body>
     <header>
-        <h1>Infofo</h1>
+        <a href="index.php?p=home"><h1>Infofo</h1></a>
         <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
         <nav>
             <ul>
@@ -30,7 +30,7 @@
 
 
 
-    <div class="mainContainer">
+    <div id="mainContainer">
         <?php echo $content ?>
     </div>
 
