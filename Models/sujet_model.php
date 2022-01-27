@@ -50,4 +50,25 @@
         }
         
     }
+
+    try {
+        $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=");
+        $resultat = $req->execute();
+
+        $sujet;
+        while($donnees = $req->fetch()){
+            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p><p>".$donnees['contenu_sujet']."</p></div>";
+        }
+
+        $req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
+        $resultat = $req->execute();
+
+
+        $listeCom;
+        while($donnees = $req->fetch()){
+            $listeCom .= "<div><h3>".$donnees['id_users']."</h3><p>".$donnees['date_com']."</p><p>".$donnees['contenu_com']."</p></div>";
+        }
+    } catch(Exception $e) {
+        die('Erreur : ' .$e->getMessage());
+    }
 ?>
