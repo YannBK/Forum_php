@@ -29,7 +29,7 @@
             else {
                 //sinon on blame le serveur
                 $result =  '<p style="color:red;">Erreur lors de l\'enregistrement veuillez essayer à nouveau</p>';
-                echo ".$result." ;
+
             }
 
     } catch (Exception $e) {

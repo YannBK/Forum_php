@@ -5,10 +5,11 @@
     include('Connect/connect.php');
 
     // récupération des données pour
-
-    if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea'])){
     
 
+    if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea']) && isset($_POST['condUtilisat'])){
+    
+        
 
         function valid_donnees($donnees){
             $donnees = trim($donnees);
@@ -21,9 +22,9 @@
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
         $mdp = valid_donnees($_POST['mdp-crea']);
-
+        $cond = $_POST['condUtilisat'];
         // fonction de validation des données afin de vérifier
-        
+
         $crypt = password_hash($mdp, PASSWORD_BCRYPT);
         $mdp = $crypt;
         
@@ -44,7 +45,11 @@
             $mailUser = $checkMail->fetch();
 
             if(!$user && !$mailUser){
+                if($cond === 'on'){
                     include('Models/create_user_model.php');
+                } else{
+                    $result = '<p style="color:red;">Veuillez accepter les termes d\'utilisation !</p>';
+                }  
                 
             } else {
                 echo "<p> Ce login ou ce mail sont déjà utilisé</p>";
