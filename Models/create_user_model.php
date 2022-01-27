@@ -6,7 +6,7 @@
         $query = $bdd->prepare("INSERT INTO 
                                     users 
                                 SET 
-                                    date_user = :date_user,
+                                    date_user = :date_user, 
                                     mail_user = :mail_user,
                                     login_user = :login_user,
                                     mdp_user = :mdp_user"
@@ -21,7 +21,7 @@
                 )
             );
             //condition de succés
-            if ($success) {
+            if ($insert) {
                 //retour d'un résultat
                 $result = '<p style="color:red;">Votre compte a bien été créé !! Félicitation et bienvenue !</p>';
 //TODO retour à la page d'accueil et connexion au compte

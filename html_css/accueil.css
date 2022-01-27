@@ -23,7 +23,8 @@ header {
     background-color: rgb(70, 122, 235);
     align-items: center;
     top: 0;
-    position: sticky; /* à tester */
+    position: sticky;
+    z-index: 1;
 }
 
 header a:hover {

@@ -1,5 +1,7 @@
 
-
+<?php
+    include('Controlers/create_user_controler.php');
+?>
 <!DOCTYPE html>
 <html lang="fr">
     <head>
@@ -7,9 +9,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Google Fonts-->
-        <!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&display=swap" rel="stylesheet"> -->
+
         <!--CSS-->
         <link rel="stylesheet" href="html_css/accueil.css">
         <title>Document</title>
@@ -46,7 +46,7 @@
                 <form action="" method="POST">
                     <ul>
                         <li>
-                            <label for="pseudo">Pseudo </label>
+                            <label for="pseudo-crea">Pseudo </label>
                             <input type="text" name="pseudo-crea" maxlength="50"/>
                         </li>
                         <li>
@@ -58,11 +58,11 @@
                             <input type="date" name="dateN"/>
                         </li>
                         <li>
-                            <label for="mdp">Mot de passe </label>
+                            <label for="mdp-crea">Mot de passe </label>
                             <input type="password" name="mdp-crea" minlength="8" maxlength="15"/>
                         </li>
                         <li>
-                            <label for="confirmMdp">Confirmer le mot de passe </label>
+                            <label for="confirmMdp-crea">Confirmer le mot de passe </label>
                             <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15"/>
                         </li>
                         <li id="check">

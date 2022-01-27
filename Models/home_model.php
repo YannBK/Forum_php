@@ -9,7 +9,8 @@
 
             $catListe = "";
             while ($donnees = $req->fetch()) {
-                $catListe .= "<li><a href=\"#\">" . $donnees['nom_cat'] . "</a></li>";
+                $catListe .= "<p><a href=\"#\" value=\" " .
+                $donnees['id_categorie'] . " \">" . $donnees['nom_cat'] . "</a></p>";
             }//TODO le lien doit renvoyer sur la page catégorie concernée
             //si l'insertion est réussie
             if (!$okselect) {
@@ -25,7 +26,7 @@
             $nbRep = 0;
             while ($donnees = $req->fetch()) {
                 //TODO formatter la date => jj-mm-aa hh:mm
-                $sujetListe .= "<div><h3><a href=\"#\">" . $donnees['nom_sujet'] . "</a></h3>
+                $sujetListe .= "<div><h3><a href=\"#\" value=\" " .$donnees['id_sujet'] . "\">" . $donnees['nom_sujet'] . "</a></h3>
                                 <p><a href=\"#\"> Auteur </a>  <a href=\"#\">" . $donnees['date_sujet'] . "</a>  Réponses : $nbRep</p></div>";
             }//TODO Auteur doit être remplacé par le nom de l'auteur, si si !
             //si l'insertion est réussie
