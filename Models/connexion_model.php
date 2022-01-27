@@ -1,16 +1,17 @@
 <?php
 
     try {
-        $query = $bdd->prepare("SELECT login_user 
+        $query = $bdd->prepare("SELECT                  
+                                login_user, mdp_user 
                                 FROM users 
-                                WHERE login_user = :login_user
+                                WHERE login_user = :login_user AND mdp_user = :mdp_user
                                 " );
 
         // execution de la requête
         $query->execute(
             array(
-                'login_user' => $login
-                // 'mdp_user' => $mdp
+                'login_user' => $login,
+                'mdp_user' => $mdp
                 )
             );
 

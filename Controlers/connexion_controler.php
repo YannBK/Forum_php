@@ -15,6 +15,7 @@
         include('Models/connexion_model.php');
 
     } else{
+        //TODO lui trouver la bonne place
         $notif = "<p>Erreur veuillez remplir tous les champs !</p>";
     }
     
