@@ -38,23 +38,25 @@
 
 
     
+    
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
         <div>
             <div class="headerM">
                 <span class="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
-            </div>    
+            </div> 
+
             <div>
                 <form action="" method="POST">
                     <ul>
                         <li>
                             <label for="pseudo-crea">Pseudo </label>
-                            <input type="text" name="pseudo-crea" maxlength="50"/>
+                            <input type="text" name="pseudo-crea" required pattern="^[A-Za-z '-]+$" maxlength="20"/>
                         </li>
                         <li>
                             <label for="email">E-mail </label>
-                            <input type="email" name="email-crea"/>
+                            <input type="email" name="email-crea" required pattern="^[A-Za-z]+@{1}[A-Za-z]+\.{1}[A-Za-z]{2,}$"/>
                         </li>
                         <li>
                             <label for="dateN">Date de naissance </label>
