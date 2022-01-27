@@ -14,14 +14,27 @@
         $date = $_POST['dateN'];
         $mail = $_POST['email-crea'];
         $mdp = $_POST['mdp-crea'];
-        var_dump($login);
-        // insertion dans la classe
-        include('Models/create_user_model.php');
 
-    } else{
-        echo "<p>Erreur veuillez remplir tous les champs !</p>";
-    }
-    
+        $checkUser = $bdd->prepare("SELECT * From users where login_user=?");
+
+        $checkUser->execute([$login]);
+        $user = $checkUser->fetch();
+
+        $checkMail = $bdd->prepare("SELECT * From users where mail_user=?");
+
+        $checkMail->execute([$mail]);
+        $mailUser = $checkMail->fetch();
+        
+        if(!$user && !$mailUser){
+                include('Models/create_user_model.php');
+            
+        } else {
+            echo "<p> Ce login ou ce mail sont déjà utilisé</p>";
+        }
+        
+        
+
+    } 
     
 
 
