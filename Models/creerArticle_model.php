@@ -1,6 +1,6 @@
 <?php
     //on ne veut pas de trolls
-    if ($name != "" && $content != ""){
+    if ($name != "" && $contenu != ""){
         //on tente l'insertion
         try {
             //via une requête préparée
@@ -9,7 +9,7 @@
             $okinsert = $req->execute(
                 array(
                     'nom_sujet' => $name,
-                    'contenu_sujet' => $content,
+                    'contenu_sujet' => $contenu,
                     'date_sujet' => $dates
                     )
                 );
