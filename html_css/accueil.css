@@ -56,16 +56,35 @@ nav li {
 
 /*---mainContainer---*/
 
-.mainContainer {
+#mainContainer {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+h2 {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    padding: 0 10px 0 10px;
+}
+
+#mainContainer aside {
+    margin: 10px 10px 0 10px;
+    border: rgb(94, 94, 94) solid 2px;
+    border-radius: 10px;
+}
+
+#mainContainer aside ul {
+    list-style: none;
+}
+
+#mainContainer aside ul li{
+    display: flex;
 }
 
 /*---fin mainContainer---*/
 
 /*---page création d'un sujet---*/
-.mainContainer a{
+#mainContainer a{
     align-self: flex-start;
 }
 .divCreerArticle,

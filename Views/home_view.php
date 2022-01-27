@@ -3,43 +3,22 @@
 </div>
 
 
-<div>
+<aside>
 <h2>Catégories</h2>
 <ul>
-    <li>
-        <p>Catégorie 1</p>
-    </li>
-    <li>
-        <p>Catégorie 2</p>
-    </li>
-    <li>
-        <p>Catégorie 3</p>
-    </li>
+<?= $catListe; ?>
 </ul>
-</div>
+</aside>
+
 <!--les sujets-->
 <div>
 <h2>Sujets</h2>
 <ul>
-    <li>
-        <p>Sujet</p>
-        <p>auteur</p>
-        <p>nombre reponses</p>
-    </li>
-    <li>
-        <p>Sujet</p>
-        <p>auteur</p>
-        <p>nombre reponses</p>
-    </li>
-    <li>
-        <p>Sujet</p>
-        <p>auteur</p>
-        <p>nombre reponses</p>
-    </li>
-</ul>
+<?= $sujetListe ?>
+</ul> 
 </div>
 <!--les sujets les plus actifs-->
-<div>
+<aside>
 <h2>Les sujets les plus actifs</h2>
 <ul>
     <li>
@@ -58,4 +37,4 @@
         <p>nombre reponses</p>
     </li>
 </ul>
-</div>
+</aside>

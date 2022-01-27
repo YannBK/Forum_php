@@ -33,6 +33,8 @@
     <div class="mainContainer">
         <?php echo $content ?>
     </div>
+
+    
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
         <div>
