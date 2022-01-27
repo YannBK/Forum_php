@@ -1,31 +1,32 @@
 <?php
 
     try {
-        $query = $bdd->prepare("SELECT login_user 
+        $query = $bdd->prepare("SELECT                  
+                                login_user, mdp_user 
                                 FROM users 
                                 WHERE login_user = :login_user
                                 " );
-
         // execution de la requête
         $query->execute(
             array(
                 'login_user' => $login
-                // 'mdp_user' => $mdp
                 )
             );
 
             //si il y a au moins un résultat
-            if ($query->fetch()) {
-                $result = '<p style="color:red;">Votre compte ' . $login . ' existe !! Félicitation et bienvenue !</p>';
-//TODO retour à la page d'accueil et connexion au compte
+            while ($aaa = $query->fetch()) {
+                if(password_verify($mdp,$aaa['mdp_user'])==true){
+                    $result = '<p style="color:red;">Votre compte ' . $login . ' existe !! Félicitation et bienvenue !</p>';
+                }
+                else{
+                    $result =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
+                }
+
+//TODO changement de droits du visiteur => utilisateur connecté
             } 
-            else {
-                $result =  '<p style="color:red;">Votre compte ' . $login . ' n\'existe pas !! Veuillez essayer à nouveau</p>';
-            }
 
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());
     }
-
 
 ?>

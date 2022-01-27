@@ -41,7 +41,7 @@ close.forEach(el => {
 })
 
 //fermeture de la page avec le background
-window.addEventListener("click", function(event) {
+window.addEventListener("mousedown", function(event) {
     if (event.target == crea) {
         crea.style.animation = "slideOut 0.6s forwards";
         setTimeout(function(){

@@ -20,7 +20,7 @@
     <header>
         <a href="index.php?p=home"><h1>Infofo</h1></a>
         <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-        <?php echo $notif ?>
+        
         <nav>
             <ul>
                 <li id="creaCompte">Créer un compte</li>
