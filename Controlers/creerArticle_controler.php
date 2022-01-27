@@ -21,7 +21,6 @@
             $id_categorie = $_POST['cat_sujet'];
         }
         //appel du modèle qui va faire la requête et retourner la valeur de $result
-        echo $id_categorie;
         include("Models/creerArticle_model.php");
     }  
     

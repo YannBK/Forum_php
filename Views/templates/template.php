@@ -117,7 +117,7 @@
             </div>
         </div>
     </div>
-    <footer>Footer</footer>
+    <footer>Footer<?= $result ?></footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
 </body>
 </html>
