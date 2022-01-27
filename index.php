@@ -13,11 +13,13 @@ else {
 
 //on créer un objet temporaire
 ob_start();
-//qui est construit avec la vue voulue
-require 'Views/'.$p.'_view.php';
+
+//qui est construit avec le controler
+require 'Controlers/'.$p.'_controler.php';
+
 //qu'on stocke dans le $content avant d'être effacé
 $content = ob_get_clean();
 
-//on appelle le template, qui remplacera $content par la vue voulue
+//on appelle le template, qui remplacera $content par la vue obtenue par le controler
 require 'Views/templates/template.php';
 ?>

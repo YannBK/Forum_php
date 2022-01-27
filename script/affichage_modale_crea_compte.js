@@ -22,7 +22,7 @@ close.addEventListener("click", function() {
 //fermeture de la page avec le background
 window.addEventListener("click", function(event) {
     if (event.target == crea) {
-        crea.style.animation = "slideOut 0.5s";
+        crea.style.animation = "slideOut 0.6s forwards";
         setTimeout(function(){
             crea.style.display = "none";
         }, 500);
