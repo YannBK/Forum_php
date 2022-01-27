@@ -32,7 +32,7 @@ create table commentaire(
 create table categorie(
 	id_categorie int not null auto_increment primary Key,
     nom_cat varchar(50)
-    );
+);
     
 create table appartenir(
 	id_sujet int,
@@ -40,7 +40,7 @@ create table appartenir(
     primary key(id_sujet,id_categorie),
     constraint fk_appartenir_sujet foreign key (id_sujet) references sujet(id_sujet),
     constraint fk_appartenir_categorie foreign key (id_categorie) references categorie(id_categorie)
-    );
+);
     
     
 Alter table users

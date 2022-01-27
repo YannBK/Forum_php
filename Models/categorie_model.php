@@ -1,4 +1,6 @@
 <?php
+
+
     class Categorie{
         // attributs
         private $id;
@@ -22,5 +24,18 @@
         public function setNomCat($newNomCat){
             $this-> nomCat = $newNomCat;
         }
-    }
+
+        public static function displayCat(){
+            // if (isset($_POST['cat_sujet'])) {
+                include("Connect/connect.php");
+                $aff = $bdd->prepare('SELECT * FROM categorie');
+                $aff->execute();
+                $opt="";
+                while ($donnees = $aff->fetch()) {
+                    $opt .= "<option value=" . $donnees['id_categorie'] . ">" . $donnees['nom_cat']."</option>";
+                }
+                return $opt;  
+            }
+        }
+
 ?>
