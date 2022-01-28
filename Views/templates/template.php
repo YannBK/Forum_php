@@ -20,7 +20,7 @@
     <header>
         <a href="index.php?p=home"><h1>Infofo</h1></a>
         <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-        
+        <?= $log ?>
         <nav>
             <ul>
                 <li id="creaCompte">Créer un compte</li>
@@ -29,8 +29,6 @@
             </ul>
         </nav>
     </header>
-   
-
 
     <div id="mainContainer">
         <?php echo $content ?>
@@ -60,7 +58,7 @@
                         </li>
                         <li>
                             <label for="dateN">Date de naissance </label>
-                            <input type="date" name="dateN"/>
+                            <input type="date" name="dateN" min="<?=$maxA?>01-01" max="<?=$minSP?>"/>
                         </li>
                         <li>
                             <label for="mdp-crea">Mot de passe </label>
@@ -79,6 +77,7 @@
                         </li>
                     </ul>
                 </form>
+                
             </div>
             
             <div class="footerM">

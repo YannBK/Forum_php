@@ -23,12 +23,12 @@
             //condition de succés
             if ($insert) {
                 //retour d'un résultat
-                $result = '<p style="color:red;">Votre compte a bien été créé !! Félicitation et bienvenue !</p>';
+                $log = '<p style="color:red;">Votre compte a bien été créé !! Félicitation et bienvenue !</p>';
 //TODO retour à la page d'accueil et connexion au compte
             } 
             else {
                 //sinon on blame le serveur
-                $result =  '<p style="color:red;">Erreur lors de l\'enregistrement veuillez essayer à nouveau</p>';
+                $log =  '<p style="color:red;">Erreur lors de l\'enregistrement veuillez essayer à nouveau</p>';
 
             }
 
