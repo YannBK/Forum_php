@@ -24,7 +24,7 @@
 
 
             //récupération des articles
-            $req = $bdd->prepare("SELECT * FROM sujet");
+            $req = $bdd->prepare("SELECT * FROM sujet ORDER BY id_sujet DESC");
 
             $okselect = $req->execute();
             $sujetListe = "";
