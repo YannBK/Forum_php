@@ -5,15 +5,14 @@
         try {
         //insertion dans la table article
             //via une requête préparée
-            $req = $bdd->prepare("INSERT INTO sujet SET nom_sujet = :nom_sujet, contenu_sujet = :contenu_sujet, date_sujet= :date_sujet");
-
-//TODO ne reste plus qu'à récupérer l'id_user de l'utilisateur écrivain
+            $req = $bdd->prepare("INSERT INTO sujet SET nom_sujet = :nom_sujet, contenu_sujet = :contenu_sujet, date_sujet= :date_sujet, id_users = :id_users");
 
             $okinsert = $req->execute(
                 array(
                     'nom_sujet' => $name,
                     'contenu_sujet' => $contenu,
-                    'date_sujet' => $dates
+                    'date_sujet' => $dates,
+                    'id_users' => $_SESSION['id']
                 )
             );
             $id_sujet=$bdd->lastInsertId();

@@ -26,7 +26,6 @@
         }
 
         public static function displayCat(){
-            // if (isset($_POST['cat_sujet'])) {
                 include("Connect/connect.php");
                 $aff = $bdd->prepare('SELECT * FROM categorie');
                 $aff->execute();
