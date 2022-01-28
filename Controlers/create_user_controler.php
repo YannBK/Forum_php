@@ -1,11 +1,28 @@
 <?php
-    // création de compte utilisateur
+///////////////////////////////////////////////////////////////////////////////
+                        // création de compte utilisateur //
+///////////////////////////////////////////////////////////////////////////////
 
-    //  ajout du paramètre de connexion
+    //  ajout du paramètre de connexion à la BDD
     include('Connect/connect.php');
 
-    // récupération des données pour
+    // création de la variable de display info, laissé vide au start pour éviter des erreurs
+    $log = "";
+
+    // récupération du fuseau horaire
+
+    date_default_timezone_set('Europe/Paris');
+
+    // création de variables venant limiter la selection de l'age de l'utilisateur 
     
+        $min = intval(date("Y")) -18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
+        $max = intval(date("Y"))-100;
+
+        // Ici je retransforme en string les entiers stockés dans les variables min et max
+        $minA = (string)$min; 
+        $minSP = $minA . '-' . date("m-j");
+        $maxA = (string)$max;
+
 
     if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea']) && isset($_POST['condUtilisat'])){
     
@@ -18,15 +35,18 @@
             return $donnees;
         }
 
+        // fonction de validation des données afin de vérifier les charactères utilisés
         $login = valid_donnees($_POST['pseudo-crea']);
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
-        $mdp = valid_donnees($_POST['mdp-crea']);
+        $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
         $cond = $_POST['condUtilisat'];
-        // fonction de validation des données afin de vérifier
 
-        $crypt = password_hash($mdp, PASSWORD_BCRYPT);
-        $mdp = $crypt;
+        // limitation de l'age utilisateur pour effectuer un check de l'age mini
+
+        
+
+
         
         // grosse moulinette de check des infos entrée par l'utilisateur login et mail
         if(strlen($login) <= 20 
@@ -48,14 +68,14 @@
                 if($cond === 'on'){
                     include('Models/create_user_model.php');
                 } else{
-                    $result = '<p style="color:red;">Veuillez accepter les termes d\'utilisation !</p>';
+                    $log = '<p style="color:red;">Veuillez accepter les termes d\'utilisation !</p>';
                 }  
                 
             } else {
-                echo "<p> Ce login ou ce mail sont déjà utilisé</p>";
+                $log = "<p> Ce login ou ce mail sont déjà utilisés</p>";
             }
         } else{
-            echo '<p>Ca serait bien de pas trop se foutre de notre gueule !</p>';
+            $log = '<p>Ca serait bien de pas trop se foutre de notre gueule !</p>';
         }
         
 
