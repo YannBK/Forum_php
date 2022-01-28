@@ -14,7 +14,7 @@
     date_default_timezone_set('Europe/Paris');
 
     // création de variables venant limiter la selection de l'age de l'utilisateur 
-    
+
         $min = intval(date("Y")) -18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
         $max = intval(date("Y"))-100;
 
@@ -42,13 +42,11 @@
         $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
         $cond = $_POST['condUtilisat'];
 
-        // limitation de l'age utilisateur pour effectuer un check de l'age mini
-
         
+        // grosse moulinette de check des infos entrées par l'utilisateur login et mail
 
 
-        
-        // grosse moulinette de check des infos entrée par l'utilisateur login et mail
+        // TODO vérifier si le premier et le deuxième mot de passe sont identiques
         if(strlen($login) <= 20 
             && preg_match("/^[A-Za-z '-]+$/",$login)
             && filter_var($mail, FILTER_VALIDATE_EMAIL)
