@@ -164,6 +164,14 @@ h2 {
 
 /*---fin page création d'un sujet---*/
 
+/*---Affichage d'un sujet---*/
+
+.sujet {
+    background-color: rgb(192, 192, 192);
+}
+
+/*---fin affichage d'un sujet---*/
+
 
 /*---footer---*/
 

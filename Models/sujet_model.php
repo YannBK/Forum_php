@@ -51,7 +51,24 @@
         
     }
 
-    try {
+    try {   
+        //liste catégories
+        $req = $bdd->prepare("SELECT * FROM categorie");
+        $okselect = $req->execute();
+
+        $catListe = "";
+        while ($donnees = $req->fetch()) {
+            $catListe .= "<p><a href=\"#\" value=\" " .
+            $donnees['id_categorie'] . " \">" . $donnees['nom_cat'] . "</a></p>";
+        }//TODO le lien doit renvoyer sur la page catégorie concernée
+        //si l'insertion est réussie
+        if (!$okselect) {
+            $result =  "Erreur lors de la récupération des données";
+        }
+
+        //sujet à afficher
+
+        //récupération de l'id du sujet via l'url
         $url = $_GET['id'];
 
         $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=:id_sujet");
@@ -59,7 +76,7 @@
 
         $sujet;
         while($donnees = $req->fetch()){
-            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p><p>".$donnees['contenu_sujet']."</p></div>";
+            $sujet = "<div><h1>".$donnees['nom_sujet']."</h1><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p><p>".$donnees['contenu_sujet']."</p></div>";
         }
 
         /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
