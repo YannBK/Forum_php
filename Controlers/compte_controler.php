@@ -4,6 +4,7 @@
 
 // if (session_status() != PHP_SESSION_NONE) {
 //     echo "une session active";
+//     var_dump($_SESSION);
 // }
 // else{
 //     echo "pas de session";

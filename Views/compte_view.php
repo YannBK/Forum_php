@@ -15,10 +15,11 @@
     <!-- </div> -->
     <article>
 
-    <?php echo $loginsession;?>
-    <?php echo $mailsession;?>
-    <?php echo $datesession;?>
-    <?php echo $mdpsession;?>
+    <?php echo "<p>Votre login : " . $_SESSION['login'] . " </p>";?>
+    <?php echo "<p>Votre mail : " . $_SESSION['mail'] . " </p>";?>
+    <?php echo "<p>Votre date : " . $_SESSION['date'] . " </p>";?>
+    <?php echo "<p>Votre mdp : " . $_SESSION['mdp'] . " </p>";?>
+
     </article>
 </section>
 <!--les sujets les plus actifs-->
