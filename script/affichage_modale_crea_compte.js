@@ -21,10 +21,14 @@ function openModal(elt){
 //ouverture de la page avec le bouton
 openCrea.addEventListener("click", function() {
     openModal(crea);
+    conn.style.animation = "slideOut 0.5s";
+    conn.style.display = "none";
 })
 //ouverture de la page avec le bouton
 openConn.addEventListener("click", function() {
     openModal(conn);
+    crea.style.animation = "slideOut 0.5s";
+    crea.style.display = "none";
 })
 
 function closeModal(elt){
