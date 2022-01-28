@@ -1,7 +1,8 @@
 
 <?php
+
     include('Controlers/create_user_controler.php');
-    include('Controlers/connexion_controler.php');
+    // include('Controlers/connexion_controler.php');
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -20,12 +21,14 @@
     <header>
         <a href="index.php?p=home"><h1>Infofo</h1></a>
         <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-        <?= $log ?>
+        <?php echo $message ?>
+
+
         <nav>
             <ul>
                 <li id="creaCompte">Créer un compte</li>
                 <li id="connCompte">Se connecter</li>
-                <li><a href="index.php?p=compte">Mon compte</a></li>
+                <li><a href="index.php?p=compte">Mon compte</a><?php echo '<p>'.$nomlogin.'</p>' ?></li>
             </ul>
         </nav>
     </header>
@@ -116,7 +119,7 @@
             </div>
         </div>
     </div>
-    <footer>Footer<?= $result ?></footer>
+    <footer>Footer</footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
 </body>
 </html>

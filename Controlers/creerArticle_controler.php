@@ -4,8 +4,6 @@
     include("Models/categorie_model.php");
 
     date_default_timezone_set('Europe/Paris');
-    //petit message de succès/échec qui s'affichera
-    $result = "";
     $dates = "";
     $options = Categorie::displayCat();
     
@@ -20,7 +18,7 @@
         if (isset($_POST['cat_sujet'])){
             $id_categorie = $_POST['cat_sujet'];
         }
-        //appel du modèle qui va faire la requête et retourner la valeur de $result
+        //appel du modèle qui va faire la requête et retourner la valeur de $resultCreerArticle
         include("Models/creerArticle_model.php");
     }  
     

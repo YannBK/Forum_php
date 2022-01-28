@@ -64,6 +64,12 @@ nav ul {
     justify-content: flex-end;
 }
 
+nav ul li p {
+    text-transform: lowercase;
+    font-size: 0.6rem;
+    text-align: center;
+    color: red;
+}
 nav li {
     margin: 0 10px 0 10px;
 }
