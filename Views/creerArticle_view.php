@@ -13,7 +13,7 @@
         <label for="contenu_sujet">Votre magnifique texte ici :</label>
         <textarea name="contenu_sujet" cols="80" rows="20" style="margin-top:10px;"></textarea>
         <input type="submit" name="CreaSujet" value="Poster l'article">
-        <p><?= $result ?></p>
+        <p><?= $resultCreerArticle ?></p>
         <p><?= $dates ?></p>
     </form>
 </div>

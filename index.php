@@ -21,7 +21,7 @@ else {
 } //écrire le lien : "index.php?p=sujet&id=5"
 
 
-$result = "";
+$resultCreerArticle = "";
 //on créer un objet temporaire
 ob_start();
 
