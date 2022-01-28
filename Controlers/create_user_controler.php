@@ -1,21 +1,25 @@
 <?php
-    // création de compte utilisateur
+///////////////////////////////////////////////////////////////////////////////
+                        // création de compte utilisateur //
+///////////////////////////////////////////////////////////////////////////////
 
-    //  ajout du paramètre de connexion
+    //  ajout du paramètre de connexion à la BDD
     include('Connect/connect.php');
 
     // création de la variable de display info, laissé vide au start pour éviter des erreurs
     $log = "";
 
-    // récupération d
+    // récupération du fuseau horaire
 
     date_default_timezone_set('Europe/Paris');
 
-    // création de variables venant limiter la selection de l'age de l'utilisateur
-        $min = intval(date("Y")) -18;
+    // création de variables venant limiter la selection de l'age de l'utilisateur 
+    
+        $min = intval(date("Y")) -18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
         $max = intval(date("Y"))-100;
 
-        $minA = (string)$min;
+        // Ici je retransforme en string les entiers stockés dans les variables min et max
+        $minA = (string)$min; 
         $minSP = $minA . '-' . date("m-j");
         $maxA = (string)$max;
 
