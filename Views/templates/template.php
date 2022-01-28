@@ -26,8 +26,7 @@
 
         <nav>
             <ul>
-                <li id="creaCompte">Créer un compte</li>
-                <li id="connCompte">Se connecter</li>
+                <?= $besoinCreation ?>
                 <li><a href="index.php?p=compte">Mon compte</a><?php echo '<p>'.$nomlogin.'</p>' ?></li>
             </ul>
         </nav>
@@ -37,8 +36,6 @@
         <?php echo $content ?>
     </div>
 
-
-    
     
     <!--modale de connexion-->
     <div id="modal-creation" class="modal">
@@ -111,6 +108,7 @@
                             <input type="submit" name="Connect" value="Connexion">
                         </li>
                     </ul>
+                    <?= $notif ?>
                 </form>
             </div>
             
@@ -119,6 +117,29 @@
             </div>
         </div>
     </div>
+
+    <div id="modal-deconnexion" class="modal">
+        <div>
+            <div class="headerM">
+                <span class="close">&times;</span>
+                <h3>Se déconnecter de Infofo ?</h3>
+            </div>
+
+            <div>
+                <form action="" method="POST">
+
+                    <input type="submit" name="Deconnect" value="Déconnexion">
+                    <input type="submit" name="Rester" value="Je reste">
+
+                </form>
+            </div>
+            
+            <div class="footerM">
+                <p id="allerCrea">Pas de compte ?  Créez-en un ici</p>
+            </div>
+        </div>
+    </div>
+
     <footer>Footer</footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
 

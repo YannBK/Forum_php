@@ -2,11 +2,9 @@
 
     include('Connect/utils.php');
 
-    // création de compte utilisateur
-
     //  ajout du paramètre de connexion
     include('Connect/connect.php');
-    $message = ""; // message de confirmation/erreur //TODO lui trouver une place
+
     $nomlogin = ""; //login afficher sous "MON COMPTE"
     
     // récupération des données
@@ -30,19 +28,21 @@
                     $_SESSION['date'] = $aaa['date_user'];
                     $_SESSION['mdp'] = $aaa['mdp_user'];
                     // var_dump($_SESSION);
-                    header($currentPageUrl);
+
+                    //actualisation de la page = prise en compte de la connection
+                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
                 }
 
                 else{
-                    $message =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
+                    $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
                 }
         }
         else{
-            $message =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
+            $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
         }
     } else{
         //TODO lui trouver la bonne place
-        $notif = "<p>Erreur veuillez remplir tous les champs !</p>";
+        $notif = "";
     }
     
     

@@ -4,10 +4,13 @@
 
 session_start();
 if(isset($_SESSION['login'])){
-    echo $_SESSION['login'];
+    $besoinCreation = '<li id="deConnCompte">Se déconnecter</li>';
+    $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
 }
 else{
-    echo 'nothing to loose';
+    $besoinCreation = '<li id="creaCompte">Créer un compte</li>
+    <li id="connCompte">Se connecter</li>';
+    $message =  '<p>Bonjour visiteur inconnu</p>';
 }
 
 // si on clique sur un lien : "index.php?p=compte", on récupère "compte" dans $p
