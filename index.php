@@ -21,18 +21,7 @@ else {
 } //écrire le lien : "index.php?p=sujet&id=5"
 
 
-<<<<<<< HEAD
 $result = "";
-=======
-if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-}
-//si aucun paramètre, la page home est chargée par défaut
-else {
-    $id='';
-}
-
->>>>>>> c0718da4478adc6793db27a9db139cd325da138f
 //on créer un objet temporaire
 ob_start();
 
