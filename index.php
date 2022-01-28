@@ -11,6 +11,14 @@ else {
     $p = 'home';
 }
 
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+}
+//si aucun paramètre, la page home est chargée par défaut
+else {
+    $id='';
+}
+
 //on créer un objet temporaire
 ob_start();
 
