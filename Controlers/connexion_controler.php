@@ -1,4 +1,7 @@
 <?php
+
+    include('Connect/utils.php');
+
     // création de compte utilisateur
 
     //  ajout du paramètre de connexion
@@ -27,6 +30,7 @@
                     $_SESSION['date'] = $aaa['date_user'];
                     $_SESSION['mdp'] = $aaa['mdp_user'];
                     // var_dump($_SESSION);
+                    header($currentPageUrl);
                 }
 
                 else{

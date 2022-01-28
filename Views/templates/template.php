@@ -84,7 +84,7 @@
             </div>
             
             <div class="footerM">
-                <p>Déjà un compte ?  Identifiez vous ici</p>
+                <p id="allerConn">Déjà un compte ?  Identifiez vous ici</p>
             </div>
         </div>
     </div>
@@ -115,11 +115,12 @@
             </div>
             
             <div class="footerM">
-                <p>Pas de compte ?  Créez-en un ici</p>
+                <p id="allerCrea">Pas de compte ?  Créez-en un ici</p>
             </div>
         </div>
     </div>
     <footer>Footer</footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
+
 </body>
 </html>

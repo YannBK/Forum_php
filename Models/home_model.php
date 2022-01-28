@@ -46,7 +46,7 @@
                         </p>
                     </div>";
             }
-
+            // echo session_status();
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }

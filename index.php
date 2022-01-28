@@ -3,6 +3,12 @@
 //le changement de vue se fera avec un paramètre ?p=nomdelavue qui définira la vue
 
 session_start();
+if(isset($_SESSION['login'])){
+    echo $_SESSION['login'];
+}
+else{
+    echo 'nothing to loose';
+}
 
 // si on clique sur un lien : "index.php?p=compte", on récupère "compte" dans $p
 if (isset($_GET['p'])) {
