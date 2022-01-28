@@ -142,12 +142,13 @@ h2 {
     display: flex;
 }
 
-/*---fin mainContainer---*/
-
-/*---page création d'un sujet---*/
 #mainContainer a{
     align-self: flex-start;
 }
+/*---fin mainContainer---*/
+
+/*---page création d'un sujet---*/
+
 .divCreerArticle,
 .divCreerArticle form {
     display: flex;
@@ -172,10 +173,18 @@ h2 {
 
 /*---Affichage d'un sujet---*/
 
-.sujet {
-    background-color: rgb(192, 192, 192);
+.divSujet {
+    background-color: rgb(228, 226, 226);
+    margin-top: 10px;
+    border-radius: 10px;
+    padding: 0 15px 0 15px;
 }
 
+.divSujet h2 {
+    padding-left: 0px;
+}
+
+.divSujet
 /*---fin affichage d'un sujet---*/
 
 

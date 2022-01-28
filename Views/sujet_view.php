@@ -5,10 +5,10 @@
         <?= $catListe; ?>
     </ul>
 </aside>
-<div class="sujet">
-    <div>
+<div class="divSujet"> 
+    <sujet>
         <?= $sujet ?>
-    </div>
+    </sujet>
     <div>
         <?= $listeCom ?>
     </div>
