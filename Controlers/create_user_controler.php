@@ -24,7 +24,7 @@
         $maxA = (string)$max;
 
 
-    if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea']) && isset($_POST['condUtilisat'])){
+    if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea']) && isset($_POST['confirmMdp-crea']) && !empty($_POST['confirmMdp-crea']) && isset($_POST['condUtilisat'])){
     
         
 
@@ -34,6 +34,15 @@
             $donnees = htmlspecialchars($donnees);
             return $donnees;
         }
+        $mdp = $_POST['mdp-crea'];
+        $mdp1 = $_POST['confirmMdp-crea'];
+
+
+
+        if($mdp === $mdp1){
+
+        
+        
 
         // fonction de validation des données afin de vérifier les charactères utilisés
         $login = valid_donnees($_POST['pseudo-crea']);
@@ -76,7 +85,11 @@
             $log = '<p>Ca serait bien de pas trop se foutre de notre gueule !</p>';
         }
         
-
+    } else{
+        echo '<script language="javascript">';
+        echo 'alert("Les mots de passe ne correspondent pas");';
+        echo '</script>';
+    }
     } 
     
 
