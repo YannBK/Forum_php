@@ -126,12 +126,18 @@
             </div>
 
             <div>
+                
                 <form action="" method="POST">
 
                     <input type="submit" name="Deconnect" value="Déconnexion">
                     <input type="submit" name="Rester" value="Je reste">
 
                 </form>
+                <!-- Désolé d'avoir fait ça à l'arrache, faut juste trouver comment refresh la page après le click sur déconnexion  -->
+                <?php if(isset($_POST['Deconnect'])){
+                    session_destroy();
+
+                } ?>
             </div>
             
             <div class="footerM">
