@@ -126,10 +126,10 @@
             </div>
 
             <div>
-                <form action="" method="POST">
+                <form action="index.php" method="POST">
 
-                    <input type="submit" name="Deconnect" value="Déconnexion">
-                    <input type="submit" name="Rester" value="Je reste">
+                    <input type="submit" id="deconnect" name="deconnect" value="Déconnexion">
+                    <input type="submit" name="rester" value="Je reste">
 
                 </form>
             </div>

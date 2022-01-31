@@ -27,19 +27,19 @@
                     $_SESSION['mail'] = $aaa['mail_user'];
                     $_SESSION['date'] = $aaa['date_user'];
                     $_SESSION['mdp'] = $aaa['mdp_user'];
-                    // var_dump($_SESSION);
-
+                    
                     //actualisation de la page = prise en compte de la connection
+                    // var_dump($_SESSION);
                     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
                 }
-
+                
                 else{
                     $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
                 }
-        }
-        else{
-            $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
-        }
+            }
+            else{
+                $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
+            }
     } else{
         //TODO lui trouver la bonne place
         $notif = "";
