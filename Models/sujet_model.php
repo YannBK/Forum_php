@@ -76,7 +76,7 @@
 
         $sujet;
         while($donnees = $req->fetch()){
-            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p><p>".$donnees['contenu_sujet']."</p></div>";
+            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
         }
 
         /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
