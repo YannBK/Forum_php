@@ -5,11 +5,24 @@
         <?= $catListe; ?>
     </div>
 </aside>
-<div class="divSujet"> 
-    <sujet>
+<div> 
+    <div class="divSujet">
         <?= $cardSujet ?>
-    </sujet>
+    </div>
     <div>
+        <CreaCom>
+            <form action="" method="POST">
+                <ul>
+                    <li>
+                        <label for="commentaire">Votre commentaire :</label>
+                        <textarea name="commentaire" cols="100" rows="10"></textarea>
+                    </li>
+                    <li>
+                        <input type="submit" name="publier" value="Publier votre commentaire">
+                    </li>
+                </ul>
+            </form>
+        </CreaCom>
         <!-- <?= $listeCom ?> -->
     </div>
 </div>
