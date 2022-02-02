@@ -2,21 +2,19 @@
 <?php
     //récupération de la connection à la bdd
     // include("Connect/connect.php");
-    //include("Models/categorie_model.php");
-
+    include("Models/categorie_model.php");
+    $cat = new Categorie();
     include('Models/sujet_model.php');
     $sujet = new Sujet();
 
         //on tente l'insertion
         try {
             //récupération des catégories
-            $req1 = $sujet->connect->prepare("SELECT * FROM categorie");
-
-            $okselect = $req1->execute();
+            $req = $cat->getAllCategorie();
 
             //création liste des catégories
             $catListe = "";
-            while ($donnees = $req1->fetch()) {
+            while ($donnees = $req->fetch()) {
                 $catListe .= "<p>
                                 <a 
                                     href=\"index.php?p=categorie&id=" . $donnees['id_categorie'] . "\" >

@@ -105,18 +105,24 @@
         }
 
         //Create
-        public function createSujet() {
+        public function createSujet($nom,$contenu,$date,$idUser) {
             //requête
             $query = 'INSERT INTO
                         '.$this->table.' 
                     SET 
-                        nom_sujet = :nom_sujet';
+                        nom_sujet = :nom_sujet, 
+                        contenu_sujet = :contenu_sujet, 
+                        date_sujet= :date_sujet, 
+                        id_users = :id_users';
 
             //préparation
             $stmt = $this->connect->prepare($query);
 
             //bind des paramètres
-            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
+            $stmt->bindParam(':nom_sujet',$nom);
+            $stmt->bindParam(':contenu_sujet',$contenu);
+            $stmt->bindParam(':date_sujet',$date);
+            $stmt->bindParam(':id_users',$idUser);
 
             return $stmt->execute();
         }
@@ -157,10 +163,6 @@
         } 
 
     }
-
-
-
-
 
 
 
