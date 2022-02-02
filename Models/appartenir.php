@@ -34,42 +34,55 @@ class CatSujet{
         }
 
         //CRUD
-        public function getComs() {
-            $myQuery = 'SELECT * FROM '.$this->table.'';
+        public function getAppart() {
+            $myQuery = 'SELECT
+                             *
+                        FROM 
+                            '.$this->table.'';
             $stmt = $this->connect->prepare($myQuery);
             $stmt->execute();
             return $stmt;
         }
 
-        public function getSingleCom() {
-            $myQuery = 'SELECT * FROM '.$this->table.' WHERE nom_com = '.$this-> nom_com.'';
+        public function getSingleAppart() {
+            $myQuery = 'SELECT 
+                            * 
+                        FROM 
+                            '.$this->table.' 
+                        WHERE 
+                            id_categorie = '.$this-> id_categorie.'';
             $stmt = $this->connect->prepare($myQuery);
             $stmt->execute();
             return $stmt;
         }
 
-        public function createCom() {
+        public function createAppart() {
             $myQuery = 'INSERT INTO
                             '.$this->table.'
                         SET
-                            nom_com = :nom_com';
+                            id_categorie = :id_categorie,
+                            id_sujet = :id_sujet';
             
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
+            $stmt->bindParam(':id_categorie', $this->id_categorie);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
             return $stmt->execute();
         }
 
-        public function updateCom() {
+        public function updateAppartCat() {
             $myQuery = 'UPDATE
                             '.$this->table.'
                         SET
-                            nom_com = :nom_com
+                            id_categorie = :id_categorie
                         WHERE
-                            nom_com = :nom_com2';
+                            id_categorie = :id_categorie2
+                        AND
+                            id_sujet = :id_sujet';
             
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
-            $stmt->bindParam(':nom_com2', $this->nom_com);
+            $stmt->bindParam(':id_categorie', $this->id_categorie);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
+            $stmt->bindParam(':id_categorie2', $this->id_categorie);
             if($stmt->execute()) {
                 return true;
             } else {
@@ -77,15 +90,68 @@ class CatSujet{
             }
         }
 
-        public function deleteCom() {
+        public function updateAppartSujet() {
+            $myQuery = 'UPDATE
+                            '.$this->table.'
+                        SET
+                            id_sujet = :id_sujet
+                        WHERE
+                            id_categorie = :id_categorie
+                        AND
+                            id_sujet = :id_sujet2';
+            
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->bindParam(':id_categorie', $this->id_categorie);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
+            $stmt->bindParam(':id_sujet2', $this->id_sujet);
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteAppartCat() {
             $myQuery = 'DELETE FROM 
                             '.$this->table.'
                         WHERE
-                            nom_com = :nom_com';
+                            id_categorie = :id_categorie';
 
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
-            $stmt->bindParam(':nom_com2', $this->nom_com);
+            $stmt->bindParam(':id_categorie', $this->id_categorie);
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteAppartSujet() {
+            $myQuery = 'DELETE FROM 
+                            '.$this->table.'
+                        WHERE
+                            id_sujet = :id_sujet';
+
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
+            if($stmt->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        public function deleteSingleAppartSujet() {
+            $myQuery = 'DELETE FROM 
+                            '.$this->table.'
+                        WHERE
+                            id_sujet = :id_sujet
+                        AND
+                            id_categorie = :id_categorie';
+
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
+            $stmt->bindParam(':id_categorie', $this->id_categorie);
             if($stmt->execute()) {
                 return true;
             } else {

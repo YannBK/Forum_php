@@ -115,7 +115,6 @@
 
             $stmt = $this->connect->prepare($myQuery);
             $stmt->bindParam(':nom_com', $this->nom_com);
-            $stmt->bindParam(':nom_com2', $this->nom_com);
             if($stmt->execute()) {
                 return true;
             } else {

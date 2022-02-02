@@ -89,7 +89,6 @@
 
             $stmt = $this->connect->prepare($myQuery);
             $stmt->bindParam(':nom_role', $this->nom_role);
-            $stmt->bindParam(':nom_role2', $this->nom_role);
             if($stmt->execute()) {
                 return true;
             } else {
