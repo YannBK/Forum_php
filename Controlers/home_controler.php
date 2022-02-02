@@ -44,8 +44,8 @@
                         </h3>
                         <p>
                             <a href=\"#\">
-                                <strong>" . $donnees['login_user'] . "  </strong>
-                            </a>  
+                                <strong>" . $donnees['login_user'] . "</strong>
+                            </a>  dans <strong>".$donnees['nom_cat']."</strong> le 
                             " . $ladate . "
                             Réponses : $nbRep
                         </p>
