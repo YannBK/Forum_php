@@ -4,7 +4,7 @@
 ///////////////////////////////////////////////////////////////////////////////
 
     //  ajout du paramètre de connexion à la BDD
-    include('Connect/connect.php');
+    // include('Connect/connect.php');
 
     // création de la variable de display info, laissé vide au start pour éviter des erreurs
     $log = "";
