@@ -120,7 +120,7 @@
 
                                     $returnRole = $newRole->getSingleRole();
 
-                                    $id_role = 2;
+                                    $id_role;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
 
@@ -129,8 +129,8 @@
                                     }
                                     $success = 1;
                                     $msg = "Utilisateur créé avec succès";
-                                    $data['id_user'] = intval($rowUser['id_user'], 10);
-                                    $data['login'] = $rowUser['login'];
+                                    $data['id_users'] = intval($rowUser['id_users'], 10);
+                                    $data['login_user'] = $rowUser['login_user'];
                                     $data['id_role'] = $id_role;
                                     $data['nom_role'] = $nom_role;
                                     
