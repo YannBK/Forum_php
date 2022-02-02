@@ -56,7 +56,6 @@
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
         $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
-        $id_role = 2;
         $cond = $_POST['condUtilisat'];
 
         
@@ -78,11 +77,11 @@
                 $newUser->setNaissanceUser($date);
                 $newUser->setIdRoleUser($newUser->getIdRoleUser());
                 
+                
                 $checkUser = $newUser->verifyPseudoAndMail();
                 
 
                 $nbrUser = $checkUser->rowCount();
-                
                 
 
                     if($nbrUser > 0) {
@@ -90,16 +89,16 @@
                             echo '<script language="javascript">';
                             echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
                             echo '</script>';
+                            
                         // $log = "Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d'autres informations";
                     } else {
                         if($newUser->createUser()){
                             $myReturn = $newUser->getSingleUser();
                             var_dump($myReturn);
                             $nbrUsers = $myReturn->rowCount();
-                            
 
                             if($nbrUsers == 0){
-                                $log = "error 'enregistrement !!!";
+                                $log = "error enregistrement !!!";
                                 
 
                             } else if($nbrUsers >1){
@@ -113,16 +112,16 @@
                                 echo '<script language="javascript">';
                                 echo 'alert("C\'est bon frer le boss t\'es là où il faut.");';
                                 echo '</script>';
-
+                                
                                 while($rowUser = $myReturn->fetch()){
-                                    var_dump($rowUser);
+                                    
                                     extract($rowUser);
 
                                     $newRole->setIdRole($rowUser['id_role']);
                                     
                                     $returnRole = $newRole->getSingleRole();
-                                    var_dump($returnRole);
-                                    $id_role =2;
+                                    
+                                    $id_role;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
                                         var_dump($rowRole);
@@ -135,7 +134,7 @@
                                     $data['login_user'] = $rowUser['login_user'];
                                     $data['id_role'] = $id_role;
                                     $data['nom_role'] = $nom_role;
-                                    
+                                    var_dump($myReturn);
                                 }
                             }
                         }else {
@@ -148,8 +147,8 @@
                 }
             } else {
                 echo '<script language="javascript">';
-                            echo 'alert("Les mots de passe ne correspondent pas veuillez les entrer à nouveau");';
-                            echo '</script>';
+                echo 'alert("Les mots de passe ne correspondent pas veuillez les entrer à nouveau");';
+                echo '</script>';
             }
         } else{
         // echo '<script language="javascript">';
@@ -160,6 +159,29 @@
             // je crée un tableau qui contiendra le success, un msg et de la data
             include_once('./Connect/utils.php');
             
+            var_dump($newUser);
+            $user->setLoginUser($login);
+            $need = $user->getSingleUser();
+
+            $connexion = $need->fetch();
+
+                if($connexion==true){
+                    $nomlogin = $connexion['login_user'];
+
+                    $_SESSION['id'] = $connexion['id_users'];
+                    $_SESSION['login'] = $connexion['login_user'];
+                    $_SESSION['mail'] = $connexion['mail_user'];
+                    $_SESSION['date'] = $connexion['date_user'];
+                    $_SESSION['mdp'] = $connexion['mdp_user'];
+
+                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
+                }
+                else{
+                echo '<script language="javascript">';
+                echo 'alert("Une erreur s\'est produite et nous n\'avons pas pu vous connecter");';
+                echo '</script>';
+                }
+
             $res = ["success" => $success, "msg" => $msg, "data" => $data];
             // puis j'encode le tout en json pour le retourner
             echo json_encode($res);

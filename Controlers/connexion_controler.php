@@ -21,7 +21,7 @@
         try {
             $user->setLoginUser($login);
             $req = $user->getSingleUser();
-           
+            var_dump($req);
     
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
