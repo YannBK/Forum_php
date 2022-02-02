@@ -4,7 +4,7 @@
 
     // include('Connect/connect.php');
     include('Models/user_model.php');
-    // $user = new Users();
+    $user = new Users();
 
     $nomlogin = ""; //login afficher sous "MON COMPTE"
     
@@ -17,18 +17,11 @@
 
 
         //TODO ici remplacer par méthode de la class User
+
         try {
-            $query = $bdd->prepare("SELECT                  
-                                    * 
-                                    FROM users 
-                                    WHERE login_user = :login_user
-                                    " );
-            // execution de la requête
-            $query->execute(
-                array(
-                    'login_user' => $login
-                    )
-                );
+            $user->setLoginUser($login);
+            $req = $user->getSingleUser();
+           
     
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
@@ -36,7 +29,7 @@
 
 
 
-        $aaa = $query->fetch();
+        $aaa = $req->fetch();
         //vérification que le login existe
         if($aaa==true){
             //vérification que le mdp correspond

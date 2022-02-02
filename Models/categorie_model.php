@@ -1,5 +1,5 @@
 <?php
-    include('Connect/connect.php');
+    // include('Connect/connect.php');
 
     class Categorie{
         // attributs

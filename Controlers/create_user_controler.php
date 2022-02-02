@@ -114,6 +114,7 @@
                                 echo '</script>';
 
                                 while($rowUser = $myReturn->fetch()){
+                                    var_dump($rowUser);
                                     extract($rowUser);
 
                                     $newRole->setIdRole($rowUser['id_role']);
