@@ -12,7 +12,7 @@ else{
     $besoinCreation = '<li id="creaCompte">Créer un compte</li>
     <li id="connCompte">Se connecter</li>';
     $message =  '<p>Bonjour visiteur inconnu</p>';
-    echo "<script type='text/javascript'>let session=".$_SESSION['login']."</script>";
+    // echo "<script type='text/javascript'>let session=".$_SESSION['login']."</script>";
 }
 
 // si on clique sur un lien : "index.php?p=compte", on récupère "compte" dans $p

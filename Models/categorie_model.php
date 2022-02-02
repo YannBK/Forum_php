@@ -1,5 +1,5 @@
 <?php
-
+    include('Connect/connect.php');
 
     class Categorie{
         // attributs
@@ -10,7 +10,7 @@
         private $table = 'categorie';
         // constructeur
         public function __construct(){
-            $this->connect = new Bdd();
+            $this->connect = new Bdd(); 
             $this->connect = $this->connect->getConnexion();
         }
 
