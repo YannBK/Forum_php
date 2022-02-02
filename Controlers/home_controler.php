@@ -18,7 +18,7 @@
                 $catListe .= "<p>
                                 <a 
                                     href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\" >
-                                    " . $donnees['nom_cat'] . "
+                                    " . ucwords($donnees['nom_cat']) . "
                                 </a>
                             </p>";
             }
@@ -45,7 +45,7 @@
                         <p>
                             <a href=\"#\">
                                 <strong>" . $donnees['login_user'] . "</strong>
-                            </a>  dans <strong>".$donnees['nom_cat']."</strong> le 
+                            </a>  dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
                             " . $ladate . "
                             Réponses : $nbRep
                         </p>

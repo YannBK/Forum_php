@@ -15,7 +15,7 @@
         while ($donnees = $req->fetch()) {
             $catListe .= 
                         "<p>
-                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". $donnees['nom_cat'] ."</a>
+                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". ucwords($donnees['nom_cat']) ."</a>
                         </p>";
         }//TODO le lien doit renvoyer sur la page catégorie concernée
         //si l'insertion est réussie

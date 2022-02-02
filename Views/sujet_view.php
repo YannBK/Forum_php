@@ -1,9 +1,9 @@
 <!-- <a href="index.php?p=home">Accueil</a> -->
 <aside>
     <h2>Catégories</h2>
-    <ul>
+    <div>
         <?= $catListe; ?>
-    </ul>
+    </div>
 </aside>
 <div class="divSujet"> 
     <sujet>

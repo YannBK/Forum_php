@@ -6,7 +6,7 @@ session_start();
 if(isset($_SESSION['login'])){
     $besoinCreation = '<li id="deConnCompte">Se déconnecter</li>';
     $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
-    echo "<script type='text/javascript'>let session=".$_SESSION['login']."; console.log(session);</script>";
+    echo "<script type='text/javascript'>let session='".$_SESSION['login']."'; console.log(session);</script>";
 }
 else{
     $besoinCreation = '<li id="creaCompte">Créer un compte</li>
