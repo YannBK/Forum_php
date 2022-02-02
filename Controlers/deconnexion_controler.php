@@ -2,10 +2,11 @@
 
 include('Connect/utils.php');
 
-//TODO ne marche pas
-if(isset($_POST['Deconnect'])){
-    $_SESSION = array();
+if(isset($_POST['deconnect'])){
+    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
+    session_unset();
     session_destroy();
-    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
+    $message =  '<p>Bonjour visiteur inconnu</p>';
+
 }
-//TODO le bouton "je reste" => en JS clodemodal()
+

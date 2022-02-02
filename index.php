@@ -36,6 +36,7 @@ ob_start();
 
 //qui est construit avec le controler
 include('Controlers/connexion_controler.php');
+include('Controlers/deconnexion_controler.php');
 require 'Controlers/'.$p.'_controler.php';
 // require 'Controlers/'.$p.'_controler.php';
 
