@@ -1,8 +1,8 @@
 <aside>
     <h2>Catégories</h2>
-    <ul>
+    <div>
         <?= $catListe; ?>
-    </ul>
+    </div>
 </aside>
 
 <!--les sujets-->

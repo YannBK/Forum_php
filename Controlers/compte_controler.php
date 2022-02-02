@@ -13,9 +13,9 @@ if(isset($_SESSION['login'])){
 
     $articleCompte = 
         "<h3>Vos informations :</h3>
-        <div><p>Votre login : </p><p> $log </p></div>
-        <div><p>Votre mail : </p><p> $mail  </p></div>
-        <div><p>Votre date : </p><p> $date </p></div>";
+        <div><p>Votre login :  $log </p><input id='changelogin' type='button' value='Changer'></div>
+        <div><p>Votre mail :  $mail  </p><input id='changemail' type='button' value='Changer'></div>
+        <div><p>Votre date de naissance :  $date </p></div>";
 }
 else{
     $articleCompte = "<h3>Veuillez vous <span id='conn2'>connecter</span> ou <span id='crea2'>créer un compte</span></h3>";

@@ -2,6 +2,8 @@
 var crea = document.querySelector("#modal-creation");
 var conn = document.querySelector("#modal-connexion");
 var deconn = document.querySelector("#modal-deconnexion");
+var changeLogin = document.querySelector("#modal-changelogin");
+var changeMail = document.querySelector("#modal-changemail");
 
 //récupérer le bouton d'ouverture de la page
 var openCrea = document.getElementById("creaCompte");
@@ -9,6 +11,8 @@ var openConn = document.getElementById("connCompte");
 var openCrea2 = document.getElementById("crea2");
 var openConn2 = document.getElementById("conn2");
 var openDeConn = document.getElementById("deConnCompte");
+var openChangeLogin = document.getElementById("changelogin");
+var openChangeMail = document.getElementById("changemail");
 
 //récupérer le bouton de fermeture de la page
 var close = document.querySelectorAll(".close");
@@ -21,6 +25,14 @@ let allerCrea = document.getElementById('allerCrea');
 function openModal(elt){
     elt.style.display = "flex";
     elt.style.animation = "slideTop 0.5s";
+}
+//fonction de fermeture
+function closeModal(elt){
+    elt.style.animation = "slideOut 0.6s forwards";
+
+    setTimeout(function(){
+        elt.style.display = "none";
+    }, 500);
 }
 
 //ouverture de la modale création
@@ -57,16 +69,20 @@ if(openDeConn){
     openModal(deconn);
     });
 }
-
-
-//fonction de fermeture
-function closeModal(elt){
-    elt.style.animation = "slideOut 0.6s forwards";
-
-    setTimeout(function(){
-        elt.style.display = "none";
-    }, 500);
+//ouverture changement de login
+if(openChangeLogin){
+    openChangeLogin.addEventListener("click", function() {
+        openModal(changeLogin);
+        });
 }
+//ouverture changement de mail
+if(openChangeMail){
+    openChangeMail.addEventListener("click", function() {
+        openModal(changeMail);
+        });
+}
+
+
 
 //fermeture de la page avec le bouton
 close.forEach(el => {
@@ -79,6 +95,12 @@ close.forEach(el => {
         }
         else if(deconn.style.display=="flex"){
             closeModal(deconn);
+        }
+        else if(changeLogin.style.display=="flex"){
+            closeModal(changeLogin);
+        }
+        else if(changeMail.style.display=="flex"){
+            closeModal(changeMail);
         }
     });
 });
@@ -97,6 +119,7 @@ allerCrea.addEventListener('click',function(){
 
 //fermeture de la page avec le background
 window.addEventListener("mousedown", function(event) {
+    console.log(event.target)
     if (event.target == crea) {
         closeModal(crea);
     }
@@ -105,6 +128,12 @@ window.addEventListener("mousedown", function(event) {
     }
     else if (event.target == deconn) {
         closeModal(deconn);
+    }
+    else if (event.target == changeLogin) {
+        closeModal(changeLogin);
+    }
+    else if (event.target == changeMail) {
+        closeModal(changeMail);
     }
 })
 
