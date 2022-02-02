@@ -28,8 +28,8 @@
         }
 
         // setters
-        public function setIdRole($newIdRole){
-            $this->id_role = $newIdRole;
+        public function setIdRole($id_role){
+            $this->id_role = $id_role;
         }
 
         public function setNomRole($newNomRole){
@@ -46,8 +46,9 @@
         }
 
         public function getSingleRole() {
-            $myQuery = 'SELECT * FROM '.$this->table.' WHERE nom_role = '.$this-> nom_role.'';
+            $myQuery = 'SELECT * FROM '.$this->table.' WHERE nom_role = :nom_role';
             $stmt = $this->connect->prepare($myQuery);
+            $stmt->bindParam(':nom_role', $this->nom_role);
             $stmt->execute();
             return $stmt;
         }

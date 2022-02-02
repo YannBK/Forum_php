@@ -11,7 +11,7 @@
         private $mdp;
         private $mail;
         private $date;
-        private $id_role =2;
+        private $id_role = 2;
 
         //constructeur
         public function __construct(){
@@ -83,7 +83,11 @@
                             *
                         FROM
                             '.$this->table.'
+                        JOIN
+                            role
                         Where
+                            '.$this->table.'.id_role = role.id_role
+                        AND
                             login_user = :login';
                         
             $stmt = $this->connect->prepare($myQuery);

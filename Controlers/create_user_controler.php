@@ -21,7 +21,7 @@
     // création de variables venant limiter la selection de l'age de l'utilisateur 
 
         $min = intval(date("Y")) -18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
-        $max = intval(date("Y"))-100;
+        $max = intval(date("Y")) -100;
 
         // Ici je retransforme en string les entiers stockés dans les variables min et max
         $minA = (string)$min; 
@@ -56,7 +56,7 @@
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
         $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
-        $id_role;
+        $id_role = 2;
         $cond = $_POST['condUtilisat'];
 
         
@@ -76,7 +76,7 @@
                 $newUser->setMdpUser($mdp);
                 $newUser->setMailUser($mail);
                 $newUser->setNaissanceUser($date);
-                // $newUser->setIdRoleUser($id_role);
+                $newUser->setIdRoleUser($newUser->getIdRoleUser());
                 
                 $checkUser = $newUser->verifyPseudoAndMail();
                 
@@ -94,8 +94,9 @@
                     } else {
                         if($newUser->createUser()){
                             $myReturn = $newUser->getSingleUser();
+                            var_dump($myReturn);
                             $nbrUsers = $myReturn->rowCount();
-                            var_dump($nbrUsers);
+                            
 
                             if($nbrUsers == 0){
                                 $log = "error 'enregistrement !!!";
@@ -118,13 +119,13 @@
                                     extract($rowUser);
 
                                     $newRole->setIdRole($rowUser['id_role']);
-
+                                    
                                     $returnRole = $newRole->getSingleRole();
-
-                                    $id_role;
+                                    var_dump($returnRole);
+                                    $id_role =2;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
-
+                                        var_dump($rowRole);
                                         $id_role = intval($rowRole['id_role'], 10);
                                         $nom_role = $rowRole['nom_role'];
                                     }
@@ -145,7 +146,11 @@
                     }
             
                 }
-            } 
+            } else {
+                echo '<script language="javascript">';
+                            echo 'alert("Les mots de passe ne correspondent pas veuillez les entrer à nouveau");';
+                            echo '</script>';
+            }
         } else{
         // echo '<script language="javascript">';
         // echo 'alert("Les mots de passe ne correspondent pas");';
@@ -153,6 +158,8 @@
         }
         if($success == 1){
             // je crée un tableau qui contiendra le success, un msg et de la data
+            include_once('./Connect/utils.php');
+            
             $res = ["success" => $success, "msg" => $msg, "data" => $data];
             // puis j'encode le tout en json pour le retourner
             echo json_encode($res);
