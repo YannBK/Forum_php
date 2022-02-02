@@ -58,7 +58,7 @@
                         <input type="password" name="mdp-newlogin" minlength="8" maxlength="15" />
                     </li>
                     <li>
-                        <input type="submit" name="newloginok" value="Confirmer">
+                        <input type="submit" name="Newlogin" value="Confirmer">
                     </li>
                 </ul>
 

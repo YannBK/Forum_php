@@ -85,9 +85,9 @@
                             '.$this->table.'
                         JOIN
                             role
-                        ON
+                        Where
                             '.$this->table.'.id_role = role.id_role
-                        WHERE
+                        AND
                             login_user = :login';
                         
             $stmt = $this->connect->prepare($myQuery);
@@ -112,11 +112,7 @@
             $stmt->bindParam(':mdp', $this->mdp);
             $stmt->bindParam(':mail', $this->mail);
             $stmt->bindParam(':date', $this->date);
-<<<<<<< HEAD
-            $stmt->bindParam(':id_Role', $this->id_role);
-=======
             $stmt->bindParam(':id_role', $this->id_role);
->>>>>>> 86a94ccc2413de6cd53adfc6ac0d8c1937095989
 
             return $stmt->execute();
         }
@@ -142,28 +138,6 @@
             $stmt->bindParam(':date', $this->date);
             $stmt->bindParam(':idRole', $this->idRole);
             $stmt->bindParam(':login2', $this->login);
-
-            if($stmt->execute) {
-                // je retourne true si mise à jour réussie
-                return true;
-            } else {
-                return false;
-            }
-        }
-
-        public function updateUserForLogin($log,$id){
-            $myQuery = 'UPDATE
-                            '.$this->table.'
-                        SET
-                            login_user = :login
-                        WHERE
-                            id_users = :id_users';
-
-            $stmt = $this->connect->prepare($myQuery);
-
-            // bind des paramètres
-            $stmt->bindParam(':login', $log);
-            $stmt->bindParam(':id_users', $id);
 
             if($stmt->execute) {
                 // je retourne true si mise à jour réussie

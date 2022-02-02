@@ -50,28 +50,21 @@
             } 
             else {
                 //sinon on blame le serveur
-                $resultCreerArticle =  "Erreur lors de l'enregistrement";
+                $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table sujet";
             }
 
         //insertion dans la table d'association "appartenir"
-            $catsujet->setIdCat($id_categorie);
-            $catsujet->setIdSujet($id_sujet);
+            $catsujet->setIdCat(intval($id_categorie));
+            $catsujet->setIdSujet(intval($id_sujet));
+
             $req = $catsujet->createAppart();
 
-            // $req = $bdd->prepare("INSERT INTO appartenir SET id_sujet = :id_sujet, id_categorie = :id_categorie");
-
-            // $okinsert = $req->execute(
-            //     array(
-            //         'id_sujet' => $id_sujet,
-            //         'id_categorie' => $id_categorie
-            //         )
-            //     );
                 //si l'insertion est réussie
                 if ($req) {
                     $resultCreerArticle = "L'enregistrement s'est passé à merveille ! Bravo !!!";
                 } 
                 else {
-                    $resultCreerArticle =  "Erreur lors de l'enregistrement";
+                    $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table appartenir";
                 }
 
         } catch (Exception $e) {
