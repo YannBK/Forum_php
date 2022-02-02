@@ -1,24 +1,25 @@
 <?php
-    //récupération de la connection à la bdd
-    include("Connect/connect.php");
-
-    //récupération du modele
+    
+    //récupération du modèle et des catégories
+    include("Models/categorie_model.php");
+    $cat = new Categorie();
     include("Models/sujet_model.php");
     $sujet = new Sujet();
 
 
     try {   
         //liste catégories
-        $req = $bdd->prepare("SELECT * FROM categorie");
-        $okselect = $req->execute();
+        $req = $cat->getAllCategorie();
 
         $catListe = "";
         while ($donnees = $req->fetch()) {
-            $catListe .= "<p><a href=\"#\" value=\" " .
-            $donnees['id_categorie'] . " \">" . $donnees['nom_cat'] . "</a></p>";
+            $catListe .= 
+                        "<p>
+                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". $donnees['nom_cat'] ."</a>
+                        </p>";
         }//TODO le lien doit renvoyer sur la page catégorie concernée
         //si l'insertion est réussie
-        if (!$okselect) {
+        if (!$req) {
             $result =  "Erreur lors de la récupération des données";
         }
 
@@ -27,14 +28,29 @@
         //récupération de l'id du sujet via l'url
         $url = $_GET['id'];
 
-        $res = $sujet->getSingleSujet($url);
-        // $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=:id_sujet");
-        // $req->execute(array(':id_sujet'=>$url));
+        $req = $sujet->getSingleSujet($url);
+        $donnees = $req->fetch();
+        $nbRep = 0; //TODO le nombre de commentaires liés à l'article
+        //formatege de la date
+        $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
 
-        $cardSujet;
-        while($donnees = $req->fetch()){
-            $cardSujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
-        }
+        //création des cartes de sujet
+        $cardSujet = 
+            "<div>
+                <h3>
+                    <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
+                        " . $donnees['nom_sujet'] . "
+                    </a>
+                </h3>
+                <p>
+                    <a href=\"#\">
+                        <strong>" . $donnees['login_user'] . "  </strong>
+                    </a>  
+                    " . $ladate . "
+                    Réponses : $nbRep
+                </p>
+                <p>" . $donnees['contenu_sujet'] . "</p>
+            </div>";
 
         /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
         $req->execute();

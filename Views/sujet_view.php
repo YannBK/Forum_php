@@ -7,10 +7,10 @@
 </aside>
 <div class="divSujet"> 
     <sujet>
-        <?= $sujet ?>
+        <?= $cardSujet ?>
     </sujet>
     <div>
-        <?= $listeCom ?>
+        <!-- <?= $listeCom ?> -->
     </div>
 </div>
 <aside>

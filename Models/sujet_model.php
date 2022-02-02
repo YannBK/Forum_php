@@ -139,9 +139,17 @@
         public function getSingleSujet($idSouhaite) {
 
             $query = "SELECT 
-                            * 
+                            sujet.id_sujet, 
+                            nom_sujet, 
+                            date_sujet, 
+                            contenu_sujet, 
+                            login_user
                     FROM 
                         ".$this->table." 
+                    JOIN
+                        users
+                    ON
+                        users.id_users=sujet.id_users 
                     WHERE 
                         id_sujet = ".$idSouhaite."";
 
