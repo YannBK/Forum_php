@@ -2,10 +2,15 @@
 ///////////////////////////////////////////////////////////////////////////////
                         // création de compte utilisateur //
 ///////////////////////////////////////////////////////////////////////////////
+    include_once('./Connect/connect.php');
+    include_once('./Models/user_model.php');
+    include_once('./Models/role_model.php');
+    
 
-    //  ajout du paramètre de connexion à la BDD
-    // include('Connect/connect.php');
 
+    $success = 0;
+    $msg = "Une erreur est survenue dans le php";
+    $data = [];
     // création de la variable de display info, laissé vide au start pour éviter des erreurs
     $log = "";
 
@@ -24,7 +29,12 @@
         $maxA = (string)$max;
 
 
-    if(isset($_POST['pseudo-crea']) && !empty($_POST['pseudo-crea']) && isset($_POST['email-crea']) && !empty($_POST['email-crea']) && isset($_POST['dateN']) && !empty($_POST['dateN']) && isset($_POST['mdp-crea']) && !empty($_POST['mdp-crea']) && isset($_POST['confirmMdp-crea']) && !empty($_POST['confirmMdp-crea']) && isset($_POST['condUtilisat'])){
+    if(isset($_POST['pseudo-crea']) 
+        && isset($_POST['email-crea']) 
+        && isset($_POST['dateN']) 
+        && isset($_POST['mdp-crea']) 
+        && isset($_POST['confirmMdp-crea']) 
+        && isset($_POST['condUtilisat'])) {
     
         
 
@@ -41,14 +51,12 @@
 
         if($mdp === $mdp1){
 
-        
-        
-
         // fonction de validation des données afin de vérifier les charactères utilisés
         $login = valid_donnees($_POST['pseudo-crea']);
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
         $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
+        $id_role;
         $cond = $_POST['condUtilisat'];
 
         
@@ -56,41 +64,103 @@
 
 
         // TODO vérifier si le premier et le deuxième mot de passe sont identiques
-        if(strlen($login) <= 20 
-            && preg_match("/^[A-Za-z '-]+$/",$login)
-            && filter_var($mail, FILTER_VALIDATE_EMAIL)
-        ){
+            if(strlen($login) <= 20 
+                && preg_match("/^[A-Za-z '-]+$/",$login)
+                && filter_var($mail, FILTER_VALIDATE_EMAIL)
+            ){
 
-            $checkUser = $bdd->prepare("SELECT * From users where login_user=?");
-
-            $checkUser->execute([$login]);
-            $user = $checkUser->fetch();
-
-            $checkMail = $bdd->prepare("SELECT * From users where mail_user=?");
-
-            $checkMail->execute([$mail]);
-            $mailUser = $checkMail->fetch();
-
-            if(!$user && !$mailUser){
-                if($cond === 'on'){
-                    include('Models/create_user_model.php');
-                } else{
-                    $log = '<p style="color:red;">Veuillez accepter les termes d\'utilisation !</p>';
-                }  
+                $newUser = new Users();
+                $newRole = new Role();
                 
-            } else {
-                $log = "<p> Ce login ou ce mail sont déjà utilisés</p>";
-            }
+                $newUser->setLoginUser($login);
+                $newUser->setMdpUser($mdp);
+                $newUser->setMailUser($mail);
+                $newUser->setNaissanceUser($date);
+                // $newUser->setIdRoleUser($id_role);
+                
+                $checkUser = $newUser->verifyPseudoAndMail();
+                
+
+                $nbrUser = $checkUser->rowCount();
+                
+                
+
+                    if($nbrUser > 0) {
+                        
+                            echo '<script language="javascript">';
+                            echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
+                            echo '</script>';
+                        // $log = "Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d'autres informations";
+                    } else {
+                        if($newUser->createUser()){
+                            $myReturn = $newUser->getSingleUser();
+                            $nbrUsers = $myReturn->rowCount();
+                            var_dump($nbrUsers);
+
+                            if($nbrUsers == 0){
+                                $log = "error 'enregistrement !!!";
+                                
+
+                            } else if($nbrUsers >1){
+
+                                echo '<script language="javascript">';
+                                echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
+                                echo '</script>';
+
+                            } else if ($nbrUsers == 1) {
+
+                                echo '<script language="javascript">';
+                                echo 'alert("C\'est bon frer le boss t\'es là où il faut.");';
+                                echo '</script>';
+
+                                while($rowUser = $myReturn->fetch()){
+                                    extract($rowUser);
+
+                                    $newRole->setIdRole($rowUser['id_role']);
+
+                                    $returnRole = $newRole->getSingleRole();
+
+                                    $id_role;
+                                    while($rowRole = $returnRole->fetch()){
+                                        extract($rowRole);
+
+                                        $id_role = intval($rowRole['id_role'], 10);
+                                        $nom_role = $rowRole['nom_role'];
+                                    }
+                                    $success = 1;
+                                    $msg = "Utilisateur créé avec succès";
+                                    $data['id_user'] = intval($rowUser['id_user'], 10);
+                                    $data['login'] = $rowUser['login'];
+                                    $data['id_role'] = $id_role;
+                                    $data['nom_role'] = $nom_role;
+                                    
+                                }
+                            }
+                        }else {
+                            echo '<script language="javascript">';
+                            echo 'alert("erreur lors de l\'enregistrement putain");';
+                            echo '</script>';
+                        }
+                    }
+            
+                }
+            } 
         } else{
-            $log = '<p>Ca serait bien de pas trop se foutre de notre gueule !</p>';
+        // echo '<script language="javascript">';
+        // echo 'alert("Les mots de passe ne correspondent pas");';
+        // echo '</script>';
         }
-        
-    } else{
-        echo '<script language="javascript">';
-        echo 'alert("Les mots de passe ne correspondent pas");';
-        echo '</script>';
-    }
-    } 
+        if($success == 1){
+            // je crée un tableau qui contiendra le success, un msg et de la data
+            $res = ["success" => $success, "msg" => $msg, "data" => $data];
+            // puis j'encode le tout en json pour le retourner
+            echo json_encode($res);
+        } else {
+            // sinon je retourne seulement un tableau contenant success et msg
+            $res = ["success" => $success, "msg" => $msg];
+            echo json_encode($res);
+        }
+    
     
 
 
