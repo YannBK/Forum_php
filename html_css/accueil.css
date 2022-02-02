@@ -249,7 +249,6 @@ footer {
     font-size: 16px;
     margin: 0;
     display: none;
-    cursor: pointer;
 }
 
 /*bouton de fermeture*/
@@ -359,6 +358,7 @@ input {
     padding: 0 10px 0 10px;
     font-size: 0.9em;
     border: none;
+    cursor: pointer;
 }
 
 /*---Footer---*/
