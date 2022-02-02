@@ -71,12 +71,12 @@
         //récupération de l'id du sujet via l'url
         $url = $_GET['id'];
 
-        $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=:id_sujet");
+        $req = $bdd->prepare("SELECT id_sujet, nom_sujet, contenu_sujet, date_sujet/*, login_user*/ FROM sujet /*INNER JOIN users ON sujet.id_users=users.id_users*/ WHERE id_sujet=:id_sujet");
         $req->execute(array(':id_sujet'=>$url));
 
         $sujet;
         while($donnees = $req->fetch()){
-            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
+            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users'].", </p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
         }
 
         /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
