@@ -1,9 +1,9 @@
 <?php
-
+    // include('Connect/connect.php');
     class Users{
         //attributs
 
-        public $connection;
+        public $connect;
         private $table ='users'; 
 
         private $id;

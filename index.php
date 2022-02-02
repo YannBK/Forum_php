@@ -1,7 +1,7 @@
 <?php
 //http://localhost/forum_php/index.php : c'est la page qui sera toujours affichée, et qu'il faut appeler pour lancer le site
 //le changement de vue se fera avec un paramètre ?p=nomdelavue qui définira la vue
-
+include('Connect/connect.php');
 session_start();
 if(isset($_SESSION['login'])){
     $besoinCreation = '<li id="deConnCompte">Se déconnecter</li>';
