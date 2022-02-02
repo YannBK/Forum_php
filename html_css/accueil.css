@@ -261,13 +261,17 @@ footer {
 }
 
 /*bouton de fermeture*/
-.modal #close {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
     font-weight: bold;
     padding-right: 20px;
     cursor: pointer;
+}
+
+.close:hover {
+    color: #555;
 }
 
 /*---header---*/
@@ -277,7 +281,6 @@ footer {
 }
 
 .modal h3 {
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     text-transform: uppercase;
     letter-spacing: -1px;
     word-spacing: 3px;
@@ -292,23 +295,17 @@ footer {
     background-color: white;
     overflow-y: auto;
     box-sizing: border-box;
+    text-align: center;
 }
 
 label{
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     font-weight: bold;
     padding-top: 15px;
     padding-bottom: 5px;
 }
-/* .modal form label{
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-    font-weight: bold;
-    padding-top: 15px;
-    padding-bottom: 5px;
-} */
 
 input {
-    padding: 0;
+    /* padding: 0; */
     margin: 0;
     width: 50%;
     height: 40px;
@@ -318,53 +315,49 @@ input {
     border-radius: 5px;
     box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
 }
-/* .modal input {
-    padding: 0;
-    margin: 0;
-    width: 50%;
-    height: 40px;
-    padding: 5px;
-    box-sizing: border-box;
-    border: 1px solid #cacaca;
-    border-radius: 5px;
-    box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
+/* .close {
+    cursor: pointer;
+    font-size: 1.5rem;
 } */
-
 .modal form input, label {
     display: block;
+    margin: auto;
 }
 
 .modal ul {
     list-style: none;
+    padding-inline-start: 0;
 }
 
 .modal #check {
     display: flex;
     padding-top: 15px;
+    justify-content: center;
+    align-items: center;
 }
 
 .modal #check label {
     padding-top: 9px;
-    padding-left: 7px;
-    justify-items: flex-start;
+    margin : 0;
+    /* justify-items: flex-start; */
 }
 
 .modal #check input {
     box-shadow: none;
     width: 15px;
+    margin : 15px;
 }
 
 .modal li:last-child {
     padding-top: 10px;
-    padding-left: 172.5px;
+    /* padding-left: 172.5px; */
 }
 
 .modal li:last-child input {
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     text-transform: uppercase;
     font-weight: bold;
     width: auto;
-    padding: 0 10px 0 10px;
+    /* padding: 0 10px 0 10px; */
     font-size: 0.9em;
     border: none;
     cursor: pointer;
@@ -378,7 +371,6 @@ input {
 }
 
 .footerM p {
-    /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
     font-size: 1.75ch;
     margin-top: 2px;
 }
