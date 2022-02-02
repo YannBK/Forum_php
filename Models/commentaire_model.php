@@ -39,6 +39,9 @@
         }
 
         // setters
+        public function setIdCom($id){
+            return $this->id = $id;
+        }
         public function setNomCom($newNomCom){
             $this->nomCom = $newNomCom;
         }
