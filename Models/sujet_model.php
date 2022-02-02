@@ -62,20 +62,68 @@
         public function getAllSujets() {
             //stockage de la requête dans une variable
             $query = "SELECT 
-                        id_sujet, 
-                        nom_sujet, 
-                        date_sujet, 
-                        contenu_sujet, 
-                        login_user 
-                    FROM 
-                        sujet 
-                    INNER JOIN 
-                        users 
-                    ON 
-                        users.id_users=sujet.id_users 
-                    ORDER BY 
-                        id_sujet 
-                    DESC";
+                            sujet.id_sujet, 
+                            nom_sujet, 
+                            date_sujet, 
+                            contenu_sujet, 
+                            login_user,
+                            nom_cat
+                        FROM 
+                            sujet 
+                        INNER JOIN 
+                            users 
+                        ON 
+                            users.id_users=sujet.id_users 
+                        INNER JOIN
+                            appartenir 
+                        ON
+                            appartenir.id_sujet = sujet.id_sujet 
+                        INNER JOIN
+                            categorie 
+                        ON
+                            appartenir.id_categorie = categorie.id_categorie
+                        ORDER BY 
+                            id_sujet 
+                        DESC";
+
+            //stockage préparation de la requête
+            $stmt = $this->connect->prepare($query);
+
+            //exécution de la requête
+            $stmt->execute();
+
+            //retourne le résultat
+            return $stmt;
+        }
+
+        //Read -> liste de tous les sujets d'une catégorie
+        public function getAllSujetsByCategorie($url) {
+            //stockage de la requête dans une variable
+            $query = "SELECT 
+                            sujet.id_sujet, 
+                            nom_sujet, 
+                            date_sujet, 
+                            contenu_sujet, 
+                            login_user, nom_cat 
+                        FROM 
+                            sujet 
+                        INNER JOIN 
+                            users 
+                        ON 
+                            users.id_users=sujet.id_users 
+                        INNER JOIN 
+                            appartenir 
+                        ON 
+                            appartenir.id_sujet = sujet.id_sujet 
+                        INNER JOIN 
+                            categorie 
+                        ON 
+                            appartenir.id_categorie = categorie.id_categorie 
+                        WHERE 
+                            categorie.nom_cat = '$url' 
+                        ORDER BY 
+                            id_sujet 
+                        DESC";
 
             //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);

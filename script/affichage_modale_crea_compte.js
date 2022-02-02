@@ -6,6 +6,8 @@ var deconn = document.querySelector("#modal-deconnexion");
 //récupérer le bouton d'ouverture de la page
 var openCrea = document.getElementById("creaCompte");
 var openConn = document.getElementById("connCompte");
+var openCrea2 = document.getElementById("crea2");
+var openConn2 = document.getElementById("conn2");
 var openDeConn = document.getElementById("deConnCompte");
 
 //récupérer le bouton de fermeture de la page
@@ -31,6 +33,20 @@ if(openCrea){
 //ouverture de la modale connection
 if(openConn){
     openConn.addEventListener("click", function() {
+        openModal(conn);
+        closeModal(crea)
+    });
+}
+//ouverture de la modale création
+if(openCrea2){
+    openCrea2.addEventListener("click", function() {
+        openModal(crea);
+        closeModal(conn)
+    });
+}
+//ouverture de la modale connection
+if(openConn2){
+    openConn2.addEventListener("click", function() {
         openModal(conn);
         closeModal(crea)
     });

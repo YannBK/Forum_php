@@ -5,6 +5,8 @@
     include("Models/sujet_model.php");
     $sujet = new Sujet();
     include("Models/appartenir.php");
+    $catsujet = new CatSujet();
+
     date_default_timezone_set('Europe/Paris');
     $dates = "";
 
@@ -36,16 +38,6 @@
         //insertion dans la table article
             //via une requête préparée
             $req = $sujet->createSujet($name,$contenu,$dates,$_SESSION['id']);
-            // $req = $bdd->prepare("INSERT INTO sujet SET nom_sujet = :nom_sujet, contenu_sujet = :contenu_sujet, date_sujet= :date_sujet, id_users = :id_users");
-
-            // $okinsert = $req->execute(
-            //     array(
-            //         'nom_sujet' => $name,
-            //         'contenu_sujet' => $contenu,
-            //         'date_sujet' => $dates,
-            //         'id_users' => $_SESSION['id']
-            //     )
-            // );
 
             $id_sujet = $sujet->connect->lastInsertId();
             //si l'insertion est réussie
@@ -62,16 +54,20 @@
             }
 
         //insertion dans la table d'association "appartenir"
-            $req = $bdd->prepare("INSERT INTO appartenir SET id_sujet = :id_sujet, id_categorie = :id_categorie");
+            $catsujet->setIdCat($id_categorie);
+            $catsujet->setIdSujet($id_sujet);
+            $req = $catsujet->createAppart();
 
-            $okinsert = $req->execute(
-                array(
-                    'id_sujet' => $id_sujet,
-                    'id_categorie' => $id_categorie
-                    )
-                );
+            // $req = $bdd->prepare("INSERT INTO appartenir SET id_sujet = :id_sujet, id_categorie = :id_categorie");
+
+            // $okinsert = $req->execute(
+            //     array(
+            //         'id_sujet' => $id_sujet,
+            //         'id_categorie' => $id_categorie
+            //         )
+            //     );
                 //si l'insertion est réussie
-                if ($okinsert) {
+                if ($req) {
                     $resultCreerArticle = "L'enregistrement s'est passé à merveille ! Bravo !!!";
                 } 
                 else {

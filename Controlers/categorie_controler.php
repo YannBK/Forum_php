@@ -24,7 +24,10 @@
             }
 
             //récupération des articles
-            $req = $sujet->getAllSujets();
+            $url = $_GET['id'];
+
+            $titreCat = $url;//TODO
+            $req = $sujet->getAllSujetsByCategorie($url);
 
             $sujetListe = "";
             $nbRep = 0; //TODO le nombre de commentaires liés à l'article
