@@ -3,7 +3,7 @@
 class CatSujet{
     //attributs de connexion à la bdd
     public $connect;
-    private $table = 'commentaire';
+    private $table = 'appartenir';
 
     private $id_categorie;
     private $id_sujet;
