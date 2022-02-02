@@ -1,10 +1,10 @@
 <?php
-    //récupération de la connection à la bdd
-    // include("Connect/connect.php");
+
     include("Models/categorie_model.php");
     $cat = new Categorie();
     include("Models/sujet_model.php");
     $sujet = new Sujet();
+    include("Models/appartenir.php");
     date_default_timezone_set('Europe/Paris');
     $dates = "";
 
@@ -46,7 +46,8 @@
             //         'id_users' => $_SESSION['id']
             //     )
             // );
-            $id_sujet=$bdd->lastInsertId();
+
+            $id_sujet = $sujet->connect->lastInsertId();
             //si l'insertion est réussie
             if ($req) {
                 //on suce le développeur
@@ -59,7 +60,6 @@
                 //sinon on blame le serveur
                 $resultCreerArticle =  "Erreur lors de l'enregistrement";
             }
-
 
         //insertion dans la table d'association "appartenir"
             $req = $bdd->prepare("INSERT INTO appartenir SET id_sujet = :id_sujet, id_categorie = :id_categorie");

@@ -47,6 +47,7 @@
                             " . $ladate . "
                             Réponses : $nbRep
                         </p>
+                        <p>" . $donnees['contenu_sujet'] . "</p>
                     </div>";
             }
             // echo session_status();

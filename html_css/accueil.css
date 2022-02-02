@@ -13,7 +13,6 @@ html, body {
     margin: 0;
     background-color: rgba(250, 250, 249, 0.973);
     height: 100%;
-    
 }
 
 /*---header---*/
@@ -90,20 +89,24 @@ h2 {
 
 #mainContainer aside {
     margin: 10px 10px 0 10px;
+    padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
     height: 70vh;
     min-width: 150px;
     text-align: center;
     position: sticky;
+
 }
 
 #mainContainer aside:nth-child(1) {
     left:0;
+    top: 100px;
     width: 20vw;
 }
 #mainContainer aside:last-child {
     right:0;
+    top: 100px;
     width: 20vw;
 }
 #mainContainer section {
@@ -124,10 +127,12 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 95%;
     margin: 10px 10px 0 10px;
+    padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
-    border-radius: 10px;
+    border-radius: 0px;
+    word-wrap: wrap;
 }
 
 #mainContainer aside ul {

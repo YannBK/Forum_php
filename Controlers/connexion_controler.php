@@ -2,8 +2,9 @@
 
     include('Connect/utils.php');
 
-    //  ajout du paramètre de connexion
-    include('Connect/connect.php');
+    // include('Connect/connect.php');
+    include('Models/user_model.php');
+    // $user = new Users();
 
     $nomlogin = ""; //login afficher sous "MON COMPTE"
     
@@ -13,7 +14,27 @@
         $login = $_POST['pseudo-connect'];
         $mdp = $_POST['mdp-connect'];
  
-        include('Models/connexion_model.php');
+
+
+        //TODO ici remplacer par méthode de la class User
+        try {
+            $query = $bdd->prepare("SELECT                  
+                                    * 
+                                    FROM users 
+                                    WHERE login_user = :login_user
+                                    " );
+            // execution de la requête
+            $query->execute(
+                array(
+                    'login_user' => $login
+                    )
+                );
+    
+        } catch (Exception $e) {
+            die('Erreur : ' . $e->getMessage());
+        }
+
+
 
         $aaa = $query->fetch();
         //vérification que le login existe
@@ -26,7 +47,7 @@
                     $_SESSION['login'] = $aaa['login_user'];
                     $_SESSION['mail'] = $aaa['mail_user'];
                     $_SESSION['date'] = $aaa['date_user'];
-                    $_SESSION['mdp'] = $aaa['mdp_user'];
+                    $_SESSION['mdp'] = $aaa['mdp_user']; //TODO à ne pas stocker
                     
                     //actualisation de la page = prise en compte de la connection
                     // var_dump($_SESSION);
@@ -44,7 +65,6 @@
         //TODO lui trouver la bonne place
         $notif = "";
     }
-    
     
 
 
