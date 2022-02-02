@@ -7,13 +7,12 @@
         private $date;
         private $id_user;
 
+        private $table = 'sujet';
+
         //constructeur
-        public function __construct($id,$nom,$contenu,$date,$id_user){
-            $this->id = $id;
-            $this->nom = $nom;
-            $this->contenu = $contenu;
-            $this->date = $date;
-            $this->id_user = $id_user;
+        public function __construct(){
+            $this->connect = new Bdd();
+            $this->connect = $this->connect->getConnexion();
         }
 
         //getters
@@ -37,6 +36,9 @@
         public function setNomSujet($newlog){
             $this->nom = $newlog;
         }
+        public function setIdSujet($newid){
+            return $this->id = $newid;
+        }
         public function setContenuSujet($newcontenu){
             $this->contenu = $newcontenu;
         }
@@ -45,49 +47,94 @@
         }
 
         // setters Foreign Key
-        public function setIdSujet($newiduser){
+        public function setIdUserSujet($newiduser){
             $this->id_user = $newiduser;
         }
         
-    }
+//méthodes de CRUD
 
-    try {   
-        //liste catégories
-        $req = $bdd->prepare("SELECT * FROM categorie");
-        $okselect = $req->execute();
+        //Read -> liste de tous les sujets
+        public function getAllSujets() {
+            //stockage de la requête dans une variable
+            $query = 'SELECT * FROM '.$this->table.'';
 
-        $catListe = "";
-        while ($donnees = $req->fetch()) {
-            $catListe .= "<p><a href=\"#\" value=\" " .
-            $donnees['id_categorie'] . " \">" . $donnees['nom_cat'] . "</a></p>";
-        }//TODO le lien doit renvoyer sur la page catégorie concernée
-        //si l'insertion est réussie
-        if (!$okselect) {
-            $result =  "Erreur lors de la récupération des données";
+            //stockage préparation de la requête
+            $stmt = $this->connect->prepare($query);
+
+            //exécution de la requête
+            $stmt->execute();
+
+            //retourne le résultat
+            return $stmt;
         }
 
-        //sujet à afficher
+        //Read -> le role instancié (ici par nom)
+        public function getSingleSujet() {
+            $query = "SELECT * FROM ".$this->table." WHERE nom_sujet = ".$this->nom."";
 
-        //récupération de l'id du sujet via l'url
-        $url = $_GET['id'];
-
-        $req = $bdd->prepare("SELECT id_sujet, nom_sujet, contenu_sujet, date_sujet/*, login_user*/ FROM sujet /*INNER JOIN users ON sujet.id_users=users.id_users*/ WHERE id_sujet=:id_sujet");
-        $req->execute(array(':id_sujet'=>$url));
-
-        $sujet;
-        while($donnees = $req->fetch()){
-            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users'].", </p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
+            $stmt = $this->connect->prepare($query);
+        
+            $stmt->execute();
+        
+            return $stmt;
         }
 
-        /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
-        $req->execute();
+        //Create
+        public function createSujet() {
+            //requête
+            $query = 'INSERT INTO
+                        '.$this->table.' 
+                        SET 
+                        roleSiteName = :roleSiteName';
 
+            //préparation
+            $stmt = $this->connect->prepare($query);
 
-        $listeCom;
-        while($donnees = $req->fetch()){
-            $listeCom .= "<div><h3>".$donnees['id_users']."</h3><p>".$donnees['date_com']."</p><p>".$donnees['contenu_com']."</p></div>";
-        }*/
-    } catch(Exception $e) {
-        die('Erreur : ' .$e->getMessage());
+            //bind des paramètres
+            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
+
+            return $stmt->execute();
+        }
+
+        //Update (ici par nom)
+        public function updateRoleSite() {
+            //requête
+            $query = 'UPDATE
+                        '.$this->table.'
+                    SET 
+                        roleSiteName = :roleSiteName,
+                    WHERE
+                        roleSiteName = :roleSiteName2';
+
+            //préparation
+            $stmt = $this->connect->prepare($query);
+
+            //bind des paramètres
+            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
+            $stmt->bindParam(':roleSiteName2',$this->roleSiteName);
+            
+            //équivalent au if else
+            return $stmt->execute();
+        }
+
+        //Delete (ici selon nom)
+        public function deleteRoleSite() {
+            $query = "DELETE FROM ".$this->table." WHERE roleSiteName = :roleSiteName";
+
+            $stmt = $this->connect->prepare($query);
+
+            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
+
+            return $stmt->execute();
+        } 
+
     }
+
+
+
+
+
+
+
+
 ?>
