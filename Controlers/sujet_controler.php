@@ -4,9 +4,9 @@
 
     //récupération du modele
     include("Models/sujet_model.php");
+    $sujet = new Sujet();
 
 
-    
     try {   
         //liste catégories
         $req = $bdd->prepare("SELECT * FROM categorie");
@@ -27,12 +27,13 @@
         //récupération de l'id du sujet via l'url
         $url = $_GET['id'];
 
-        $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=:id_sujet");
-        $req->execute(array(':id_sujet'=>$url));
+        $res = $sujet->getSingleSujet($url);
+        // $req = $bdd->prepare("SELECT * FROM sujet WHERE id_sujet=:id_sujet");
+        // $req->execute(array(':id_sujet'=>$url));
 
-        $sujet;
+        $cardSujet;
         while($donnees = $req->fetch()){
-            $sujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
+            $cardSujet = "<div><h2>".$donnees['nom_sujet']."</h2></div><info><p>".$donnees['id_users']."</p><p>".$donnees['date_sujet']."</p></info><div><p>".$donnees['contenu_sujet']."</p></div>";
         }
 
         /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");

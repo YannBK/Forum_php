@@ -1,12 +1,13 @@
 <?php
     class Sujet{
         //attributs
-        private $id;
-        private $nom;
-        private $contenu;
-        private $date;
-        private $id_user;
+        private $id_sujet;
+        private $nom_sujet;
+        private $contenu_sujet;
+        private $date_sujet;
+        private $id_users;
 
+        public $connect;
         private $table = 'sujet';
 
         //constructeur
@@ -16,39 +17,43 @@
         }
 
         //getters
+        public function getTable(){
+            return $this->table;
+        }
+
         public function getIdSujet(){
-            return $this->id;
+            return $this->id_sujet;
         }
         public function getNomSujet(){
-            return $this->nom;
+            return $this->nom_sujet;
         }
         public function getContenuSujet(){
-            return $this->contenu;
+            return $this->contenu_sujet;
         }
         public function getDateSujet(){
-            return $this->date;
+            return $this->date_sujet;
         }
         public function getIdUserSujet(){
-            return $this->id_user;
+            return $this->id_users;
         }
 
         //setters
         public function setNomSujet($newlog){
-            $this->nom = $newlog;
+            $this->nom_sujet = $newlog;
         }
         public function setIdSujet($newid){
-            return $this->id = $newid;
+            return $this->id_sujet = $newid;
         }
         public function setContenuSujet($newcontenu){
-            $this->contenu = $newcontenu;
+            $this->contenu_sujet = $newcontenu;
         }
         public function setDateSujet($newdate){
-            $this->date = $newdate;
+            $this->date_sujet = $newdate;
         }
 
         // setters Foreign Key
-        public function setIdUserSujet($newiduser){
-            $this->id_user = $newiduser;
+        public function setIdUserSujet($newidusers){
+            $this->id_users = $newidusers;
         }
         
 //méthodes de CRUD
@@ -56,7 +61,21 @@
         //Read -> liste de tous les sujets
         public function getAllSujets() {
             //stockage de la requête dans une variable
-            $query = 'SELECT * FROM '.$this->table.'';
+            $query = "SELECT 
+                        id_sujet, 
+                        nom_sujet, 
+                        date_sujet, 
+                        contenu_sujet, 
+                        login_user 
+                    FROM 
+                        sujet 
+                    INNER JOIN 
+                        users 
+                    ON 
+                        users.id_users=sujet.id_users 
+                    ORDER BY 
+                        id_sujet 
+                    DESC";
 
             //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);
@@ -68,9 +87,15 @@
             return $stmt;
         }
 
-        //Read -> le role instancié (ici par nom)
-        public function getSingleSujet() {
-            $query = "SELECT * FROM ".$this->table." WHERE nom_sujet = ".$this->nom."";
+        //Read -> sélection d'un sujet (ici par id)
+        public function getSingleSujet($idSouhaite) {
+
+            $query = "SELECT 
+                            * 
+                    FROM 
+                        ".$this->table." 
+                    WHERE 
+                        id_sujet = ".$idSouhaite."";
 
             $stmt = $this->connect->prepare($query);
         
@@ -84,46 +109,49 @@
             //requête
             $query = 'INSERT INTO
                         '.$this->table.' 
-                        SET 
-                        roleSiteName = :roleSiteName';
+                    SET 
+                        nom_sujet = :nom_sujet';
 
             //préparation
             $stmt = $this->connect->prepare($query);
 
             //bind des paramètres
-            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
+            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
 
             return $stmt->execute();
         }
 
         //Update (ici par nom)
-        public function updateRoleSite() {
+        public function updateSujet() {
             //requête
             $query = 'UPDATE
                         '.$this->table.'
                     SET 
-                        roleSiteName = :roleSiteName,
+                        nom_sujet = :nom_sujet,
                     WHERE
-                        roleSiteName = :roleSiteName2';
+                        nom_sujet = :nom_sujet2';
 
             //préparation
             $stmt = $this->connect->prepare($query);
 
             //bind des paramètres
-            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
-            $stmt->bindParam(':roleSiteName2',$this->roleSiteName);
+            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
+            $stmt->bindParam(':nom_sujet2',$this->nom_sujet);
             
             //équivalent au if else
             return $stmt->execute();
         }
 
         //Delete (ici selon nom)
-        public function deleteRoleSite() {
-            $query = "DELETE FROM ".$this->table." WHERE roleSiteName = :roleSiteName";
+        public function deleteSujet() {
+            $query = "DELETE FROM 
+                            ".$this->table." 
+                        WHERE 
+                            nom_sujet = :nom_sujet";
 
             $stmt = $this->connect->prepare($query);
 
-            $stmt->bindParam(':roleSiteName',$this->roleSiteName);
+            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
 
             return $stmt->execute();
         } 
