@@ -56,7 +56,6 @@
         $date = valid_donnees($_POST['dateN']);
         $mail = valid_donnees($_POST['email-crea']);
         $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
-        $id_role = 2;
         $cond = $_POST['condUtilisat'];
 
         
@@ -78,28 +77,29 @@
                 $newUser->setNaissanceUser($date);
                 $newUser->setIdRoleUser($newUser->getIdRoleUser());
                 
+                var_dump($newUser);
                 $checkUser = $newUser->verifyPseudoAndMail();
-                
+                var_dump($checkUser);
 
                 $nbrUser = $checkUser->rowCount();
                 
-                
+                var_dump($nbrUser);
 
                     if($nbrUser > 0) {
                         
                             echo '<script language="javascript">';
                             echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
                             echo '</script>';
+                            
                         // $log = "Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d'autres informations";
                     } else {
                         if($newUser->createUser()){
                             $myReturn = $newUser->getSingleUser();
-                            var_dump($myReturn);
-                            $nbrUsers = $myReturn->rowCount();
                             
+                            $nbrUsers = $myReturn->rowCount();
 
                             if($nbrUsers == 0){
-                                $log = "error 'enregistrement !!!";
+                                $log = "error enregistrement !!!";
                                 
 
                             } else if($nbrUsers >1){
@@ -113,7 +113,7 @@
                                 echo '<script language="javascript">';
                                 echo 'alert("C\'est bon frer le boss t\'es là où il faut.");';
                                 echo '</script>';
-
+                                var_dump($newUser);
                                 while($rowUser = $myReturn->fetch()){
                                     var_dump($rowUser);
                                     extract($rowUser);
@@ -122,7 +122,7 @@
                                     
                                     $returnRole = $newRole->getSingleRole();
                                     var_dump($returnRole);
-                                    $id_role =2;
+                                    $id_role;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
                                         var_dump($rowRole);

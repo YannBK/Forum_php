@@ -32,8 +32,8 @@
             $this->id_role = $id_role;
         }
 
-        public function setNomRole($newNomRole){
-            $this->nom_role = $newNomRole;
+        public function setNomRole($Nom_Role){
+            $this->nom_role = $Nom_Role;
         }
 
         //CRUD
