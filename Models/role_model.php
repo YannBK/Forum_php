@@ -1,5 +1,9 @@
 <?php
     class Role{
+        //attributs de connexion à la bdd
+        public $connect;
+        private $table = 'role';
+
         // attributs
         private $id_role;
         private $nom_role;
