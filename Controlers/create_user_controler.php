@@ -120,7 +120,7 @@
 
                                     $returnRole = $newRole->getSingleRole();
 
-                                    $id_role;
+                                    $id_role = 2;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
 
@@ -157,8 +157,8 @@
             echo json_encode($res);
         } else {
             // sinon je retourne seulement un tableau contenant success et msg
-            $res = ["success" => $success, "msg" => $msg];
-            echo json_encode($res);
+            // $res = ["success" => $success, "msg" => $msg];
+            // echo json_encode($res);
         }
     
     

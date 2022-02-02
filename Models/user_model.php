@@ -11,7 +11,7 @@
         private $mdp;
         private $mail;
         private $date;
-        private $id_role = 2;
+        private $id_role =2;
 
         //constructeur
         public function __construct(){
