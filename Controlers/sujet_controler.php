@@ -65,11 +65,30 @@
                     //insertion dans la bdd
                     try {
                         $req = $com->createCom($contenu, $date, $idSujetCom, $_SESSION['id']);
+
+                        if(!$req) {
+                            $alert = "La publication du commentaire a échouée, veuillez réssayer.";
+                        }
                     } catch(Exception $e) {
                         die('Erreur : ' .$e->getMessage());
                     }
                 }
             }
+
+        $com->setIdSujetCom($url);
+        $req = $com->getComsS();
+        $donnees = $req->fetch();
+
+        $cardCom = 
+            "<div>
+                <p>
+                    <a href=\"#\">
+                        <strong>" . $donnees['login_user'] . "  </strong>
+                    </a>  
+                    " . $ladate . "
+                </p>
+                <p>" . $donnees['contenu_com'] . "</p>
+            </div>";
 
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());

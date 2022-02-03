@@ -23,6 +23,7 @@
                 </ul>
             </form>
         </CreaCom>
+        <p><?= $alert ?></p>
         <!-- <?= $listeCom ?> -->
     </div>
 </div>
