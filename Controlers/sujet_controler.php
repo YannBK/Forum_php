@@ -32,7 +32,11 @@
 
         $req = $sujet->getSingleSujet($url);
         $donnees = $req->fetch();
-        $nbRep = 0; //TODO le nombre de commentaires liés à l'article
+
+        $com->setIdSujetCom($url);
+        $nbRep = $com->count();
+        $donnees2 = $nbRep->fetch();
+        
         //formatege de la date
         $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
 
@@ -50,7 +54,7 @@
                         <strong>" . $donnees['login_user'] . "  </strong>
                     </a>  
                     " . $ladate . "
-                    Réponses : $nbRep
+                    Réponses : ".$donnees2[0]."
                 </p>
                 <p>" . $donnees['contenu_sujet'] . "</p>
             </div>";
@@ -75,8 +79,6 @@
                     }
                 }
             }
-
-        $com->setIdSujetCom($url);
         $req = $com->getComsS();
 
         $cardCom = "";
