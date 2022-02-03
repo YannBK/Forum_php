@@ -28,7 +28,7 @@
         $minSP = $minA . '-' . date("m-j");
         $maxA = (string)$max;
 
-
+// On vérifie ici la présence de chaque élément avant de lancer l'opération
     if(isset($_POST['pseudo-crea']) 
         && isset($_POST['email-crea']) 
         && isset($_POST['dateN']) 
@@ -37,40 +37,38 @@
         && isset($_POST['condUtilisat'])) {
     
         
-
+// fonction de vérification limitant l'utilisation des espaces et caractères spéciaux
         function valid_donnees($donnees){
             $donnees = trim($donnees);
             $donnees = stripslashes($donnees);
             $donnees = htmlspecialchars($donnees);
             return $donnees;
         }
+        // on déclare en amon le mdp et le mdp de confirmation
         $mdp = $_POST['mdp-crea'];
         $mdp1 = $_POST['confirmMdp-crea'];
 
-
-
+        //  qu'on réutilise de suite pour les vérifier
         if($mdp === $mdp1){
+            
+            // on déclare les différentes variables auxquelles on applique les fonctions de validations + le hash du mot de passe
+            // grosse moulinette de check des infos entrées par l'utilisateur login et mail
+            $login = valid_donnees($_POST['pseudo-crea']);
+            $date = valid_donnees($_POST['dateN']);
+            $mail = valid_donnees($_POST['email-crea']);
+            $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
+            $cond = $_POST['condUtilisat'];
 
-        // fonction de validation des données afin de vérifier les charactères utilisés
-        $login = valid_donnees($_POST['pseudo-crea']);
-        $date = valid_donnees($_POST['dateN']);
-        $mail = valid_donnees($_POST['email-crea']);
-        $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
-        $cond = $_POST['condUtilisat'];
-
-        
-        // grosse moulinette de check des infos entrées par l'utilisateur login et mail
-
-
-        // TODO vérifier si le premier et le deuxième mot de passe sont identiques
+            // Avec cette condition on vérifie bien que tout correspond avant d'effectuer les checks au niveau du serveur
             if(strlen($login) <= 20 
-                && preg_match("/^[A-Za-z '-]+$/",$login)
+                && preg_match("^[a-zA-Z0-9_]*$",$login)
                 && filter_var($mail, FILTER_VALIDATE_EMAIL)
             ){
-
+                // si la condition est respectée on va pouvoir déclarer deux nouvelles classes
                 $newUser = new Users();
                 $newRole = new Role();
                 
+                //  ici nous allons set les éléments déclarés précédemment
                 $newUser->setLoginUser($login);
                 $newUser->setMdpUser($mdp);
                 $newUser->setMailUser($mail);
@@ -113,19 +111,17 @@
                                 echo '</script>';
                                 
                                 while($rowUser = $myReturn->fetch()){
-                                    
                                     extract($rowUser);
-
                                     $newRole->setIdRole($rowUser['id_role']);
-                                    
                                     $returnRole = $newRole->getSingleRole();
-                                    
                                     $id_role;
+
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
                                         $id_role = intval($rowRole['id_role'], 10);
                                         $nom_role = $rowRole['nom_role'];
                                     }
+
                                     $success = 1;
                                     $msg = "Utilisateur créé avec succès";
                                     $data['id_users'] = intval($rowUser['id_users'], 10);
@@ -148,12 +144,13 @@
                 echo '</script>';
             }
         } else{
-        // echo '<script language="javascript">';
-        // echo 'alert("Les mots de passe ne correspondent pas");';
-        // echo '</script>';
+            echo '<script language="javascript">';
+            echo 'alert("Les mots de passe ne correspondent pas");';
+            echo '</script>';
         }
+        
         if($success == 1){
-            // je crée un tableau qui contiendra le success, un msg et de la data
+            
             include_once('./Connect/utils.php');
 
             $user->setLoginUser($login);
@@ -177,7 +174,7 @@
                 echo 'alert("Une erreur s\'est produite et nous n\'avons pas pu vous connecter");';
                 echo '</script>';
                 }
-
+            // je crée un tableau qui contiendra le success, un msg et de la data 
             $res = ["success" => $success, "msg" => $msg, "data" => $data];
             // puis j'encode le tout en json pour le retourner
             echo json_encode($res);
