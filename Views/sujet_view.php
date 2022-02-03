@@ -15,15 +15,13 @@
     <div>
         <CreaCom>
             <form action="" method="POST">
-                <ul>
-                    <li>
-                        <label for="commentaire">Votre commentaire :</label>
-                        <textarea name="commentaire" cols="100" rows="10"></textarea>
-                    </li>
-                    <li>
-                        <input type="submit" name="publier" value="Publier votre commentaire">
-                    </li>
-                </ul>
+                <p>Votre commentaire :</p>
+                <div>
+                    <textarea name="commentaire" cols="100" rows="10"></textarea>
+                </div>
+                <div>
+                    <input type="submit" name="publier" value="Publier votre commentaire">
+                </div>
             </form>
         </CreaCom>
         <p><?= $alert ?></p>

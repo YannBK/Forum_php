@@ -101,7 +101,7 @@ h2 {
 }
 
 #mainContainer aside {
-    margin: 10px 20px 0 20px;
+    margin: 10px 20px 0 0px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
@@ -162,6 +162,14 @@ h2 {
     margin: 10px 10px 0 10px;
 }
 
+#asideL {
+    position: sticky;
+}
+
+#asideR {
+    position: sticky;
+}
+
 #mainContainer section article div {
     display: flex;
     flex-direction: column;
@@ -170,14 +178,14 @@ h2 {
     margin: 10px 10px 0 10px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
-    border-radius: 0px;
+    border-radius: 10px;
     word-wrap: wrap;
 }
 
 #mainContainer aside ul {
     list-style: none;
-    padding-inline-start: 0;
-    text-align: center;
+    /* padding-inline-start: 0;
+    text-align: center; */
 }
 
 #mainContainer aside ul li {
@@ -230,6 +238,7 @@ jour {
 .divSujet {
     background-color: rgb(228, 226, 226);
     margin-top: 10px;
+    margin-left: 0px;
     border-radius: 10px;
     padding: 0 15px 0 15px;
     word-break: break-all;
@@ -477,9 +486,6 @@ label {
     }
     jour {
         flex-wrap: wrap;
-    }
-    .divSujet {
-        margin: 10px;
     }
     /* modifie l'aside de gauche pour lui permettre de prendre l'intégralité de la balise  */
     #mainContainer aside:last-child {

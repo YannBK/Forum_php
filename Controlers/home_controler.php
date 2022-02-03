@@ -6,6 +6,8 @@
     $cat = new Categorie();
     include('Models/sujet_model.php');
     $sujet = new Sujet();
+    include("Models/commentaire_model.php");
+    $com = new Commentaire();
 
         //on tente l'insertion
         try {
@@ -34,6 +36,13 @@
                 //formatege de la date
                 $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
 
+                //récupération de l'id du sujet
+                $com->setIdSujetCom($donnees['id_sujet']);
+                //comptage du nombre de commentaires
+                $nbRep = $com->count();
+                //récupération de la valeur
+                $donnees2 = $nbRep->fetch();
+
                 //création des cartes de sujet
                 $sujetListe .= 
                     "<div>
@@ -47,7 +56,7 @@
                                 <strong>" . $donnees['login_user'] . "</strong>
                             </a>  dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
                             " . $ladate . "
-                            Réponses : $nbRep
+                            Réponses : ".$donnees2[0]."
                         </p>
                         <p>" . $apercu . "</p>
                     </div>";

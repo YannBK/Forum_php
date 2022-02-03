@@ -1,5 +1,5 @@
 <!--liste des catégories-->
-<aside>
+<aside id="asideL">
     <h2>Catégories</h2>
     <div>
         <?= $catListe; ?>
@@ -7,6 +7,7 @@
 </aside>
 
 <!--les sujets-->
+<jour>
 <section>
     <h2>Sujets</h2>
     
@@ -18,7 +19,7 @@
     </article>
 </section>
 <!--les sujets les plus actifs-->
-<aside>
+<aside id="asideR">
 
     <h2>Les sujets les plus actifs</h2>
     <ul>
@@ -39,3 +40,4 @@
         </li>
     </ul>
 </aside>
+</jour>
