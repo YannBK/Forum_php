@@ -1,6 +1,4 @@
-
 <?php
-
     include('Controlers/create_user_controler.php');
     // include('Controlers/connexion_controler.php');
 ?>
@@ -19,10 +17,13 @@
 
 <body>
     <header>
-        <a href="index.php?p=home"><h1>Infofo</h1></a>
-        <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
+        <div class="heady">
+            <a href="index.php?p=home"><h1>Infofo</h1></a>
+            <input class="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
+            
+        </div>
+        
         <?php echo $message ?>
-
 
         <nav>
             <ul>
