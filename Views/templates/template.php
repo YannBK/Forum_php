@@ -72,7 +72,7 @@
                             <input type="checkbox" name="condUtilisat" required>
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
-                        <p><?= $log ?></p>
+                        <p><?php echo $log; ?></p>
                         <li>
                             <input type="submit" name="Crea" value="Créer votre compte">
                         </li>
