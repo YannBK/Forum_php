@@ -7,6 +7,7 @@
 </aside>
 
 <!-- affichage de la liste des sujets -->
+<jour>
 <div> 
     <div class="divSujet">
         <?= $cardSujet ?>
@@ -51,3 +52,4 @@
         </li>
     </ul>
 </aside>
+</jour>

@@ -162,5 +162,19 @@
                 return false;
             }
         }
+
+        public function count() {
+            $myQuery = 'SELECT 
+                            COUNT(*)
+                        FROM
+                            '.$this->table.'
+                        WHERE
+                            id_sujet = :id_sujet';
+            
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
+            $stmt->execute();
+            return $stmt;
+        }
     }
 ?>

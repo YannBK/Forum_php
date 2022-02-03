@@ -188,6 +188,10 @@ h2 {
     align-self: flex-start;
 }
 
+jour {
+    display: flex;
+}
+
 
 /*---fin mainContainer---*/
 
@@ -229,6 +233,7 @@ h2 {
     border-radius: 10px;
     padding: 0 15px 0 15px;
     word-break: break-all;
+    overflow: hidden;
 }
 
 .divSujet h2 {
@@ -332,6 +337,10 @@ footer {
 
 
 /*---main---*/
+
+ul {
+    list-style: none;
+}
 
 .modal div:first-child {
     width: 600px;
@@ -462,19 +471,24 @@ label {
 
 /*-------------------------Responsiveness-------------------------*/
 
-@media screen and (max-width:1024px) {
-    #mainContainer {
-        flex-wrap: wrap;
-        justify-content: none;
-    }
+@media screen and (max-width:1200px) {
     aside:last-child {
         align-self: end;
+    }
+    jour {
+        flex-wrap: wrap;
+    }
+    .divSujet {
+        margin: 10px;
+    }
+    /* modifie l'aside de gauche pour lui permettre de prendre l'intégralité de la balise  */
+    #mainContainer aside:last-child {
+        width: 100%;
     }
 }
 
 @media screen and (max-width:480px) {
     #mainContainer {
-        flex-wrap: wrap;
         justify-content: none;
     }
     aside:last-child {
