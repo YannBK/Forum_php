@@ -6,6 +6,8 @@
     $sujet = new Sujet();
     include("Models/appartenir.php");
     $catsujet = new CatSujet();
+    // include("Connect/utils.php");
+    $utils = new Utils;
 
     date_default_timezone_set('Europe/Paris');
     $dates = "";
@@ -20,8 +22,9 @@
     if (isset($_POST['nom_sujet']) && isset($_POST['contenu_sujet'])) {
         
         //stockage des valeurs rentrées par l'utilisateur
-        $name = $_POST['nom_sujet'];
-        $contenu = $_POST['contenu_sujet'];
+        $name = $utils->valid_donnees($_POST['nom_sujet']);
+        $contenu = $utils->valid_donnees($_POST['contenu_sujet']);
+
         $dates = date('y-m-d G:i:s');
 
         if (isset($_POST['cat_sujet'])){
@@ -29,49 +32,47 @@
         }
  
             //on ne veut pas de trolls
-    if ($name != "" && $contenu != ""){
-        //on tente l'insertion
-        try {
-        //insertion dans la table article
-            //via une requête préparée
-            $req = $sujet->createSujet($name,$contenu,$dates,$_SESSION['id']);
+        if ($name != "" && $contenu != ""){
+            try {
+            //insertion dans la table article
+                $req = $sujet->createSujet($name,$contenu,$dates,$_SESSION['id']);
 
-            $id_sujet = $sujet->connect->lastInsertId();
-            //si l'insertion est réussie
-            if ($req) {
-                //on suce le développeur
-                $resultCreerArticle = "L'enregistrement s'est passé à merveille ! Bravo !!!";
-
-//TODO retour à la page d'accueil avec le nouveau sujet qui est apparu
-
-            } 
-            else {
-                //sinon on blame le serveur
-                $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table sujet";
-            }
-
-        //insertion dans la table d'association "appartenir"
-            $catsujet->setIdCat(intval($id_categorie));
-            $catsujet->setIdSujet(intval($id_sujet));
-
-            $req = $catsujet->createAppart();
-
+                $id_sujet = $sujet->connect->lastInsertId();
                 //si l'insertion est réussie
                 if ($req) {
+                    //on suce le développeur
                     $resultCreerArticle = "L'enregistrement s'est passé à merveille ! Bravo !!!";
                 } 
                 else {
-                    $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table appartenir";
+                    //sinon on blame le serveur
+                    $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table sujet";
                 }
 
-        } catch (Exception $e) {
-            die('Erreur : ' . $e->getMessage());
+            //insertion dans la table d'association "appartenir"
+                $catsujet->setIdCat(intval($id_categorie));
+                $catsujet->setIdSujet(intval($id_sujet));
+
+                $req = $catsujet->createAppart();
+
+                    //si l'insertion est réussie
+                    if ($req) {
+                        $resultCreerArticle = "L'enregistrement s'est passé à merveille ! Bravo !!!";
+                    } 
+                    else {
+                        $resultCreerArticle =  "Erreur lors de l'enregistrement dans la table appartenir";
+                    }
+
+            } catch (Exception $e) {
+                die('Erreur : ' . $e->getMessage());
+            }
+
+            //retour à la page d'accueil
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';
         }
-    }
-    else{
-        //pour dire qu'on nous prend pas pour des cons
-        $resultCreerArticle = "Veuillez remplir tous les champs SVP";
-    }
+        else{
+            //pour dire qu'on nous prend pas pour des cons
+            $resultCreerArticle = "Veuillez remplir tous les champs SVP";
+        }
     }  
     
     //affichage de la vue

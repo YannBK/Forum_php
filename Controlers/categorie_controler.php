@@ -1,7 +1,6 @@
 
 <?php
-    //récupération de la connection à la bdd
-    // include("Connect/connect.php");
+
     include("Models/categorie_model.php");
     $cat = new Categorie();
     include('Models/sujet_model.php');
@@ -25,8 +24,9 @@
 
             //récupération des articles
             $url = $_GET['id'];
-
-            $titreCat = $url;//TODO
+            //le titre de la page == nom de la catégorie //TODO ne marche pas
+            $titreCat = ucwords($url);
+            // var_dump($titreCat);
             $req = $sujet->getAllSujetsByCategorie($url);
 
             $sujetListe = "";
@@ -46,19 +46,20 @@
                             </a>
                         </h3>
                         <p>
-                            <a href=\"#\">
-                                <strong>" . $donnees['login_user'] . "  </strong>
-                            </a>  
+                        <a href=\"#\">
+                        <strong>" . $donnees['login_user'] . "</strong>
+                    </a>  dans <strong>".ucwords($donnees['nom_cat'])."</strong> le
                             " . $ladate . "
                             Réponses : $nbRep
                         </p>
                         <p>" . $apercu . "</p>
                     </div>";
             }
+
             // echo session_status();
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
         
     //affichage de la vue
-    include("Views/home_view.php");
+    include("Views/categorie_view.php");

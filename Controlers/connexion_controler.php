@@ -9,9 +9,9 @@ include('Models/user_model.php');
     
     // récupération des données
     if(isset($_POST['pseudo-connect']) && !empty($_POST['pseudo-connect']) && isset($_POST['mdp-connect']) && !empty($_POST['mdp-connect'])){
-
+        //validation des données
         $login = $utils->valid_donnees($_POST['pseudo-connect']);
-        $mdp = $_POST['mdp-connect'];
+        $mdp = $utils->valid_donnees($_POST['mdp-connect']);
         try {
             $user->setLoginUser($login);
             $req = $user->getSingleUser();
@@ -30,9 +30,6 @@ include('Models/user_model.php');
                     // paramètrage de la session
                     $_SESSION['id'] = $aaa['id_users'];
                     $_SESSION['login'] = $aaa['login_user'];
-                    $_SESSION['mail'] = $aaa['mail_user'];
-                    $_SESSION['date'] = $aaa['date_user'];
-                    $_SESSION['mdp'] = $aaa['mdp_user']; //TODO à ne pas stocker
                     
                     //actualisation de la page = prise en compte de la connection
                     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $utils->getUrl() . '">';
