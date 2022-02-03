@@ -50,29 +50,29 @@
                     <ul>
                         <li>
                             <label for="pseudo-crea">Pseudo </label>
-                            <input type="text" name="pseudo-crea" required pattern="^[a-zA-Z0-9_]*$" maxlength="20"/>
+                            <input type="text" name="pseudo-crea" required pattern="^[a-zA-Z0-9_]*$" maxlength="20" required/>
                         </li>
                         <li>
                             <label for="email">E-mail </label>
-                            <input type="email" name="email-crea" required pattern="(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|'(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21\x23-\x5b\x5d-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])*')@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\x01-\x08\x0b\x0c\x0e-\x1f\x21-\x5a\x53-\x7f]|\\[\x01-\x09\x0b\x0c\x0e-\x7f])+)\])"/>
+                            <input type="email" name="email-crea" required pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required/>
                         </li>
                         <li>
                             <label for="dateN">Date de naissance </label>
-                            <input type="date" name="dateN" min="<?=$maxA?>01-01" max="<?=$minSP?>"/>
+                            <input type="date" name="dateN" min="<?=$maxA?>01-01" max="<?=$minSP?>" required/>
                         </li>
                         <li>
                             <label for="mdp-crea">Mot de passe </label>
-                            <input type="password" name="mdp-crea" minlength="8" maxlength="15"/>
+                            <input type="password" name="mdp-crea" minlength="8" maxlength="15"required/>
                         </li>
                         <li>
                             <label for="confirmMdp-crea">Confirmer le mot de passe </label>
-                            <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15"/>
+                            <input type="password" name="confirmMdp-crea" minlength="8" maxlength="15" required/>
                         </li>
                         <li id="check">
                             <input type="checkbox" name="condUtilisat" required>
                             <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
                         </li>
-                        <p><? $log ?></p>
+                        <p><?php echo $log; ?></p>
                         <li>
                             <input type="submit" name="Crea" value="Créer votre compte">
                         </li>

@@ -1,11 +1,13 @@
 <aside>
     <h2>Navigation</h2>
-    <div>
-        <p>Mes Sujets</p>
-        <p>Mes Commentaires</p>
-        <p><input id='changemdp' type='button' value='Changer de mot de passe'></p>
-        
-    </div>
+    <!-- <div> -->
+        <form method='POST'>
+            <a href="index.php?p=compte">Informations du compte</a>
+            <input id='comptesuj' type='submit' name='comptesuj' value='Mes Sujets'>
+            <input id='comptecomm' type='button' name='comptecomm' value='Mes Commentaires'>
+            <input id='changemdp' type='button' value='Changer de mot de passe'>
+        </form>
+    <!-- </div> -->
 </aside>
 
 <!--les sujets-->
@@ -26,15 +28,7 @@
 <aside>
     <h2>Vos dernières interventions</h2>
     <ul>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
-        <li>
-
-        </li>
+        <?= $derniers ?>
     </ul>
 </aside>
 

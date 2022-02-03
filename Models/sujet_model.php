@@ -135,6 +135,47 @@
             return $stmt;
         }
 
+        //Read -> liste de tous les sujets d'un utilisateur
+        public function getAllSujetsByUser($user) {
+            //stockage de la requête dans une variable
+            $query = "SELECT 
+                            sujet.id_sujet, 
+                            nom_sujet, 
+                            date_sujet, 
+                            contenu_sujet, 
+                            login_user, 
+                            nom_cat,
+                            sujet.id_users 
+                        FROM 
+                            sujet 
+                        INNER JOIN 
+                            users 
+                        ON 
+                            users.id_users=sujet.id_users 
+                        INNER JOIN 
+                            appartenir 
+                        ON 
+                            appartenir.id_sujet = sujet.id_sujet 
+                        INNER JOIN 
+                            categorie 
+                        ON 
+                            appartenir.id_categorie = categorie.id_categorie 
+                        WHERE 
+                            sujet.id_users = '$user' 
+                        ORDER BY 
+                            id_sujet 
+                        DESC";
+
+            //stockage préparation de la requête
+            $stmt = $this->connect->prepare($query);
+
+            //exécution de la requête
+            $stmt->execute();
+
+            //retourne le résultat
+            return $stmt;
+        }
+
         //Read -> sélection d'un sujet (ici par id)
         public function getSingleSujet($idSouhaite) {
 
