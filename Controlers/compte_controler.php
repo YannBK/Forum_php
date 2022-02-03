@@ -5,10 +5,12 @@ ini_set("xdebug.var_display_max_data", '-1');
 ini_set("xdebug.var_display_max_depth", '-1');
 // include('./Models/user_model.php');
 include('./Models/sujet_model.php');
+include('./Models/commentaire_model.php');
 
 $user = new Users();
 $utils = new Utils();
 $sujet = new Sujet();
+$comm = new Commentaire();
 
 
 $derniers = "";
@@ -77,6 +79,37 @@ if (isset($_SESSION['login'])) {
 
         //affichage des commentaires
         //TODO
+        if (isset($_POST['comptecomm'])) {
+            $articleCompte = "";
+
+            $req = $comm->getComsU(intval($user->getIdUser()));
+
+            var_dump($req);
+            while ($donnees = $req->fetch()) {
+                // $apercu = substr($donnees['contenu_com'], 0, 50) . " ...";
+                var_dump($donnees);
+
+                //formatage de la date
+                $ladate = date('d-m-y à H:i', strtotime($donnees['date_com']));
+
+                //création des cartes de sujet
+                $articleCompte .=
+                    "<div>
+                        <h3>
+                            <a href=\"index.php?p=sujet&id=" . $donnees['id_commentaire'] . "\">
+                                " . $donnees['nom_com'] . "
+                            </a>
+                        </h3>
+                        <p>
+                            <a href=\"#\">
+                                <strong>" . $aaa['login_user'] . "</strong>
+                            </a>  dans <strong>" . ucwords($donnees['nom_cat']) . "</strong> le 
+                            " . $ladate . "
+                        </p>
+                        <p>" . $donnees['contenu_com'] . "</p>
+                    </div>";
+            }
+        }
 
         //changement de pseudo
         if (isset($_POST['newlogin']) && isset($_POST['mdp-newlogin'])) {

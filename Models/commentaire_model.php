@@ -81,7 +81,26 @@
 
         //tous les coms d'un utilisateur
         public function getComsU() {
-            $myQuery = 'SELECT * FROM '.$this->table.' WHERE id_users = '.$this-> id_users.'';
+            $myQuery = 'SELECT 
+                            id_commentaire, 
+                            contenu_com, 
+                            date_com, 
+                            commentaire.id_users, 
+                            commentaire.id_sujet, 
+                            users.login_user 
+                        FROM 
+                            '.$this->table.' 
+                        INNER JOIN 
+                            users 
+                        ON 
+                            users.id_users=commentaire.id_users 
+                        INNER JOIN 
+                            sujet 
+                        ON 
+                            commentaire.id_sujet=sujet.id_sujet 
+                        WHERE 
+                            commentaire.id_users = '.$this-> id_users.'';
+
             $stmt = $this->connect->prepare($myQuery);
             $stmt->execute();
             return $stmt;
