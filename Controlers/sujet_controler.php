@@ -5,6 +5,8 @@
     $cat = new Categorie();
     include("Models/sujet_model.php");
     $sujet = new Sujet();
+    include("Models/commentaire_model.php");
+    $com = new Commentaire();
 
 
     try {   
@@ -51,6 +53,23 @@
                 </p>
                 <p>" . $donnees['contenu_sujet'] . "</p>
             </div>";
+
+            if (isset($_POST['commentaire'])) {
+                //stockage des valeurs
+                $contenu = $_POST['commentaire'];
+                $date = date('y-m-d G:i:s');
+                $idSujetCom = $donnees['id_sujet'];
+
+                //vérif présence contenu dans le com
+                if($contenu != ""){
+                    //insertion dans la bdd
+                    try {
+                        $req = $com->createCom($contenu, $date, $idSujetCom, $_SESSION['id']);
+                    } catch(Exception $e) {
+                        die('Erreur : ' .$e->getMessage());
+                    }
+                }
+            }
 
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());
