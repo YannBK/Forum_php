@@ -20,8 +20,8 @@
 
     // création de variables venant limiter la selection de l'age de l'utilisateur 
 
-        $min = intval(date("Y")) -18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
-        $max = intval(date("Y")) -100;
+        $min = intval(date("Y")) - 18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
+        $max = intval(date("Y")) - 100;
 
         // Ici je retransforme en string les entiers stockés dans les variables min et max
         $minA = (string)$min; 
@@ -88,7 +88,7 @@
                             echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
                             echo '</script>';
                             
-                        // $log = "Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d'autres informations";
+                        $log = "Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d'autres informations";
                     } else {
                         if($newUser->createUser()){
                             $myReturn = $newUser->getSingleUser();
@@ -100,9 +100,9 @@
 
                             } else if($nbrUsers >1){
 
-                                echo '<script language="javascript">';
-                                echo 'alert("Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations");';
-                                echo '</script>';
+                                
+                                $log ="Pseudo ou Mail déjà utlisé, veuillez renouveler votre demande avec d\'autres informations";
+                                
 
                             } else if ($nbrUsers == 1) {
 
@@ -132,33 +132,30 @@
                             }
                         }else {
                             
-                            echo 'alert("erreur lors de l\'enregistrement putain");';
+                            $log = "erreur lors de l\'enregistrement putain;";
                             
                         }
                     }
             
                 }
             } else {
-                echo '<script language="javascript">';
-                echo 'alert("Les mots de passe ne correspondent pas veuillez les entrer à nouveau");';
-                echo '</script>';
+                
+                $log ="Les mots de passe ne correspondent pas veuillez les entrer à nouveau;";
+                
             }
-        } else{
-            // echo '<script language="javascript">';
-            // echo 'alert("Les mots de passe ne correspondent pas");';
-            // echo '</script>';
-        }
+        } 
         
         if($success == 1){
             
+            // condition connectant un compte utilisateur qui vient d'être créé 
             include_once('./Connect/utils.php');
-
+            
             $user->setLoginUser($login);
             $need = $user->getSingleUser();
 
             $connexion = $need->fetch();
 
-                if($connexion==true){
+                if($connexion == true){
                     $nomlogin = $connexion['login_user'];
 
                     $_SESSION['id'] = $connexion['id_users'];
@@ -178,13 +175,7 @@
             $res = ["success" => $success, "msg" => $msg, "data" => $data];
             // puis j'encode le tout en json pour le retourner
             echo json_encode($res);
-        } else {
-            // sinon je retourne seulement un tableau contenant success et msg
-            // $res = ["success" => $success, "msg" => $msg];
-            // echo json_encode($res);
-        }
-    
-    
+        } 
 
 
 ?>
