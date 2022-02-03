@@ -144,9 +144,9 @@
                 echo '</script>';
             }
         } else{
-            echo '<script language="javascript">';
-            echo 'alert("Les mots de passe ne correspondent pas");';
-            echo '</script>';
+            // echo '<script language="javascript">';
+            // echo 'alert("Les mots de passe ne correspondent pas");';
+            // echo '</script>';
         }
         
         if($success == 1){
