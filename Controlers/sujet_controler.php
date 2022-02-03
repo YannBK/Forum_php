@@ -66,7 +66,11 @@
                     //insertion dans la bdd
                     try {
                         $req = $com->createCom($contenu, $date, $_SESSION['id'], $idSujetCom);
+<<<<<<< HEAD
 
+=======
+                        echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $utils->getUrl() . '">';
+>>>>>>> baea3fb9931a19e4354114ecbcf93fede44fddae
                         if(!$req) {
                             $alert = "La publication du commentaire a échouée, veuillez réssayer.";
                         }
