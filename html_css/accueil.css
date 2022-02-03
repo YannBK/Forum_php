@@ -118,6 +118,8 @@ h2 {
 }
 
 #mainContainer aside:nth-child(1) div {
+    right: 0;
+    top: 100px;
     display: flex;
     flex-direction: column;
     height: 80%;
@@ -480,7 +482,7 @@ label {
 
 /*-------------------------Responsiveness-------------------------*/
 
-@media screen and (max-width:1200px) {
+@media screen and (max-width:1000px) {
     aside:last-child {
         align-self: end;
     }

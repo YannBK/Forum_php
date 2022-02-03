@@ -13,19 +13,7 @@
         <?= $cardSujet ?>
     </div>
     <div>
-        <CreaCom>
-            <form action="" method="POST">
-                <p>Votre commentaire :</p>
-                <div>
-                    <textarea name="commentaire" cols="100" rows="10"></textarea>
-                </div>
-                <div>
-                    <input type="submit" name="publier" value="Publier votre commentaire">
-                </div>
-            </form>
-        </CreaCom>
-        <p><?= $alert ?></p>
-        <?= $cardCom ?>
+        <?= $formCom ?>
     </div>
 </div>
 
