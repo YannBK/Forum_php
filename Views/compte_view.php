@@ -3,7 +3,8 @@
     <div>
         <p>Mes Sujets</p>
         <p>Mes Commentaires</p>
-        <p>Changer mon mot de passe</p>
+        <p><input id='changemdp' type='button' value='Changer de mot de passe'></p>
+        
     </div>
 </aside>
 
@@ -67,7 +68,7 @@
 
     </div>
 </div>
-<div id="modal-changemail" class="modal">
+<div id="modal-changemdp" class="modal">
     <div>
         <div class="headerM">
             <span class="close">&times;</span>
@@ -78,15 +79,15 @@
             <form action="" method="POST">
                 <ul>
                     <li>
-                        <label for="newmail">Votre nouveau mail : </label>
-                        <input type="email" name="newmail" maxlength="50" />
+                        <label for="newmdp">Votre nouveau mot de passe : </label>
+                        <input type="password" name="newmdp" maxlength="50" />
                     </li>
                     <li>
-                        <label for="mdp-newlogin">Votre mot de passe : </label>
-                        <input type="password" name="mdp-newlogin" minlength="8" maxlength="15" />
+                        <label for="mdp-newmdp">Votre mot de passe actuel : </label>
+                        <input type="password" name="mdp-newmdp" minlength="8" maxlength="15" />
                     </li>
                     <li>
-                        <input type="submit" name="Newlogin" value="Confirmer">
+                        <input type="submit" name="Newmdp" value="Confirmer">
                     </li>
                 </ul>
 

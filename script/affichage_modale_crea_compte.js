@@ -76,8 +76,8 @@ if(openChangeLogin){
 
 
 //ouverture changement de mail => page compte
-const changeMail = document.querySelector("#modal-changemail");
-const openChangeMail = document.getElementById("changemail");
+const changeMail = document.querySelector("#modal-changemdp");
+const openChangeMail = document.getElementById("changemdp");
 if(openChangeMail){
     openChangeMail.addEventListener("click", function() {
         openModal(changeMail);
