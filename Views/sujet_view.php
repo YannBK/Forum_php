@@ -25,7 +25,6 @@
                 </ul>
             </form>
         </CreaCom>
-
         <p><?= $alert ?></p>
         <?= $cardCom ?>
     </div>
