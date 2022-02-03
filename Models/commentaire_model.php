@@ -57,8 +57,31 @@
 
         //CRUD
 
-        public function getComs() {
-            $myQuery = 'SELECT * FROM '.$this->table.'';
+        //tous les coms d'un sujet
+        public function getComsS() {
+            $myQuery = 'SELECT
+                            commentaire.id_commentaire,
+                            contenu_com,
+                            date_com
+                            id_users,
+                            id_sujet,
+                            login_user
+                        FROM 
+                            '.$this->table.' 
+                        JOIN
+                            users
+                        ON 
+                            users.id_users=commentaire.id_users 
+                        WHERE 
+                            id_sujet = '.$this-> id_sujet.'';
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->execute();
+            return $stmt;
+        }
+
+        //tous les coms d'un utilisateur
+        public function getComsU() {
+            $myQuery = 'SELECT * FROM '.$this->table.' WHERE id_users = '.$this-> id_users.'';
             $stmt = $this->connect->prepare($myQuery);
             $stmt->execute();
             return $stmt;
