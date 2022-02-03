@@ -121,6 +121,21 @@ h2 {
     width: 20vw;
 }
 
+#mainContainer aside form {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    align-items: center;
+    justify-content: space-evenly;
+}
+#mainContainer aside form a{
+    align-self: center;
+}
+#mainContainer aside form input{
+    width: 80%;
+    cursor: pointer;
+}
+
 #mainContainer section {
     display: flex;
     flex-direction: column;
@@ -190,9 +205,7 @@ h2 {
     margin: 15px;
     width: 33%;
 }
-#changemdp{
-    width: 80%;
-}
+
 
 /*---fin page création d'un sujet---*/
 
@@ -345,7 +358,10 @@ input {
     border-radius: 5px;
     box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
 }
-
+input:hover {
+    background-color: #bbb;
+    cursor: pointer;
+}
 
 /* .close {
     cursor: pointer;
