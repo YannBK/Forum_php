@@ -6,7 +6,6 @@
 
         // attributs
         private $id_commentaire;
-        private $nom_com;
         private $contenu_com;
         private $date_com;
         private $id_users;
@@ -25,9 +24,6 @@
         public function getIdCom(){
             return $this->id_commentaire;
         }
-        public function getNomRole(){
-            return $this->nom_com;
-        }
         public function getContent(){
             return $this->contenu_com;
         } 
@@ -44,9 +40,6 @@
         // setters
         public function setIdCom($new_id_commentaire){
             return $this->id_commentaire = $new_id_commentaire;
-        }
-        public function setNomCom($new_nom_com){
-            $this->nom_com = $new_nom_com;
         }
         public function setContent($new_contenu_com){
             $this->contenu_com = $new_contenu_com;
@@ -72,20 +65,26 @@
         }
 
         public function getSingleCom() {
-            $myQuery = 'SELECT * FROM '.$this->table.' WHERE nom_com = '.$this-> nom_com.'';
+            $myQuery = 'SELECT * FROM '.$this->table.' WHERE id_commentaire = '.$this-> id_commentaire.'';
             $stmt = $this->connect->prepare($myQuery);
             $stmt->execute();
             return $stmt;
         }
 
-        public function createCom() {
+        public function createCom($contenu, $date, $idUsers, $idSujet) {
             $myQuery = 'INSERT INTO
                             '.$this->table.'
                         SET
-                            nom_com = :nom_com';
+                            contenu_com = :contenu_com,
+                            date_com = :date_com,
+                            id_users = :id_users,
+                            id_sujet = :id_sujet';
             
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
+            $stmt->bindParam(':contenu_com', $contenu);
+            $stmt->bindParam(':date_com', $date);
+            $stmt->bindParam(':id_users', $idUsers);
+            $stmt->bindParam(':id_sujet', $idSujet);
             return $stmt->execute();
         }
 
@@ -93,13 +92,13 @@
             $myQuery = 'UPDATE
                             '.$this->table.'
                         SET
-                            nom_com = :nom_com
+                            contenu_com = :contenu_com
                         WHERE
-                            nom_com = :nom_com2';
+                            contenu_com = :contenu_com2';
             
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
-            $stmt->bindParam(':nom_com2', $this->nom_com);
+            $stmt->bindParam(':contenu_com', $this->contenu_com);
+            $stmt->bindParam(':contenu_com2', $this->contenu_com);
             if($stmt->execute()) {
                 return true;
             } else {
@@ -111,10 +110,10 @@
             $myQuery = 'DELETE FROM 
                             '.$this->table.'
                         WHERE
-                            nom_com = :nom_com';
+                            id_commentaire = :id_commentaire';
 
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_com', $this->nom_com);
+            $stmt->bindParam(':id_commentaire', $this->contenu_com);
             if($stmt->execute()) {
                 return true;
             } else {
