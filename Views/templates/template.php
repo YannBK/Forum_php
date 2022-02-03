@@ -54,7 +54,7 @@
                         </li>
                         <li>
                             <label for="email">E-mail </label>
-                            <input type="email" name="email-crea" required pattern="/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required/>
+                            <input type="email" name="email-crea" required pattern="/^\[a-zA-Z0-9_]+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/" required/>
                         </li>
                         <li>
                             <label for="dateN">Date de naissance </label>
