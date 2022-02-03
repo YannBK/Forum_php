@@ -50,7 +50,7 @@
                     <ul>
                         <li>
                             <label for="pseudo-crea">Pseudo </label>
-                            <input type="text" name="pseudo-crea" required pattern="^[A-Za-z '-]+$" maxlength="20"/>
+                            <input type="text" name="pseudo-crea" required pattern="^[a-zA-Z0-9_]*$" maxlength="20"/>
                         </li>
                         <li>
                             <label for="email">E-mail </label>
