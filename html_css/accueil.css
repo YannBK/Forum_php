@@ -189,7 +189,7 @@ h2 {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 80vw;
+    width: 100vw;
 }
 
 .divCreerArticle div {
@@ -261,21 +261,7 @@ footer {
 
 /*affichage d'un curseur main lors du passage sur le bouton création de compte*/
 
-#creaCompte,
-#connCompte,
-#deConnCompte,
-#conn2,
-#crea2,
-#changelogin {
-    cursor: pointer;
-}
-
-#creaCompte:hover,
-#connCompte:hover,
-#deConnCompte:hover,
-#conn2:hover,
-#crea2:hover,
-#changelogin:hover {
+.liens:hover {
     cursor: pointer;
     border-bottom: 1px solid black;
 }
@@ -349,7 +335,7 @@ label {
 
 input {
     /* padding: 0; */
-    margin: 0;
+    margin: 10px;
     width: 50%;
     height: 40px;
     padding: 5px;
@@ -371,7 +357,7 @@ input:hover {
 .modal form input,
 label {
     display: block;
-    margin: auto;
+    margin: 10px auto;
 }
 
 .modal ul {

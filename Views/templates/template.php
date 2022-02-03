@@ -80,12 +80,12 @@
                 </form>
                 
             </div>
-            
             <div class="footerM">
-                <p id="allerConn">Déjà un compte ?  Identifiez vous ici</p>
+                <p id="allerConn" class="liens">Déjà un compte ?  Identifiez vous ici</p>
             </div>
         </div>
     </div>
+
     <!--modal de connexion-->
     <div id="modal-connexion" class="modal">
         <div>
@@ -93,7 +93,6 @@
                 <span class="close">&times;</span>
                 <h3>S'inscrire sur Infofo</h3>
             </div>
-
             <div>
                 <form action="" method="POST">
                     <ul>
@@ -112,9 +111,8 @@
                     <?= $notif ?>
                 </form>
             </div>
-            
             <div class="footerM">
-                <p id="allerCrea">Pas de compte ?  Créez-en un ici</p>
+                <p id="allerCrea" class="liens">Pas de compte ?  Créez-en un ici</p>
             </div>
         </div>
     </div>
@@ -125,24 +123,11 @@
                 <span class="close">&times;</span>
                 <h3>Se déconnecter de Infofo ?</h3>
             </div>
-
             <div>
-                
                 <form action="" method="POST">
-
                     <input type="submit" id="deconnect" name="deconnect" value="Déconnexion">
                     <input type="submit" name="rester" value="Je reste">
-
                 </form>
-                <!-- Désolé d'avoir fait ça à l'arrache, faut juste trouver comment refresh la page après le click sur déconnexion  -->
-                <?php if(isset($_POST['Deconnect'])){
-                    session_destroy();
-
-                } ?>
-            </div>
-            
-            <div class="footerM">
-                <p id="allerCrea">Pas de compte ?  Créez-en un ici</p>
             </div>
         </div>
     </div>

@@ -27,7 +27,7 @@ $derniers="";
         <div><p>Votre date de naissance :  $date </p></div>";
     }
     else{
-        $articleCompte = "<h3>Veuillez vous <span id='conn2'>connecter</span> ou <span id='crea2'>créer un compte</span></h3>";
+        $articleCompte = "<h3>Veuillez vous <span id='conn2' class='liens'>connecter</span> ou <span id='crea2' class='liens'>créer un compte</span></h3>";
     }
     $user->setLoginUser($log);
     $myuser = $user->getSingleUser();
