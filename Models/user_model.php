@@ -64,6 +64,8 @@
             $this->id_role = $id_role;
         }
 
+//méthodes de CRUD
+
         public function getUsers(){
             $myQuery = 'SELECT
                             *

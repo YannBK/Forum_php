@@ -1,10 +1,12 @@
-<!-- <a href="index.php?p=home">Accueil</a> -->
+<!-- liste des catégories -->
 <aside>
     <h2>Catégories</h2>
     <div>
         <?= $catListe; ?>
     </div>
 </aside>
+
+<!-- affichage de la liste des sujets -->
 <div> 
     <div class="divSujet">
         <?= $cardSujet ?>
@@ -23,10 +25,16 @@
                 </ul>
             </form>
         </CreaCom>
+<<<<<<< HEAD
+        <?= $listeCom ?>
+=======
         <p><?= $alert ?></p>
         <?= $cardCom ?>
+>>>>>>> 3cfee490d1c224a4783e01813d76798ef672fbd4
     </div>
 </div>
+
+<!-- sujets actifs -->
 <aside>
     <h2>Les sujets les plus actifs</h2>
     <ul>

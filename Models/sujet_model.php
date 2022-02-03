@@ -60,7 +60,6 @@
 
         //Read -> liste de tous les sujets
         public function getAllSujets() {
-            //stockage de la requête dans une variable
             $query = "SELECT 
                             sujet.id_sujet, 
                             nom_sujet, 
@@ -86,19 +85,15 @@
                             id_sujet 
                         DESC";
 
-            //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);
 
-            //exécution de la requête
             $stmt->execute();
 
-            //retourne le résultat
             return $stmt;
         }
 
         //Read -> liste de tous les sujets d'une catégorie
         public function getAllSujetsByCategorie($url) {
-            //stockage de la requête dans une variable
             $query = "SELECT 
                             sujet.id_sujet, 
                             nom_sujet, 
@@ -125,19 +120,15 @@
                             id_sujet 
                         DESC";
 
-            //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);
 
-            //exécution de la requête
             $stmt->execute();
 
-            //retourne le résultat
             return $stmt;
         }
 
         //Read -> liste de tous les sujets d'un utilisateur
         public function getAllSujetsByUser($user) {
-            //stockage de la requête dans une variable
             $query = "SELECT 
                             sujet.id_sujet, 
                             nom_sujet, 
@@ -166,13 +157,10 @@
                             id_sujet 
                         DESC";
 
-            //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);
 
-            //exécution de la requête
             $stmt->execute();
 
-            //retourne le résultat
             return $stmt;
         }
 
@@ -212,10 +200,8 @@
                         date_sujet= :date_sujet, 
                         id_users = :id_users';
 
-            //préparation
             $stmt = $this->connect->prepare($query);
 
-            //bind des paramètres
             $stmt->bindParam(':nom_sujet',$nom);
             $stmt->bindParam(':contenu_sujet',$contenu);
             $stmt->bindParam(':date_sujet',$date);
@@ -226,7 +212,6 @@
 
         //Update (ici par nom)
         public function updateSujet() {
-            //requête
             $query = 'UPDATE
                         '.$this->table.'
                     SET 
@@ -234,14 +219,11 @@
                     WHERE
                         nom_sujet = :nom_sujet2';
 
-            //préparation
             $stmt = $this->connect->prepare($query);
 
-            //bind des paramètres
             $stmt->bindParam(':nom_sujet',$this->nom_sujet);
             $stmt->bindParam(':nom_sujet2',$this->nom_sujet);
             
-            //équivalent au if else
             return $stmt->execute();
         }
 
@@ -258,10 +240,6 @@
 
             return $stmt->execute();
         } 
-
     }
-
-
-
 
 ?>
