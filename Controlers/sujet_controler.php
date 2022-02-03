@@ -65,7 +65,7 @@
                 if($contenu != ""){
                     //insertion dans la bdd
                     try {
-                        $req = $com->createCom($contenu, $date, $idSujetCom, $_SESSION['id']);
+                        $req = $com->createCom($contenu, $date, $_SESSION['id'], $idSujetCom);
 
                         if(!$req) {
                             $alert = "La publication du commentaire a échouée, veuillez réssayer.";
