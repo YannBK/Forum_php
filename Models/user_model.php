@@ -123,11 +123,9 @@
                         SET
                             login_user = :login,
                             mmdp_user = :mdp,
-                            mail_user = :mail,
-                            date_user = :date,
-                            id_role = :id_Role
+                            mail_user = :mail
                         WHERE
-                            login2 = :login2';
+                            id_users = :id_users';
 
             $stmt = $this->connect->prepare($myQuery);
 
@@ -135,9 +133,7 @@
             $stmt->bindParam(':login', $this->login);
             $stmt->bindParam(':mdp', $this->mdp);
             $stmt->bindParam(':mail', $this->mail);
-            $stmt->bindParam(':date', $this->date);
-            $stmt->bindParam(':idRole', $this->idRole);
-            $stmt->bindParam(':login2', $this->login);
+            $stmt->bindParam(':id_user', $this->id);
 
             if($stmt->execute) {
                 // je retourne true si mise à jour réussie

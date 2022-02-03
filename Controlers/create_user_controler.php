@@ -61,7 +61,7 @@
 
             // Avec cette condition on vérifie bien que tout correspond avant d'effectuer les checks au niveau du serveur
             if(strlen($login) <= 20 
-                && preg_match("^[a-zA-Z0-9_]*$",$login)
+                && preg_match("^[a-zA-Z0-9_]*$^",$login)
                 && filter_var($mail, FILTER_VALIDATE_EMAIL)
             ){
                 // si la condition est respectée on va pouvoir déclarer deux nouvelles classes
@@ -131,9 +131,9 @@
                                 }
                             }
                         }else {
-                            echo '<script language="javascript">';
+                            
                             echo 'alert("erreur lors de l\'enregistrement putain");';
-                            echo '</script>';
+                            
                         }
                     }
             
