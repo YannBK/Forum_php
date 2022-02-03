@@ -1,3 +1,4 @@
+<!--Liste des catégories-->
 <aside>
     <h2>Catégories</h2>
     <div>
@@ -8,8 +9,7 @@
 <!--les sujets-->
 <section>
     <h2><?= $titreCat ?></h2>
-    
-    <!-- </div> -->
+
     <article>
         <?= $sujetListe ?>
     </article>

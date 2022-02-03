@@ -1,5 +1,4 @@
 <?php
-    // include('Connect/connect.php');
 
     class Categorie{
         // attributs
@@ -34,20 +33,16 @@
 
         //Read -> liste de tous les sujets
         public function getAllCategorie() {
-            //stockage de la requête dans une variable
             $query = 'SELECT * FROM '.$this->table.'';
 
-            //stockage préparation de la requête
             $stmt = $this->connect->prepare($query);
 
-            //exécution de la requête
             $stmt->execute();
 
-            //retourne le résultat
             return $stmt;
         }
 
-        //Read -> sélection d'un sujet (ici par id)
+        //Read -> sélection d'un sujet par id
         public function getSingleCategorie($idSouhaite) {
 
             $query = "SELECT 

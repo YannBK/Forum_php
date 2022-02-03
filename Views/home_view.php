@@ -1,3 +1,4 @@
+<!--liste des catégories-->
 <aside>
     <h2>Catégories</h2>
     <div>
