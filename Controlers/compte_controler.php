@@ -34,6 +34,8 @@ if (isset($_SESSION['login'])) {
     $user->setNaissanceUser($aaa['date_user']);
     $user->setMdpUser($aaa['mdp_user']);
 
+
+
     //affichage des informations du compte
     $articleCompte =
         "<h3>Vos informations :</h3>
@@ -41,8 +43,34 @@ if (isset($_SESSION['login'])) {
         <div><p>Votre mail :  ".$user->getMailUser()." </p></div>
         <div><p>Votre date de naissance :  ".$user->getNaissanceUser()." </p></div>";
 
+//TODO
+//TODO
+//TODO
     //affichage des dernières interventions
-    //TODO
+        $req = $user->getDerniereParoles();
+
+        while ($donnees = $req->fetch()) {
+            // var_dump($donnees);
+            //formatage de la date
+            $ladate = date('d-m-y à H:i', strtotime($donnees['date_sujet']));
+
+            //création des cartes de sujet
+            $derniers .=
+                "<div>
+                    <h3>
+                        <a href=\"index.php?p=sujet&id=" . $donnees['id_sujet'] . "\">
+                            " . $donnees['nom_sujet'] . "
+                        </a>
+                    </h3>
+                    <p> 
+                        Le " . $ladate . "
+                    </p>                  
+                </div>";
+        }
+//TODO
+//TODO
+//TODO
+
 
     //affichage des sujets
         if (isset($_POST['comptesuj'])) {
@@ -82,12 +110,10 @@ if (isset($_SESSION['login'])) {
         if (isset($_POST['comptecomm'])) {
             $articleCompte = "";
 
-            $req = $comm->getComsU(intval($user->getIdUser()));
+            $comm->setIdUserCom($user->getIdUser());
+            $req = $comm->getComsU();
 
-            var_dump($req);
             while ($donnees = $req->fetch()) {
-                // $apercu = substr($donnees['contenu_com'], 0, 50) . " ...";
-                var_dump($donnees);
 
                 //formatage de la date
                 $ladate = date('d-m-y à H:i', strtotime($donnees['date_com']));
@@ -96,14 +122,14 @@ if (isset($_SESSION['login'])) {
                 $articleCompte .=
                     "<div>
                         <h3>
-                            <a href=\"index.php?p=sujet&id=" . $donnees['id_commentaire'] . "\">
-                                " . $donnees['nom_com'] . "
+                            <a href=\"index.php?p=sujet&id=" . $donnees['id_sujet'] . "\">
+                                " . $donnees['nom_sujet'] . "
                             </a>
                         </h3>
                         <p>
                             <a href=\"#\">
                                 <strong>" . $aaa['login_user'] . "</strong>
-                            </a>  dans <strong>" . ucwords($donnees['nom_cat']) . "</strong> le 
+                            </a>  le 
                             " . $ladate . "
                         </p>
                         <p>" . $donnees['contenu_com'] . "</p>

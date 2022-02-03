@@ -184,5 +184,46 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function getDerniereParoles(){
+            $myQuery = 'SELECT 
+                            sujet.id_sujet, 
+                            date_sujet, 
+                            nom_sujet, 
+                            sujet.id_users 
+                        FROM 
+                            sujet 
+                        WHERE 
+                            sujet.id_users = '.$this->id.' 
+                        UNION 
+                        SELECT 
+                            commentaire.id_sujet, 
+                            date_com, 
+                            nom_sujet, 
+                            commentaire.id_users 
+                        FROM 
+                            commentaire 
+                        JOIN 
+                            sujet 
+                        ON 
+                            commentaire.id_sujet = sujet.id_sujet 
+                        WHERE 
+                            commentaire.id_users = '.$this->id.' 
+                        ORDER BY 
+                            date_sujet 
+                        DESC
+                        LIMIT 
+                            0,5';
+
+            $stmt = $this->connect->prepare($myQuery);
+
+            $stmt->bindParam(':login', $this->login);
+            $stmt->bindParam(':mail', $this->mail);
+
+            $stmt->execute();
+            return $stmt;
+
+
+        }
     }
 ?>

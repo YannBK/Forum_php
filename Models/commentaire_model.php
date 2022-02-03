@@ -87,7 +87,8 @@
                             date_com, 
                             commentaire.id_users, 
                             commentaire.id_sujet, 
-                            users.login_user 
+                            users.login_user,
+                            nom_sujet
                         FROM 
                             '.$this->table.' 
                         INNER JOIN 
