@@ -36,6 +36,7 @@
         //formatege de la date
         $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
 
+        $alert = "";
         //création des cartes de sujet
         $cardSujet = 
             "<div>
@@ -77,18 +78,24 @@
 
         $com->setIdSujetCom($url);
         $req = $com->getComsS();
-        $donnees = $req->fetch();
 
-        $cardCom = 
-            "<div>
-                <p>
-                    <a href=\"#\">
-                        <strong>" . $donnees['login_user'] . "  </strong>
-                    </a>  
-                    " . $ladate . "
-                </p>
-                <p>" . $donnees['contenu_com'] . "</p>
-            </div>";
+        $cardCom = "";
+        while ($donnees = $req->fetch()) {
+            $cardCom .= 
+                "<div>
+                    <p>
+                        <a href=\"#\">
+                            <strong>" . $donnees['login_user'] . "  </strong>
+                        </a>  
+                        " . $ladate . "
+                    </p>
+                    <p>" . $donnees['contenu_com'] . "</p>
+                </div>";
+        }//TODO le lien doit renvoyer sur la page catégorie concernée
+        //si l'insertion est réussie
+        if (!$req) {
+            $result =  "Erreur lors de la récupération des données";
+        }
 
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());

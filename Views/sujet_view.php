@@ -24,7 +24,7 @@
             </form>
         </CreaCom>
         <p><?= $alert ?></p>
-        <!-- <?= $listeCom ?> -->
+        <?= $cardCom ?>
     </div>
 </div>
 <aside>
