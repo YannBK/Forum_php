@@ -27,10 +27,7 @@
         if (isset($_POST['cat_sujet'])){
             $id_categorie = $_POST['cat_sujet'];
         }
-
-        // include("Models/creerArticle_model.php");
-
-        
+ 
             //on ne veut pas de trolls
     if ($name != "" && $contenu != ""){
         //on tente l'insertion

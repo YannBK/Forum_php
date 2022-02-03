@@ -52,19 +52,9 @@
                 <p>" . $donnees['contenu_sujet'] . "</p>
             </div>";
 
-        /*$req = $bdd->prepare("SELECT * FROM commentaire WHERE id_sujet=$donnees");
-        $req->execute();
-
-
-        $listeCom;
-        while($donnees = $req->fetch()){
-            $listeCom .= "<div><h3>".$donnees['id_users']."</h3><p>".$donnees['date_com']."</p><p>".$donnees['contenu_com']."</p></div>";
-        }*/
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());
     }
-
-
 
     //recupération de la vue
     include('Views/sujet_view.php')

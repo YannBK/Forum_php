@@ -2,6 +2,7 @@
 //http://localhost/forum_php/index.php : c'est la page qui sera toujours affichée, et qu'il faut appeler pour lancer le site
 //le changement de vue se fera avec un paramètre ?p=nomdelavue qui définira la vue
 include('Connect/connect.php');
+include('Connect/utils.php');
 session_start();
 if(isset($_SESSION['login'])){
     $besoinCreation = '<li id="deConnCompte">Se déconnecter</li>';
@@ -12,7 +13,6 @@ else{
     $besoinCreation = '<li id="creaCompte">Créer un compte</li>
     <li id="connCompte">Se connecter</li>';
     $message =  '<p>Bonjour visiteur inconnu</p>';
-    // echo "<script type='text/javascript'>let session=".$_SESSION['login']."</script>";
 }
 
 // si on clique sur un lien : "index.php?p=compte", on récupère "compte" dans $p

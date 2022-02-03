@@ -1,6 +1,5 @@
 <?php
 
-include('Connect/utils.php');
 
 if(isset($_POST['deconnect'])){
     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php">';

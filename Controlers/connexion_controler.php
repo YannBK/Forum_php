@@ -1,23 +1,17 @@
 <?php
 
-    include('Connect/utils.php');
 
-    // include('Connect/connect.php');
-    include('Models/user_model.php');
+include('Models/user_model.php');
     $user = new Users();
+    $utils = new Utils();
 
     $nomlogin = ""; //login afficher sous "MON COMPTE"
     
     // récupération des données
     if(isset($_POST['pseudo-connect']) && !empty($_POST['pseudo-connect']) && isset($_POST['mdp-connect']) && !empty($_POST['mdp-connect'])){
 
-        $login = $_POST['pseudo-connect'];
+        $login = $utils->valid_donnees($_POST['pseudo-connect']);
         $mdp = $_POST['mdp-connect'];
- 
-
-
-        //TODO ici remplacer par méthode de la class User
-
         try {
             $user->setLoginUser($login);
             $req = $user->getSingleUser();
@@ -26,8 +20,6 @@
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
-
-
 
         $aaa = $req->fetch();
         //vérification que le login existe
@@ -43,8 +35,7 @@
                     $_SESSION['mdp'] = $aaa['mdp_user']; //TODO à ne pas stocker
                     
                     //actualisation de la page = prise en compte de la connection
-                    // var_dump($_SESSION);
-                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
+                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $utils->getUrl() . '">';
                 }
                 
                 else{
