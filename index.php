@@ -5,13 +5,13 @@ include('Connect/connect.php');
 include('Connect/utils.php');
 session_start();
 if(isset($_SESSION['login'])){
-    $besoinCreation = '<li id="deConnCompte">Se déconnecter</li>';
+    $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li>';
     $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
     echo "<script type='text/javascript'>let session='".$_SESSION['login']."'; console.log(session);</script>";
 }
 else{
-    $besoinCreation = '<li id="creaCompte">Créer un compte</li>
-    <li id="connCompte">Se connecter</li>';
+    $besoinCreation = '<li id="creaCompte" class="liens">Créer un compte</li>
+    <li id="connCompte" class="liens">Se connecter</li>';
     $message =  '<p>Bonjour visiteur inconnu</p>';
 }
 

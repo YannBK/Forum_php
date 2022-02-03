@@ -1,14 +1,13 @@
-
 //fonction pour ouvrir une modale
-function openModal(elt){
+function openModal(elt) {
     elt.style.display = "flex";
     elt.style.animation = "slideTop 0.5s";
 }
 //fonction de fermeture
-function closeModal(elt){
+function closeModal(elt) {
     elt.style.animation = "slideOut 0.6s forwards";
-    
-    setTimeout(function(){
+
+    setTimeout(function() {
         elt.style.display = "none";
     }, 500);
 }
@@ -20,13 +19,13 @@ const conn = document.querySelector("#modal-connexion");
 const openCrea = document.getElementById("creaCompte");
 const openConn = document.getElementById("connCompte");
 
-if(openCrea){
+if (openCrea) {
     openCrea.addEventListener("click", function() {
         openModal(crea);
         closeModal(conn)
     });
 }
-if(openConn){
+if (openConn) {
     openConn.addEventListener("click", function() {
         openModal(conn);
         closeModal(crea)
@@ -39,13 +38,13 @@ if(openConn){
 const openCrea2 = document.getElementById("crea2");
 const openConn2 = document.getElementById("conn2");
 
-if(openCrea2){
+if (openCrea2) {
     openCrea2.addEventListener("click", function() {
         openModal(crea);
         closeModal(conn)
     });
 }
-if(openConn2){
+if (openConn2) {
     openConn2.addEventListener("click", function() {
         openModal(conn);
         closeModal(crea)
@@ -57,9 +56,9 @@ if(openConn2){
 const deconn = document.querySelector("#modal-deconnexion");
 const openDeConn = document.getElementById("deConnCompte");
 
-if(openDeConn){
+if (openDeConn) {
     openDeConn.addEventListener("click", function() {
-    openModal(deconn);
+        openModal(deconn);
     });
 }
 
@@ -68,31 +67,31 @@ if(openDeConn){
 const changeLogin = document.querySelector("#modal-changelogin");
 const openChangeLogin = document.getElementById("changelogin");
 
-if(openChangeLogin){
+if (openChangeLogin) {
     openChangeLogin.addEventListener("click", function() {
         openModal(changeLogin);
-        });
+    });
 }
 
 
 //ouverture changement de mail => page compte
 const changeMail = document.querySelector("#modal-changemdp");
 const openChangeMail = document.getElementById("changemdp");
-if(openChangeMail){
+if (openChangeMail) {
     openChangeMail.addEventListener("click", function() {
         openModal(changeMail);
-        });
+    });
 }
 
 
 //fermeture des modales avec la croix
 const close = document.querySelectorAll(".close");
 const modal = document.querySelectorAll(".modal");
- 
+
 close.forEach(el => {
     el.addEventListener("click", function() {
         modal.forEach(mod => {
-            if(mod.style.display=="flex"){
+            if (mod.style.display == "flex") {
                 closeModal(mod);
             }
         })
@@ -104,11 +103,11 @@ close.forEach(el => {
 let allerConn = document.getElementById('allerConn');
 let allerCrea = document.getElementById('allerCrea');
 
-allerConn.addEventListener('click',function(){
+allerConn.addEventListener('click', function() {
     openModal(conn);
     closeModal(crea);
 })
-allerCrea.addEventListener('click',function(){
+allerCrea.addEventListener('click', function() {
     openModal(crea);
     closeModal(conn);
 })
@@ -117,9 +116,8 @@ allerCrea.addEventListener('click',function(){
 //fermeture de la page avec le background
 window.addEventListener("mousedown", function(event) {
     modal.forEach(mod => {
-        if(event.target == mod){
+        if (event.target == mod) {
             closeModal(mod);
         }
     })
 })
-

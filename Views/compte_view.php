@@ -1,29 +1,24 @@
+<!--Navigation de la page compte-->
 <aside>
     <h2>Navigation</h2>
-    <!-- <div> -->
         <form method='POST'>
             <a href="index.php?p=compte">Informations du compte</a>
-            <input id='comptesuj' type='submit' name='comptesuj' value='Mes Sujets'>
-            <input id='comptecomm' type='button' name='comptecomm' value='Mes Commentaires'>
-            <input id='changemdp' type='button' value='Changer de mot de passe'>
+            <input id='comptesuj' type='submit' name='comptesuj' value='Mes Sujets' <?= $disabled ?>>
+            <input id='comptecomm' type='submit' name='comptecomm' value='Mes Commentaires' <?= $disabled ?>>
+            <input id='changemdp' type='button' value='Changer de mot de passe' <?= $disabled ?>>
         </form>
-    <!-- </div> -->
 </aside>
 
 <!--les sujets-->
 <section>
     <h2>Votre compte</h2>
-
-    <!-- <div> -->
     <a href="index.php?p=home">Accueil</a>
-    <!-- </div> -->
+
     <article>
-
         <?php echo $articleCompte ?>
-
-
     </article>
 </section>
+
 <!--les sujets les plus actifs-->
 <aside>
     <h2>Vos dernières interventions</h2>
@@ -32,15 +27,13 @@
     </ul>
 </aside>
 
-
-
+<!--modal de changement de login-->
 <div id="modal-changelogin" class="modal">
     <div>
         <div class="headerM">
             <span class="close">&times;</span>
             <h3>S'inscrire sur Infofo</h3>
         </div>
-
         <div>
             <form action="" method="POST">
                 <ul>
@@ -56,19 +49,18 @@
                         <input type="submit" name="Newlogin" value="Confirmer">
                     </li>
                 </ul>
-
             </form>
         </div>
-
     </div>
 </div>
+
+<!--modal de changement de mot de passe-->
 <div id="modal-changemdp" class="modal">
     <div>
         <div class="headerM">
             <span class="close">&times;</span>
             <h3>S'inscrire sur Infofo</h3>
         </div>
-
         <div>
             <form action="" method="POST">
                 <ul>
@@ -84,9 +76,7 @@
                         <input type="submit" name="Newmdp" value="Confirmer">
                     </li>
                 </ul>
-
             </form>
         </div>
-
     </div>
 </div>
