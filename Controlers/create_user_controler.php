@@ -94,7 +94,6 @@
                     } else {
                         if($newUser->createUser()){
                             $myReturn = $newUser->getSingleUser();
-                            var_dump($myReturn);
                             $nbrUsers = $myReturn->rowCount();
 
                             if($nbrUsers == 0){
@@ -124,7 +123,6 @@
                                     $id_role;
                                     while($rowRole = $returnRole->fetch()){
                                         extract($rowRole);
-                                        var_dump($rowRole);
                                         $id_role = intval($rowRole['id_role'], 10);
                                         $nom_role = $rowRole['nom_role'];
                                     }
@@ -134,7 +132,6 @@
                                     $data['login_user'] = $rowUser['login_user'];
                                     $data['id_role'] = $id_role;
                                     $data['nom_role'] = $nom_role;
-                                    var_dump($myReturn);
                                 }
                             }
                         }else {
@@ -158,8 +155,7 @@
         if($success == 1){
             // je crée un tableau qui contiendra le success, un msg et de la data
             include_once('./Connect/utils.php');
-            
-            var_dump($newUser);
+
             $user->setLoginUser($login);
             $need = $user->getSingleUser();
 
