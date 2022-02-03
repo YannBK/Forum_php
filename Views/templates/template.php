@@ -146,7 +146,7 @@
         </div>
     </div>
 
-    <footer>Footer</footer>
+    <footer><div id="admin">Admin</div></footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
 
 </body>

@@ -2,11 +2,11 @@
 ///////////////////////////////////////////////////////////////////////////////
                         // création de compte utilisateur //
 ///////////////////////////////////////////////////////////////////////////////
-    include_once('./Connect/connect.php');
+    // include_once('./Connect/connect.php');
     include_once('./Models/user_model.php');
     include_once('./Models/role_model.php');
     
-
+    $utils = new Utils;
 
     $success = 0;
     $msg = "Une erreur est survenue dans le php";
@@ -174,7 +174,7 @@
                     $_SESSION['date'] = $connexion['date_user'];
                     $_SESSION['mdp'] = $connexion['mdp_user'];
 
-                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $currentPageUrl . '">';
+                    echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $utils->getUrl() . '">';
                 }
                 else{
                 echo '<script language="javascript">';
