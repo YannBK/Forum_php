@@ -24,9 +24,7 @@
         $options="";
         
         while ($donnees = $aff->fetch()) {
-            var_dump($donnees);
             $options .= "<option value=" . $donnees['id_categorie'] . ">" . $donnees['nom_cat']."</option>";
-        var_dump($options);
         }
         
         //vérification de l'existence des champs
