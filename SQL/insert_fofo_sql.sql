@@ -1,9 +1,5 @@
 use forum;
-Insert into 
-	role (nom_role)
-values 
-	('Administrateur'),
-    ('Utilisateur');
+
 
 Insert into
 	users (date_user,mail_user,login_user, mdp_user)
@@ -13,7 +9,11 @@ values
 Insert into 
 	categorie (nom_cat)
 values
-	('jeux vidéos','développement','bières');
-    
+	('jeux vidéos'),('développement'),('bières');
+ Insert into 
+	role (nom_role)
+values 
+	('Administrateur'),
+    ('Utilisateur');   
 
     
