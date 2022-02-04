@@ -17,7 +17,7 @@
                 $catListe .= "<p>
                                 <a 
                                     href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\" >
-                                    " . $donnees['nom_cat'] . "
+                                    " . ucwords($donnees['nom_cat']) . "
                                 </a>
                             </p>";
             }

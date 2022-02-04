@@ -57,3 +57,17 @@ add id_sujet int,
 add constraint fk_commentaire_users foreign key (id_users) references users(id_users),
 add constraint fk_commentaire_sujet foreign key (id_sujet) references sujet(id_sujet);
 
+Insert into 
+	categorie (nom_cat)
+values
+	('jeux vidéos','développement','bières');
+Insert into 
+	role (nom_role)
+values 
+	('Administrateur'),
+    ('Utilisateur');   
+
+Insert into
+	users (date_user,mail_user,login_user, mdp_user, id_role)
+values
+	('1990-05-31','admin@admin.ad','admin','admin',1);

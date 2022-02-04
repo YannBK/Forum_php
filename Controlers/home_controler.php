@@ -31,7 +31,7 @@
             $sujetListe = "";
             $nbRep = 0; //TODO le nombre de commentaires liés à l'article
             while ($donnees = $req->fetch()) {
-                $apercu = substr($donnees['contenu_sujet'],0,50) . " ...";
+                $apercu = substr($donnees['contenu_sujet'],0,50) . "<a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\"> ... ... ... </a>";
 
                 //formatege de la date
                 $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
@@ -53,8 +53,9 @@
                         </h3>
                         <p>
                             <a href=\"#\">
-                                <strong>" . $donnees['login_user'] . "</strong>
-                            </a>  dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
+                                <strong>" . $donnees['login_user'] . "  </strong>
+                            </a>  
+                              dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
                             " . $ladate . "
                             Réponses : ".$donnees2[0]."
                         </p>

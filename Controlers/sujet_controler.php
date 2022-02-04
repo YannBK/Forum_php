@@ -40,9 +40,7 @@
         $cardSujet = 
             "<div>
                 <h3>
-                    <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
-                        " . $donnees['nom_sujet'] . "
-                    </a>
+                    " . $donnees['nom_sujet'] . "
                 </h3>
                 <p>
                     <a href=\"#\">
@@ -113,8 +111,8 @@
                             </div>
                         </form>
                     </CreaCom> 
-                    <p><?= $alert ?></p>
-                    <?= $cardCom ?>";
+                    <p> $alert </p>
+                     $cardCom ";
     }
 
     //recupération de la vue
