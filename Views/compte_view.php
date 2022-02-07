@@ -1,5 +1,5 @@
 <!--Navigation de la page compte-->
-<aside>
+<aside id="asideL">
     <h2>Navigation</h2>
         <form method='POST'>
             <a href="index.php?p=compte">Informations du compte</a>
