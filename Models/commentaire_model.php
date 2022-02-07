@@ -107,12 +107,12 @@
             return $stmt;
         }
 
-        public function getSingleCom() {
-            $myQuery = 'SELECT * FROM '.$this->table.' WHERE id_commentaire = '.$this-> id_commentaire.'';
-            $stmt = $this->connect->prepare($myQuery);
-            $stmt->execute();
-            return $stmt;
-        }
+        // public function getSingleCom() {
+        //     $myQuery = 'SELECT * FROM '.$this->table.' WHERE id_commentaire = '.$this-> id_commentaire.'';
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->execute();
+        //     return $stmt;
+        // }
 
         public function createCom($contenu, $date, $idUsers, $idSujet) {
             $myQuery = 'INSERT INTO
@@ -131,32 +131,46 @@
             return $stmt->execute();
         }
 
-        public function updateCom() {
-            $myQuery = 'UPDATE
-                            '.$this->table.'
-                        SET
-                            contenu_com = :contenu_com
-                        WHERE
-                            contenu_com = :contenu_com2';
+        // public function updateCom() {
+        //     $myQuery = 'UPDATE
+        //                     '.$this->table.'
+        //                 SET
+        //                     contenu_com = :contenu_com
+        //                 WHERE
+        //                     contenu_com = :contenu_com2';
             
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->bindParam(':contenu_com', $this->contenu_com);
+        //     $stmt->bindParam(':contenu_com2', $this->contenu_com);
+        //     if($stmt->execute()) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
+
+        public function deleteCom() {
+            $myQuery = 'DELETE FROM 
+                            '.$this->table.'
+                        WHERE
+                            id_sujet = :id_sujet';
+
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':contenu_com', $this->contenu_com);
-            $stmt->bindParam(':contenu_com2', $this->contenu_com);
+            $stmt->bindParam(':id_sujet', $this->id_sujet);
             if($stmt->execute()) {
                 return true;
             } else {
                 return false;
             }
         }
-
-        public function deleteCom() {
+        public function deleteComById() {
             $myQuery = 'DELETE FROM 
                             '.$this->table.'
                         WHERE
                             id_commentaire = :id_commentaire';
 
             $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':id_commentaire', $this->contenu_com);
+            $stmt->bindParam(':id_commentaire', $this->id_commentaire);
             if($stmt->execute()) {
                 return true;
             } else {

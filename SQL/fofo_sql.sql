@@ -1,4 +1,4 @@
-drop database forum;
+drop database if exists forum;
 create database forum;
 use forum;
 
@@ -60,7 +60,7 @@ add constraint fk_commentaire_sujet foreign key (id_sujet) references sujet(id_s
 Insert into 
 	categorie (nom_cat)
 values
-	('jeux vidéos','développement','bières');
+	('jeux vidéos'), ('HMLT / CSS'), ('Javascript'),('PHP'), ('MySQL'), ('Cobol');
 Insert into 
 	role (nom_role)
 values 

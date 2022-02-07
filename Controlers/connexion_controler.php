@@ -5,8 +5,7 @@ include('Models/user_model.php');
     $user = new Users();
     $utils = new Utils();
 
-    $nomlogin = ""; //login afficher sous "MON COMPTE"
-    
+
     // récupération des données
     if(isset($_POST['pseudo-connect']) && !empty($_POST['pseudo-connect']) && isset($_POST['mdp-connect']) && !empty($_POST['mdp-connect'])){
         //validation des données
@@ -15,8 +14,7 @@ include('Models/user_model.php');
         try {
             $user->setLoginUser($login);
             $req = $user->getSingleUser();
-            // var_dump($req);
-    
+
         } catch (Exception $e) {
             die('Erreur : ' . $e->getMessage());
         }
@@ -26,7 +24,6 @@ include('Models/user_model.php');
         if($aaa==true){
             //vérification que le mdp correspond
                 if(password_verify($mdp,$aaa['mdp_user'])==true){
-                    $nomlogin = $aaa['login_user'];
                     // paramètrage de la session
                     $_SESSION['id'] = $aaa['id_users'];
                     $_SESSION['login'] = $aaa['login_user'];
@@ -43,7 +40,6 @@ include('Models/user_model.php');
                 $notif =  '<p style="color:red;">Les données renseignées ne sont pas valides !! Veuillez essayer à nouveau</p>';
             }
     } else{
-        //TODO lui trouver la bonne place
         $notif = "";
     }
     

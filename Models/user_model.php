@@ -66,22 +66,22 @@
 
 //méthodes de CRUD
 
-        public function getUsers(){
-            $myQuery = 'SELECT
-                            *
-                        FROM
-                            '.$this->table.'
-                        JOIN
-                            role
-                        Where
-                            '.$this->table.'.id_role = role.id_role';
+        // public function getUsers(){
+        //     $myQuery = 'SELECT
+        //                     *
+        //                 FROM
+        //                     '.$this->table.'
+        //                 JOIN
+        //                     role
+        //                 Where
+        //                     '.$this->table.'.id_role = role.id_role';
 
-            $stmt = $this->connect->prepare($myQuery);
+        //     $stmt = $this->connect->prepare($myQuery);
 
-            $stmt->execute();
+        //     $stmt->execute();
 
-            return $stmt;
-        }
+        //     return $stmt;
+        // }
 
         public function getSingleUser(){
             $myQuery = 'SELECT
@@ -148,23 +148,23 @@
             }
         }
 
-        public function deleteUser() {
-            $myQuery = 'DELETE FROM
-                            '.$this->table.' 
-                        WHERE 
-                            login_user = :login';
+        // public function deleteUser() {
+        //     $myQuery = 'DELETE FROM
+        //                     '.$this->table.' 
+        //                 WHERE 
+        //                     login_user = :login';
 
-            $stmt = $this->connect->prepare($myQuery);
+        //     $stmt = $this->connect->prepare($myQuery);
 
-            $stmt->bindParam(':login', $this->login);
+        //     $stmt->bindParam(':login', $this->login);
 
-            if($stmt->execute) {
-                // je retourne true si mise à jour réussie
-                return true;
-            } else {
-                return false;
-            }
-        }
+        //     if($stmt->execute) {
+        //         // je retourne true si mise à jour réussie
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
         public function verifyPseudoAndMail() {
             $myQuery = 'SELECT
@@ -222,8 +222,6 @@
 
             $stmt->execute();
             return $stmt;
-
-
         }
     }
 ?>

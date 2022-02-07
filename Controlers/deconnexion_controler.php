@@ -6,6 +6,5 @@ if(isset($_POST['deconnect'])){
     session_unset();
     session_destroy();
     $message =  '<p>Bonjour visiteur inconnu</p>';
-
 }
 

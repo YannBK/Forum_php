@@ -43,73 +43,73 @@
         }
 
         //Read -> sélection d'un sujet par id
-        public function getSingleCategorie($idSouhaite) {
+        // public function getSingleCategorie($idSouhaite) {
 
-            $query = "SELECT 
-                            * 
-                    FROM 
-                        ".$this->table." 
-                    WHERE 
-                        id_categorie = ".$idSouhaite."";
+        //     $query = "SELECT 
+        //                     * 
+        //             FROM 
+        //                 ".$this->table." 
+        //             WHERE 
+        //                 id_categorie = ".$idSouhaite."";
 
-            $stmt = $this->connect->prepare($query);
+        //     $stmt = $this->connect->prepare($query);
         
-            $stmt->execute();
+        //     $stmt->execute();
         
-            return $stmt;
-        }
+        //     return $stmt;
+        // }
 
         //Create
-        public function createCategorie() {
-            //requête
-            $query = 'INSERT INTO
-                        '.$this->table.' 
-                    SET 
-                        nom_cat = :nom_cat';
+        // public function createCategorie() {
+        //     //requête
+        //     $query = 'INSERT INTO
+        //                 '.$this->table.' 
+        //             SET 
+        //                 nom_cat = :nom_cat';
 
-            //préparation
-            $stmt = $this->connect->prepare($query);
+        //     //préparation
+        //     $stmt = $this->connect->prepare($query);
 
-            //bind des paramètres
-            $stmt->bindParam(':nom_cat',$this->nom_cat);
+        //     //bind des paramètres
+        //     $stmt->bindParam(':nom_cat',$this->nom_cat);
 
-            return $stmt->execute();
-        }
+        //     return $stmt->execute();
+        // }
 
         //Update (ici par nom)
-        public function updateCategorie() {
-            //requête
-            $query = 'UPDATE
-                        '.$this->table.'
-                    SET 
-                        nom_cat = :nom_cat,
-                    WHERE
-                        nom_cat = :nom_cat2';
+        // public function updateCategorie() {
+        //     //requête
+        //     $query = 'UPDATE
+        //                 '.$this->table.'
+        //             SET 
+        //                 nom_cat = :nom_cat,
+        //             WHERE
+        //                 nom_cat = :nom_cat2';
 
-            //préparation
-            $stmt = $this->connect->prepare($query);
+        //     //préparation
+        //     $stmt = $this->connect->prepare($query);
 
-            //bind des paramètres
-            $stmt->bindParam(':nom_cat',$this->nom_cat);
-            $stmt->bindParam(':nom_cat2',$this->nom_cat);
+        //     //bind des paramètres
+        //     $stmt->bindParam(':nom_cat',$this->nom_cat);
+        //     $stmt->bindParam(':nom_cat2',$this->nom_cat);
             
-            //équivalent au if else
-            return $stmt->execute();
-        }
+        //     //équivalent au if else
+        //     return $stmt->execute();
+        // }
 
         //Delete (ici selon nom)
-        public function deleteCategorie() {
-            $query = "DELETE FROM 
-                            ".$this->table." 
-                        WHERE 
-                            nom_cat = :nom_cat";
+        // public function deleteCategorie() {
+        //     $query = "DELETE FROM 
+        //                     ".$this->table." 
+        //                 WHERE 
+        //                     nom_cat = :nom_cat";
 
-            $stmt = $this->connect->prepare($query);
+        //     $stmt = $this->connect->prepare($query);
 
-            $stmt->bindParam(':nom_cat',$this->nom_cat);
+        //     $stmt->bindParam(':nom_cat',$this->nom_cat);
 
-            return $stmt->execute();
-        } 
+        //     return $stmt->execute();
+        // } 
     }
 
 ?>

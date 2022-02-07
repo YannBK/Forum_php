@@ -1,7 +1,6 @@
 <?php
     include('Controlers/create_user_controler.php');
-    // include('Controlers/connexion_controler.php');
-    echo '<META HTTP-EQUIV="Refresh" Content="60; URL=' . $utils->getUrl() . '">';
+    // echo '<META HTTP-EQUIV="Refresh" Content="60; URL=' . $utils->getUrl() . '">';
 ?>
 <!DOCTYPE html>
 <html lang="fr">

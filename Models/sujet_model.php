@@ -214,32 +214,32 @@
         }
 
         //Update (ici par nom)
-        public function updateSujet() {
-            $query = 'UPDATE
-                        '.$this->table.'
-                    SET 
-                        nom_sujet = :nom_sujet,
-                    WHERE
-                        nom_sujet = :nom_sujet2';
+        // public function updateSujet() {
+        //     $query = 'UPDATE
+        //                 '.$this->table.'
+        //             SET 
+        //                 nom_sujet = :nom_sujet,
+        //             WHERE
+        //                 nom_sujet = :nom_sujet2';
 
-            $stmt = $this->connect->prepare($query);
+        //     $stmt = $this->connect->prepare($query);
 
-            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
-            $stmt->bindParam(':nom_sujet2',$this->nom_sujet);
+        //     $stmt->bindParam(':nom_sujet',$this->nom_sujet);
+        //     $stmt->bindParam(':nom_sujet2',$this->nom_sujet);
             
-            return $stmt->execute();
-        }
+        //     return $stmt->execute();
+        // }
 
         //Delete (ici selon nom)
         public function deleteSujet() {
             $query = "DELETE FROM 
                             ".$this->table." 
                         WHERE 
-                            nom_sujet = :nom_sujet";
+                            id_sujet = :id_sujet";
 
             $stmt = $this->connect->prepare($query);
 
-            $stmt->bindParam(':nom_sujet',$this->nom_sujet);
+            $stmt->bindParam(':id_sujet',$this->id_sujet);
 
             return $stmt->execute();
         } 

@@ -80,18 +80,3 @@
         </div>
     </div>
 </div>
-<!--modal de changement de mot de passe-->
-<div id="modal-suppression" class="modal">
-    <div>
-        <div class="headerM">
-            <span class="close">&times;</span>
-            <h3>Supprimer votre intervention</h3>
-        </div>
-        <div>
-            <form action="" method="POST">
-                <input type="submit" id="supprimer" name="supprimer" value="Supprimer">
-                <input type="submit" name="rester" value="Annuler">
-            </form>
-        </div>
-    </div>
-</div>

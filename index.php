@@ -18,7 +18,6 @@
         $id = '';
     } //écrire le lien : "index.php?p=sujet&id=5"
 
-
     ob_start();
     
     include('Connect/connect.php');

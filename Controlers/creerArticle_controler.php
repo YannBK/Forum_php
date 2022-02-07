@@ -18,8 +18,6 @@
         $dates="";
         $resultCreerArticle="";
         
-        
-        
         $aff = $cat->getAllCategorie();
         $options="";
         

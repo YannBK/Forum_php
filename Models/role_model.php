@@ -38,12 +38,12 @@
 
         //CRUD
 
-        public function getRoles() {
-            $myQuery = 'SELECT * FROM '.$this->table.'';
-            $stmt = $this->connect->prepare($myQuery);
-            $stmt->execute();
-            return $stmt;
-        }
+        // public function getRoles() {
+        //     $myQuery = 'SELECT * FROM '.$this->table.'';
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->execute();
+        //     return $stmt;
+        // }
 
         public function getSingleRole() {
             $myQuery = 'SELECT * FROM '.$this->table.' WHERE nom_role = :nom_role';
@@ -53,48 +53,48 @@
             return $stmt;
         }
 
-        public function createRole() {
-            $myQuery = 'INSERT INTO
-                            '.$this->table.'
-                        SET
-                            nom_role = :nom_role';
+        // public function createRole() {
+        //     $myQuery = 'INSERT INTO
+        //                     '.$this->table.'
+        //                 SET
+        //                     nom_role = :nom_role';
             
-            $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_role', $this->nom_role);
-            return $stmt->execute();
-        }
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->bindParam(':nom_role', $this->nom_role);
+        //     return $stmt->execute();
+        // }
 
-        public function updateRole() {
-            $myQuery = 'UPDATE
-                            '.$this->table.'
-                        SET
-                            nom_role = :nom_role
-                        WHERE
-                            nom_role = :nom_role2';
+        // public function updateRole() {
+        //     $myQuery = 'UPDATE
+        //                     '.$this->table.'
+        //                 SET
+        //                     nom_role = :nom_role
+        //                 WHERE
+        //                     nom_role = :nom_role2';
             
-            $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_role', $this->nom_role);
-            $stmt->bindParam(':nom_role2', $this->nom_role);
-            if($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->bindParam(':nom_role', $this->nom_role);
+        //     $stmt->bindParam(':nom_role2', $this->nom_role);
+        //     if($stmt->execute()) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
 
-        public function deleteRole() {
-            $myQuery = 'DELETE FROM 
-                            '.$this->table.'
-                        WHERE
-                            nom_role = :nom_role';
+        // public function deleteRole() {
+        //     $myQuery = 'DELETE FROM 
+        //                     '.$this->table.'
+        //                 WHERE
+        //                     nom_role = :nom_role';
 
-            $stmt = $this->connect->prepare($myQuery);
-            $stmt->bindParam(':nom_role', $this->nom_role);
-            if($stmt->execute()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
+        //     $stmt = $this->connect->prepare($myQuery);
+        //     $stmt->bindParam(':nom_role', $this->nom_role);
+        //     if($stmt->execute()) {
+        //         return true;
+        //     } else {
+        //         return false;
+        //     }
+        // }
     }
 ?>

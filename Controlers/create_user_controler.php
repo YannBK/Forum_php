@@ -150,13 +150,9 @@
             $connexion = $need->fetch();
 
                 if($connexion == true){
-                    $nomlogin = $connexion['login_user'];
 
                     $_SESSION['id'] = $connexion['id_users'];
                     $_SESSION['login'] = $connexion['login_user'];
-                    $_SESSION['mail'] = $connexion['mail_user'];
-                    $_SESSION['date'] = $connexion['date_user'];
-                    $_SESSION['mdp'] = $connexion['mdp_user'];
 
                     echo '<META HTTP-EQUIV="Refresh" Content="0; URL=' . $utils->getUrl() . '">';
                 }
@@ -165,7 +161,6 @@
                 echo 'alert("Une erreur s\'est produite et nous n\'avons pas pu vous connecter");';
                 echo '</script>';
                 }
-
         } 
 
 

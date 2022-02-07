@@ -1,9 +1,5 @@
 <?php
 
-ini_set("xdebug.var_display_max_children", '-1');
-ini_set("xdebug.var_display_max_data", '-1');
-ini_set("xdebug.var_display_max_depth", '-1');
-// include('./Models/user_model.php');
 include('./Models/sujet_model.php');
 include('./Models/commentaire_model.php');
 
@@ -12,10 +8,8 @@ $utils = new Utils();
 $sujet = new Sujet();
 $comm = new Commentaire();
 
-
 $derniers = "";
 $datasujet = "";
-
 
 if (isset($_SESSION['login'])) {
     //variable pour désactiver les boutons si non connecté
@@ -34,8 +28,6 @@ if (isset($_SESSION['login'])) {
     $user->setNaissanceUser($aaa['date_user']);
     $user->setMdpUser($aaa['mdp_user']);
 
-
-
     //affichage des informations du compte
     $articleCompte =
         "<h3>Vos informations :</h3>
@@ -43,14 +35,10 @@ if (isset($_SESSION['login'])) {
         <div><p>Votre mail :  ".$user->getMailUser()." </p></div>
         <div><p>Votre date de naissance :  ".$user->getNaissanceUser()." </p></div>";
 
-//TODO
-//TODO
-//TODO
     //affichage des dernières interventions
         $req = $user->getDerniereParoles();
 
         while ($donnees = $req->fetch()) {
-            // var_dump($donnees);
             //formatage de la date
             $ladate = date('d-m-y à H:i', strtotime($donnees['date_sujet']));
 
@@ -67,10 +55,6 @@ if (isset($_SESSION['login'])) {
                     </p>                  
                 </div>";
         }
-//TODO
-//TODO
-//TODO
-
 
     //affichage des sujets
         if (isset($_POST['comptesuj'])) {
@@ -78,12 +62,17 @@ if (isset($_SESSION['login'])) {
 
             $req = $sujet->getAllSujetsBySearch($aaa['id_users'], 'sujet.id_users');
 
-            $nbRep = 0; //TODO le nombre de commentaires liés à l'article
             while ($donnees = $req->fetch()) {
                 $apercu = substr($donnees['contenu_sujet'], 0, 50) . " ...";
 
                 //formatage de la date
                 $ladate = date('d-m-y à H:i', strtotime($donnees['date_sujet']));
+
+                //nombre de commentaires du sujet
+                $com = new Commentaire();
+                $com->setIdSujetCom($donnees['id_sujet']);
+                $nbRep = $com->count();
+                $donnees2 = $nbRep->fetch();
 
                 //création des cartes de sujet
                 $articleCompte .=
@@ -93,13 +82,12 @@ if (isset($_SESSION['login'])) {
                                 " . $donnees['nom_sujet'] . "
                             </a>
                         </h3>
-                            <a id='suppr' href=\"index.php?p=compte&id=".$donnees['nom_sujet']."\">Supprimer</button>
+                            <a id='suppr' href=\"index.php?p=compte&id=".$donnees['id_sujet']."\">Supprimer</a>
                         <p>
-                            <a href=\"#\">
-                                <strong>" . $donnees['login_user'] . "</strong>
-                            </a>  dans <strong>" . ucwords($donnees['nom_cat']) . "</strong> le 
+                            <strong>" . $donnees['login_user'] . "</strong>
+                            dans <strong>" . ucwords($donnees['nom_cat']) . "</strong> le 
                             " . $ladate . "
-                            Réponses : $nbRep
+                            Réponses : ".$donnees2[0]."
                         </p>
                         <p>" . $apercu . "</p>
                     </div>";
@@ -107,7 +95,6 @@ if (isset($_SESSION['login'])) {
         }
 
         //affichage des commentaires
-        //TODO
         if (isset($_POST['comptecomm'])) {
             $articleCompte = "";
 
@@ -119,7 +106,7 @@ if (isset($_SESSION['login'])) {
                 //formatage de la date
                 $ladate = date('d-m-y à H:i', strtotime($donnees['date_com']));
 
-                //création des cartes de sujet
+                //création des cartes de commentaires
                 $articleCompte .=
                     "<div>
                         <h3>
@@ -127,10 +114,10 @@ if (isset($_SESSION['login'])) {
                                 " . $donnees['nom_sujet'] . "
                             </a>
                         </h3>
+                        <a id='suppr' href=\"index.php?p=compte&com=".$donnees['id_commentaire']."\">Supprimer</a>
                         <p>
-                            <a href=\"#\">
-                                <strong>" . $aaa['login_user'] . "</strong>
-                            </a>  le 
+                            <strong>" . $aaa['login_user'] . "</strong>
+                            le 
                             " . $ladate . "
                         </p>
                         <p>" . $donnees['contenu_com'] . "</p>
@@ -176,15 +163,43 @@ if (isset($_SESSION['login'])) {
                 $user->updateUser();
             }
         }
-    if (isset($_GET['id'])){
-        // $datasujet = 
-        // echo $_GET['id'];
-        $sujet->setNomSujet($_GET['id']);
-        $req = $sujet->deleteSujet();
 
-        var_dump($req);
-    }
+        //suppression d'un sujet
+        if (isset($_GET['id'])){
+            $sujet->setIdSujet(intval($_GET['id']));
+
+            //suppression foreign key table association
+            include('Models/appartenir.php');
+            $appartenir = new CatSujet();
+            $appartenir->setIdSujet(intval($_GET['id']));
+            $heho = $appartenir->deleteAppartSujet();
+
+            //suppression commentaires
+            $comsujet = new Commentaire();
+            $comsujet->setIdSujetCom(intval($_GET['id']));
+            $exist = $comsujet->getComsS();
+            $nbexist = $exist->rowCount();
+            if($nbexist!=0){
+                $foreign = $comsujet->deleteCom();
+            }
+
+            //suppression article
+            $req = $sujet->deleteSujet();
+
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?p=compte">';
+        }
+
+        //suppression d'un commentaire
+        if (isset($_GET['com'])){
+            $comsujet = new Commentaire();
+            $comsujet->setIdCom(intval($_GET['com']));
+            var_dump($comsujet);
+            $foreign = $comsujet->deleteComById();
+            var_dump($foreign);
+            echo '<META HTTP-EQUIV="Refresh" Content="0; URL=index.php?p=compte">';
+        }
     } 
+
     else {
         $articleCompte = "<h3>Veuillez vous <span id='conn2' class='liens'>connecter</span> ou <span id='crea2' class='liens'>créer un compte</span></h3>";
         $log = "";
