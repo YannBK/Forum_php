@@ -21,8 +21,8 @@
             <a href="index.php?p=home"><h1>Infofo</h1></a>
             <form action="POST" id="formSearch">
                 <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-                <input id="ok" type="submit" value="Ok">
-                <input type="submit" name="searchok" value="Ok">
+                
+                <input type="submit" name="searchok" id="ok" value="Ok">
             </form>
             
         </div>
