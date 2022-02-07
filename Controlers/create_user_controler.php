@@ -38,12 +38,12 @@
     
         
 // fonction de vérification limitant l'utilisation des espaces et caractères spéciaux
-        function valid_donnees($donnees){
-            $donnees = trim($donnees);
-            $donnees = stripslashes($donnees);
-            $donnees = htmlspecialchars($donnees);
-            return $donnees;
-        }
+        // function valid_donnees($donnees){
+        //     $donnees = trim($donnees);
+        //     $donnees = stripslashes($donnees);
+        //     $donnees = htmlspecialchars($donnees);
+        //     return $donnees;
+        // } => class Utils
         // on déclare en amon le mdp et le mdp de confirmation
         $mdp = $_POST['mdp-crea'];
         $mdp1 = $_POST['confirmMdp-crea'];
@@ -53,10 +53,10 @@
             
             // on déclare les différentes variables auxquelles on applique les fonctions de validations + le hash du mot de passe
             // grosse moulinette de check des infos entrées par l'utilisateur login et mail
-            $login = valid_donnees($_POST['pseudo-crea']);
-            $date = valid_donnees($_POST['dateN']);
-            $mail = valid_donnees($_POST['email-crea']);
-            $mdp = valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
+            $login = $utils->valid_donnees($_POST['pseudo-crea']);
+            $date = $utils->valid_donnees($_POST['dateN']);
+            $mail = $utils->valid_donnees($_POST['email-crea']);
+            $mdp = $utils->valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
             $cond = $_POST['condUtilisat'];
 
             // Avec cette condition on vérifie bien que tout correspond avant d'effectuer les checks au niveau du serveur

@@ -19,9 +19,8 @@
     <header>
         <div class="heady">
             <a href="index.php?p=home"><h1>Infofo</h1></a>
-            <form action="POST">
-                <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-                <input type="submit" name="searchok" value="Ok">
+            <form method="GET">
+                <input class="search" id="search" name="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
             </form>
             
         </div>
@@ -31,7 +30,6 @@
         <nav>
             <ul>
                 <?= $besoinCreation ?> 
-                <!-- <li><a href="index.php?p=compte">Mon compte</a></li> -->
             </ul>
         </nav>
     </header>
