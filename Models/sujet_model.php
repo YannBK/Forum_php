@@ -136,7 +136,8 @@
                             contenu_sujet, 
                             login_user, 
                             nom_cat,
-                            sujet.id_users 
+                            sujet.id_users,
+                            login_user 
                         FROM 
                             sujet 
                         INNER JOIN 
@@ -152,7 +153,7 @@
                         ON 
                             appartenir.id_categorie = categorie.id_categorie 
                         WHERE 
-                            sujet.$champs 
+                            $champs 
                         LIKE 
                             '%$search%' 
                         ORDER BY 

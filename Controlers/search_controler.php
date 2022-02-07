@@ -11,17 +11,7 @@ $sujet = new Sujet();
 $sujetListe = "";
 $catListe = "";
 
-    $recherche = $utils->valid_donnees($_SESSION['recherche']);
-    $recherche = strtolower($recherche);
-    $req = $sujet->getAllSujetsBySearch($recherche, 'nom_sujet');
-
-    $nbResult = $req->rowCount();
-
-    if($nbResult === 0){
-        $sujetListe = "La recherche n'a rien donné, essayez autre chose.";
-    }
-    else{
-
+function affichage($req, $com, $sujetListe) {
         while ($donnees = $req->fetch()){
             $ladate = date('d-m-y à H:i',strtotime($donnees['date_sujet']));
 
@@ -48,6 +38,27 @@ $catListe = "";
             <p>" . $apercu . "</p>
         </div>";
         }
+        return $sujetListe;
+    }
+
+    $recherche = $utils->valid_donnees($_SESSION['recherche']);
+    $recherche = strtolower($recherche);
+    $req = $sujet->getAllSujetsBySearch($recherche, 'sujet.nom_sujet');
+
+    $nbResult = $req->rowCount();
+
+    if($nbResult === 0){
+        $req = $sujet->getAllSujetsBySearch($recherche, 'users.login_user');
+        $nbResult = $req->rowCount();
+        if($nbResult === 0){
+            $sujetListe = "La recherche n'a rien donné, essayez autre chose.";
+        }
+        else{
+            $sujetListe = affichage($req, $com, $sujetListe);
+        }
+    }
+    else{
+        $sujetListe = affichage($req, $com, $sujetListe);
     }
 
     $req = $cat->getAllCategorie();
