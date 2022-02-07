@@ -8,7 +8,8 @@
     include("Models/commentaire_model.php");
     $com = new Commentaire();
 
-
+    // href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\" >
+    // " . ucwords($donnees['nom_cat']) . "
     $cardCom="";
     try {   
         //liste catégories
@@ -17,7 +18,7 @@
         while ($donnees = $req->fetch()) {
             $catListe .= 
                         "<p>
-                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". ucwords($donnees['nom_cat']) ."</a>
+                            <a href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\">". ucwords($donnees['nom_cat']) ."</a>
                         </p>";
         }//TODO le lien doit renvoyer sur la page catégorie concernée
         //si l'insertion est réussie
