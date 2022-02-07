@@ -148,6 +148,7 @@ nav ul {
     font-weight: 500;
     text-transform: uppercase;
     align-self: flex-end;
+    justify-content: space-between;
 }
 
 nav ul li p {
@@ -264,12 +265,12 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95%;
+    width: 80%;
     margin: 10px 10px 10px 10px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
-    word-wrap: wrap;
+    overflow: hidden;
 }
 
 #mainContainer aside ul {
@@ -340,7 +341,7 @@ jour {
     border-radius: 10px;
     padding: 0 15px 0 15px;
     word-break: break-all;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .divSujet h2 {
@@ -414,7 +415,7 @@ footer {
 
 /*bouton de fermeture*/
 
-.closed {
+.close {
     color: #aaa;
     float: right;
     font-size: 28px;
@@ -423,7 +424,7 @@ footer {
     cursor: pointer;
 }
 
-.closed:hover {
+.close:hover {
     color: #555;
 }
 
@@ -447,6 +448,7 @@ footer {
 
 ul {
     list-style: none;
+    padding: 0 10px;
 }
 
 .modal div:first-child {
@@ -533,7 +535,8 @@ label {
     cursor: pointer;
 }
 
-p {
+div p {
+    max-width: 400px;
     overflow: hidden;
 }
 
@@ -607,7 +610,6 @@ p {
     }
     header nav ul {
         flex-wrap: wrap;
-        text-align: center;
     }
     header nav ul li {
         margin-bottom: 5px;
@@ -636,6 +638,9 @@ p {
     header {
         justify-content: none;
     }
+    header p {
+        text-align: center;
+    }
     header nav {
         display: none;
     }
@@ -645,17 +650,23 @@ p {
     #menu {
         display: block;
     }
+    #asideL {
+        display: block;
+    }
     #mainContainer {
         justify-content: none;
         flex-direction: column;
     }
     #mainContainer #asideL {
         height: 10%;
-        width: 85%;
-        margin: auto;
+        max-width: 360px;
+        margin: 2px;
         z-index: 2;
         background-color: white;
-        position: fixed;
+        align-self: flex-end;
+    }
+    div h3 {
+        overflow: hidden;
     }
     #mainContainer aside:last-child {
         align-self: end;
@@ -667,5 +678,11 @@ p {
     }
     #mainContainer section a {
         margin-left: 20px;
+    }
+    #mainContainer section article div {
+        width: 80%;
+    }
+    #mainContainer section article {
+        align-items: none;
     }
 }
