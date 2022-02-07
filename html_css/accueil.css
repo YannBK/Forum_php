@@ -10,7 +10,6 @@
 
 .heady {
     display: flex;
-    width: 25%;
     height: 90px;
 }
 
@@ -31,6 +30,10 @@ body {
     height: 100%;
 }
 
+header ul li {
+    font-size: 14px;
+}
+
 
 /* burger menu Connexion */
 
@@ -41,7 +44,7 @@ body {
     width: 50px;
     height: 50px;
     overflow: hidden;
-    background: #fff;
+    background: rgb(70, 122, 235);
     color: #000;
     line-height: 50px;
     text-align: center;
@@ -56,7 +59,8 @@ body {
 
 #menu-button.closed {
     color: #fff;
-    background: #000;
+    background: rgb(70, 122, 235);
+    ;
 }
 
 #menu-button.closed::after {
@@ -71,7 +75,7 @@ body {
     width: 100%;
     border-top: 2px solid black;
     border-bottom: 2px solid black;
-    border-radius: 5px;
+    border-radius: 0 0 5px 5px;
     height: 20px;
     /* max-width: 480px; */
     transform: translateY(-300px);
@@ -130,7 +134,6 @@ h1 {
     width: 100%;
     min-width: 100%;
     height: 35px;
-    padding-left: 20px;
     border-radius: 10px;
     font-size: 1rem;
     margin: 25px 0px 20px 30px;
@@ -173,7 +176,6 @@ nav li {
     /* justify-content: space-between; */
     width: 100%;
     padding-bottom: 50px;
-    justify-content: space-between;
 }
 
 h2 {
@@ -217,7 +219,6 @@ h2 {
     right: 0;
     top: 100px;
     margin-left: 10px;
-    width: 30%;
 }
 
 #mainContainer aside form {
@@ -283,10 +284,6 @@ h2 {
     display: flex;
 }
 
-#mainContainer * {
-    padding: 0;
-}
-
 #asideR h2 ul {
     align-items: center;
 }
@@ -296,7 +293,20 @@ h2 {
 }
 
 jour {
+    width: 100%;
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+jour .divSujet {
+    max-width: 600px;
+}
+
+our .divSujet {
+    width: 80%;
+    text-align: center;
+    margin: 10px auto;
 }
 
 
@@ -342,6 +352,7 @@ jour {
     padding: 0 15px 0 15px;
     word-break: break-all;
     overflow: auto;
+    width: 100%;
 }
 
 .divSujet h2 {
@@ -448,7 +459,7 @@ footer {
 
 ul {
     list-style: none;
-    padding: 0 10px;
+    padding: 0 10%;
 }
 
 .modal div:first-child {
@@ -483,6 +494,14 @@ input {
 input:hover {
     background-color: #bbb;
     cursor: pointer;
+}
+
+textarea {
+    resize: both;
+    min-width: 100px;
+    min-height: 60px;
+    max-width: 600px;
+    max-height: 400px;
 }
 
 
@@ -540,6 +559,10 @@ div p {
     overflow: hidden;
 }
 
+.divSujet p {
+    max-width: none;
+}
+
 
 /*---Footer---*/
 
@@ -585,6 +608,12 @@ div p {
 
 /*-------------------------Responsiveness-------------------------*/
 
+@media screen and (max-width: 1384px) {
+    #asideR {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width:1100px) {
     /* header {
         height: 10%;
@@ -603,7 +632,6 @@ div p {
     }
     .heady {
         flex-direction: column;
-        width: 40%;
     }
     .search {
         min-width: 50%;
@@ -631,6 +659,14 @@ div p {
     }
     .divCreerArticle h3 {
         text-align: center;
+    }
+    jour .divSujet {
+        width: 80%;
+        text-align: center;
+        margin: 10px auto;
+    }
+    .search {
+        margin-left: 10px;
     }
 }
 

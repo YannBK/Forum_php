@@ -1,5 +1,5 @@
 <!-- liste des catégories -->
-<aside>
+<aside id="asideL">
     <h2>Catégories</h2>
     <div>
         <?= $catListe; ?>
