@@ -32,17 +32,17 @@
     <div>
         <div class="headerM">
             <span class="close">&times;</span>
-            <h3>S'inscrire sur Infofo</h3>
+            <h3>Changez votre login</h3>
         </div>
         <div>
             <form action="" method="POST">
                 <ul>
                     <li>
-                        <label for="newlogin">Votre nouveau pseudo : </label>
+                        <label for="newlogin">Nouveau pseudo : </label>
                         <input type="text" name="newlogin" maxlength="50" />
                     </li>
                     <li>
-                        <label for="mdp-newlogin">Votre mot de passe : </label>
+                        <label for="mdp-newlogin">Mot de passe : </label>
                         <input type="password" name="mdp-newlogin" minlength="8" maxlength="15" />
                     </li>
                     <li>
@@ -59,23 +59,38 @@
     <div>
         <div class="headerM">
             <span class="close">&times;</span>
-            <h3>S'inscrire sur Infofo</h3>
+            <h3>Changez votre mot de passe</h3>
         </div>
         <div>
             <form action="" method="POST">
                 <ul>
                     <li>
-                        <label for="newmdp">Votre nouveau mot de passe : </label>
+                        <label for="newmdp">Nouveau mot de passe : </label>
                         <input type="password" name="newmdp" maxlength="50" />
                     </li>
                     <li>
-                        <label for="mdp-newmdp">Votre mot de passe actuel : </label>
+                        <label for="mdp-newmdp">Mot de passe actuel : </label>
                         <input type="password" name="mdp-newmdp" minlength="8" maxlength="15" />
                     </li>
                     <li>
                         <input type="submit" name="Newmdp" value="Confirmer">
                     </li>
                 </ul>
+            </form>
+        </div>
+    </div>
+</div>
+<!--modal de changement de mot de passe-->
+<div id="modal-suppression" class="modal">
+    <div>
+        <div class="headerM">
+            <span class="close">&times;</span>
+            <h3>Supprimer votre intervention</h3>
+        </div>
+        <div>
+            <form action="" method="POST">
+                <input type="submit" id="supprimer" name="supprimer" value="Supprimer">
+                <input type="submit" name="rester" value="Annuler">
             </form>
         </div>
     </div>
