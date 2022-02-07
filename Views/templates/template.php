@@ -1,6 +1,7 @@
 <?php
     include('Controlers/create_user_controler.php');
     // include('Controlers/connexion_controler.php');
+    echo '<META HTTP-EQUIV="Refresh" Content="60; URL=' . $utils->getUrl() . '">';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,8 +20,8 @@
     <header>
         <div class="heady">
             <a href="index.php?p=home"><h1>Infofo</h1></a>
-            <form method="POST" id="formSearch">
-                <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
+            <form action="index.php?p=search" method="POST" id="formSearch">
+                <input class="search" id="search" type="search" name="search" placeholder="Rechercher un sujet, un utilisateur...">
             </form>
             
         </div>

@@ -41,6 +41,10 @@
 
     $resultCreerArticle = "";
 
+    if (isset($_POST['search'])){
+        $_SESSION['recherche'] = $_POST['search'];
+    }
+
     //on appelle les controlers
     include('Controlers/connexion_controler.php');
     include('Controlers/deconnexion_controler.php');
@@ -49,7 +53,7 @@
     //qu'on stocke dans le $content avant d'être effacé
     $content = ob_get_clean();
 
+    
 //on appelle le template, qui remplacera $content par la vue obtenue par le controler
-include('Controlers/template_controler.php');
 require 'Views/templates/template.php';
 ?>
