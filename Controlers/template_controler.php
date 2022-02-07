@@ -16,8 +16,24 @@ $sujet = new Sujet();
                 echo '</script>';
         }
         else{
+            $content = "";
             while ($donnees = $req->fetch()){
-                var_dump($donnees);
+                $content .= "<div>
+                <h3>
+                    <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
+                        " . $donnees['nom_sujet'] . "
+                    </a>
+                </h3>
+                <p>
+                    <a href=\"#\">
+                        <strong>" . $donnees['login_user'] . "  </strong>
+                    </a>  
+                      dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
+                    " . $ladate . "
+                    Réponses : ".$donnees2[0]."
+                </p>
+                <p>" . $apercu . "</p>
+            </div>";
             }
 
         }
