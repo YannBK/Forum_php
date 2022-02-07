@@ -22,6 +22,7 @@
             <form action="POST" id="formSearch">
                 <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
                 <input id="ok" type="submit" value="Ok">
+                <input type="submit" name="searchok" value="Ok">
             </form>
             
         </div>
@@ -30,8 +31,8 @@
 
         <nav>
             <ul>
-                <?= $besoinCreation ?>
-                <li><a href="index.php?p=compte">Mon compte</a><?php echo '<p>'.$nomlogin.'</p>' ?></li>
+                <?= $besoinCreation ?> 
+                <!-- <li><a href="index.php?p=compte">Mon compte</a></li> -->
             </ul>
         </nav>
     </header>
