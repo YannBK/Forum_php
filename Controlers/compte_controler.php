@@ -14,7 +14,7 @@ $comm = new Commentaire();
 
 
 $derniers = "";
-
+$datasujet = "";
 
 
 if (isset($_SESSION['login'])) {
@@ -74,9 +74,9 @@ if (isset($_SESSION['login'])) {
 
     //affichage des sujets
         if (isset($_POST['comptesuj'])) {
-            $articleCompte = "";
+            $articleCompte = ""; 
 
-            $req = $sujet->getAllSujetsBySearch($aaa['id_users'], 'id_users');
+            $req = $sujet->getAllSujetsBySearch($aaa['id_users'], 'sujet.id_users');
 
             $nbRep = 0; //TODO le nombre de commentaires liés à l'article
             while ($donnees = $req->fetch()) {
@@ -93,6 +93,7 @@ if (isset($_SESSION['login'])) {
                                 " . $donnees['nom_sujet'] . "
                             </a>
                         </h3>
+                            <a id='suppr' href=\"index.php?p=compte&id=".$donnees['nom_sujet']."\">Supprimer</button>
                         <p>
                             <a href=\"#\">
                                 <strong>" . $donnees['login_user'] . "</strong>
@@ -175,6 +176,14 @@ if (isset($_SESSION['login'])) {
                 $user->updateUser();
             }
         }
+    if (isset($_GET['id'])){
+        // $datasujet = 
+        // echo $_GET['id'];
+        $sujet->setNomSujet($_GET['id']);
+        $req = $sujet->deleteSujet();
+
+        var_dump($req);
+    }
     } 
     else {
         $articleCompte = "<h3>Veuillez vous <span id='conn2' class='liens'>connecter</span> ou <span id='crea2' class='liens'>créer un compte</span></h3>";
@@ -183,3 +192,4 @@ if (isset($_SESSION['login'])) {
     }
 
 include('Views/compte_view.php');
+

@@ -132,5 +132,19 @@ menuButton.addEventListener('click', function() {
     menuButton.classList.toggle('closed');
 });
 menuButton.addEventListener('scroll-down', function() {
-    menuButton.classList.toggle('closed');
+    menuButton.classList.toggle('close');
 })
+
+//suppression sujet
+const suppr = document.querySelectorAll(".suppr");
+const modalSuppr = document.getElementById('modal-suppression');
+const btnSuppr = document.getElementById('supprimer');
+
+if(suppr.length>0){
+    suppr.forEach(el => {
+        el.addEventListener("click", function() {
+            openModal(modalSuppr);
+        });
+    });
+}
+
