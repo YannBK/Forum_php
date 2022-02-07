@@ -177,5 +177,43 @@
             $stmt->execute();
             return $stmt;
         }
+
+        public function sujetActif(){
+            $myQuery = 'SELECT 
+                            commentaire.id_sujet, 
+                            count(sujet.nom_sujet) as rep, 
+                            nom_sujet,
+                            login_user,
+                            nom_cat
+
+                        from 
+                            commentaire 
+                        join 
+                            sujet 
+                        on 
+                            sujet.id_sujet = commentaire.id_sujet 
+                        join 
+                            users 
+                        on 
+                            users.id_users=sujet.id_users
+                        join
+                            appartenir 
+                        on
+                            appartenir.id_sujet = sujet.id_sujet 
+                        join
+                            categorie 
+                        on
+                            appartenir.id_categorie = categorie.id_categorie
+                        group by 
+                            sujet.nom_sujet
+                        order by 
+                            count(sujet.nom_sujet) 
+                        desc limit 
+                            0,5';
+
+            $stmt = $this->connect->prepare($myQuery);
+            $stmt->execute();
+            return $stmt;
+        }
     }
 ?>

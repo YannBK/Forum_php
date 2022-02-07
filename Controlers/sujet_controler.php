@@ -29,6 +29,7 @@
         $url = $_GET['id'];
         $req = $sujet->getSingleSujet($url);
         $donnees = $req->fetch();
+
         $com->setIdSujetCom($url);
         $nbRep = $com->count();
         $donnees2 = $nbRep->fetch();
@@ -51,6 +52,25 @@
                 </p>
                 <p>" . $donnees['contenu_sujet'] . "</p>
             </div>";
+
+        $cardSujetActif = "";
+        $req = $com->sujetActif();
+        while ($donnees = $req->fetch()) {
+            $cardSujetActif .= 
+            "<div>
+            <p>
+                <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
+                    " . $donnees['nom_sujet'] . "
+                </a>, 
+                <a href=\"#\">
+                    <strong>" . $donnees['login_user'] . "  </strong>
+                </a>  
+                    dans <strong>".ucwords($donnees['nom_cat'])."</strong> 
+                Réponses : ".$donnees['rep']."
+            </p>
+        </div>";
+        }
+
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());
     }
@@ -112,9 +132,8 @@
                         </form>
                     </CreaCom> 
                     <p> $alert </p>
-                     $cardCom ";
+                    $cardCom ";
     }
-
     //recupération de la vue
     include('Views/sujet_view.php')
 ?>
