@@ -33,7 +33,17 @@
                 <?= $besoinCreation ?> 
             </ul>
         </nav>
+        <div id="menu-button" class="close">
+
+        </div>
     </header>
+
+    <nav id="menu" class="">
+        <ul>
+            <?= $besoinCreation ?>
+        </ul>
+    </nav>
+
 
     <div id="mainContainer">
         <?php echo $content ?>
@@ -73,7 +83,7 @@
                         </li>
                         <li id="check">
                             <input type="checkbox" name="condUtilisat" required>
-                            <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
+                            <label for="condUtilisat">J'accepte les conditions d'utilisation du site</label>
                         </li>
                         <p><?php echo $log; ?></p>
                         <li>
