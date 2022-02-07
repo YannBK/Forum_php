@@ -7,9 +7,9 @@
 </aside>
 
 <!-- affichage de la liste des sujets -->
-<jour>
-    <div> 
-        <div class="divSujet">
+<!-- <jour> -->
+    <div class="divSujet"> 
+        <div class="divcardsujet">
             <?= $cardSujet ?>
         </div>
         <div>
@@ -22,4 +22,4 @@
         <h2>Les sujets les plus actifs</h2>
         <?= $cardSujetActif ?>
     </aside>
-</jour>
+<!-- </jour> -->

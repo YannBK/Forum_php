@@ -173,9 +173,9 @@ nav li {
 
 #mainContainer {
     display: flex;
-    /* justify-content: space-between; */
+    justify-content: space-between;
     width: 100%;
-    padding-bottom: 50px;
+    padding-bottom: 15px;
 }
 
 h2 {
@@ -187,37 +187,37 @@ h2 {
     padding: 10px;
     border: rgba(94, 94, 94, 0.4) solid 2px;
     border-radius: 10px;
+<<<<<<< HEAD
+=======
+    height: 80vh;
+>>>>>>> e4255a99e9add216296089bad2443e3b360ef587
     min-width: 150px;
+    max-width: 18vw;
     text-align: center;
     position: sticky;
+    top: 100px;
 }
 
 #mainContainer aside:nth-child(1) {
     left: 0;
-    top: 100px;
+    /* top: 100px;
     margin-left: 10px;
     margin-right: 20px;
-    width: 15%;
-    position: sticky;
-}
-
-#asideL {
-    top: 100px;
-}
-
-#mainContainer aside:nth-child(1) div {
-    right: 0;
-    top: 100px;
-    display: flex;
-    flex-direction: column;
-    height: 80%;
-    justify-content: space-evenly;
+    width: 15%; 
+    position: sticky;*/
 }
 
 #mainContainer aside:last-child {
     right: 0;
-    top: 100px;
-    margin-left: 10px;
+    /* top: 100px;
+    margin-left: 10px; */
+}
+
+#mainContainer aside div {
+    display: flex;
+    flex-direction: column;
+    /* height: 80%; */
+    justify-content: space-evenly;
 }
 
 #mainContainer aside form {
@@ -237,6 +237,10 @@ h2 {
     cursor: pointer;
 }
 
+/* #asideL { */
+    /* top: 100px; */
+/* } */
+
 #mainContainer section {
     display: flex;
     flex-direction: column;
@@ -252,6 +256,7 @@ h2 {
     margin: 10px 10px 0 10px;
 }
 
+<<<<<<< HEAD
 #asideL {
     position: sticky;
     margin-left: 20px;
@@ -263,6 +268,16 @@ h2 {
     position: sticky;
     height: 50vh;
 }
+=======
+/* #asideL { */
+    /* position: sticky;
+    margin-left: 20px; */
+/* } */
+
+/* #asideR { */
+    /* position: sticky; */
+/* } */
+>>>>>>> e4255a99e9add216296089bad2443e3b360ef587
 
 #mainContainer section article div {
     display: flex;
@@ -296,7 +311,7 @@ h2 {
     align-self: flex-start;
 }
 
-jour {
+/* jour {
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -305,10 +320,15 @@ jour {
 
 jour .divSujet {
     max-width: 600px;
-}
+} */
 
+<<<<<<< HEAD
 jour .divSujet {
     width: 80%;
+=======
+.divSujet {
+    width: 60vw;
+>>>>>>> e4255a99e9add216296089bad2443e3b360ef587
     text-align: center;
     margin: 10px auto;
 }
@@ -349,14 +369,18 @@ jour .divSujet {
 /*---Affichage d'un sujet---*/
 
 .divSujet {
-    background-color: rgb(228, 226, 226);
+
     margin-top: 10px;
     margin-left: 0px;
     border-radius: 10px;
     padding: 0 15px 0 15px;
     word-break: break-all;
     overflow: auto;
-    width: 100%;
+    /* width: 100%; */
+}
+.divcardsujet {
+    background-color: rgb(228, 226, 226);
+    padding : 10px;
 }
 
 .divSujet h2 {
@@ -396,9 +420,6 @@ footer {
 
 
 /*---modale création compte---*/
-
-
-/*affichage d'un curseur main lors du passage sur le bouton création de compte*/
 
 .liens:hover {
     cursor: pointer;
@@ -612,16 +633,14 @@ div p {
 
 /*-------------------------Responsiveness-------------------------*/
 
-@media screen and (max-width: 1384px) {
+/* @media screen and (max-width: 1384px) {
     #asideR {
         width: 100%;
     }
-}
+} */
 
 @media screen and (max-width:1100px) {
-    /* header {
-        height: 10%;
-    } */
+
     h1 {
         font-size: 3.5vh;
     }
@@ -650,30 +669,90 @@ div p {
         margin-top: 0;
         margin-bottom: 0;
     }
-    aside:last-child {
+    /* aside:last-child {
         align-self: end;
-    }
-    jour {
+    } */
+    /* jour {
         flex-wrap: wrap;
-    }
+    } */
     /* modifie l'aside de gauche pour lui permettre de prendre l'intégralité de la balise  */
-    #mainContainer aside:last-child {
+     /* #mainContainer aside:last-child {
         width: 100%;
         margin-left: 0;
-    }
+    } */
     .divCreerArticle h3 {
         text-align: center;
     }
-    jour .divSujet {
+    /* jour .divSujet {
         width: 80%;
         text-align: center;
         margin: 10px auto;
-    }
+    } */
     .search {
         margin-left: 10px;
     }
 }
 
+@media screen and (max-width:780px) {
+    header {
+        z-index: 1;
+    }
+    #mainContainer {
+        flex-direction: column;
+        margin-bottom: 40px;
+        align-items: center;
+    }
+    #mainContainer aside {
+        position: relative;
+        min-height: 15vh;
+        height: max-content;
+        width: 90vw;
+        max-width: 90vw;
+        top: 0;
+    }
+    #mainContainer aside div {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    .divSujet {
+        width: 90vw;
+    }
+    #mainContainer aside:last-child {
+        right: 0;
+        margin-bottom: 15px;
+        height: max-content;
+    }
+    #mainContainer section article {
+        width: 95vw;
+    }
+    #mainContainer aside form {
+        flex-direction: row;
+        flex-wrap: wrap;
+        height: 80%;
+        align-items: center;
+        width: 100%;
+    }
+    #mainContainer aside form input {
+        width: 20%;
+        height: 50px;
+        word-wrap: break-word;
+        word-break: break-all;
+    }
+    #mainContainer aside form a {
+        align-self: center;
+        max-width: 20vw;
+    }
+    header nav {
+        display: none;
+    }
+    #menu-button {
+        display: block;
+    }
+    #menu {
+        display: block;
+    }
+}
+/*
 @media screen and (max-width:580px) {
     header {
         justify-content: none;
@@ -696,6 +775,16 @@ div p {
     #mainContainer {
         justify-content: none;
         flex-direction: column;
+    }
+    #mainContainer aside {
+        margin: 10px 10px 0 10px;
+        padding: 10px;
+        border: rgb(94, 94, 94) solid 2px;
+        border-radius: 10px;
+        height: 70vh;
+        min-width: 150px;
+        text-align: center;
+        position: relative;
     }
     #mainContainer #asideL {
         height: 10%;
@@ -725,4 +814,5 @@ div p {
     #mainContainer section article {
         align-items: none;
     }
-}
+} */
+

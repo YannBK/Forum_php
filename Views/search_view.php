@@ -7,7 +7,7 @@
 </aside>
 
 <!--les sujets-->
-<jour>
+<!-- <jour> -->
 <section>
     <h2>Résultat de la recherche</h2>
     
@@ -40,4 +40,4 @@
         </li>
     </ul>
 </aside>
-</jour>
+<!-- </jour> -->
