@@ -219,7 +219,6 @@ h2 {
     right: 0;
     top: 100px;
     margin-left: 10px;
-    width: 30%;
 }
 
 #mainContainer aside form {
@@ -608,6 +607,12 @@ div p {
 
 
 /*-------------------------Responsiveness-------------------------*/
+
+@media screen and (max-width: 1384px) {
+    #asideR {
+        width: 100%;
+    }
+}
 
 @media screen and (max-width:1100px) {
     /* header {
