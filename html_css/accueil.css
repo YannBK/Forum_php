@@ -196,6 +196,11 @@ h2 {
     margin-left: 10px;
     margin-right: 20px;
     width: 15%;
+    position: sticky;
+}
+
+#asideL {
+    top: 100px;
 }
 
 #mainContainer aside:nth-child(1) div {
@@ -637,11 +642,12 @@ label {
         flex-direction: column;
     }
     #mainContainer #asideL {
-        height: 5%;
+        height: 10%;
         width: 85%;
         margin: auto;
         z-index: 2;
         background-color: white;
+        position: fixed;
     }
     #mainContainer aside:last-child {
         align-self: end;
