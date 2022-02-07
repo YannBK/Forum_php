@@ -19,7 +19,7 @@
     <header>
         <div class="heady">
             <a href="index.php?p=home"><h1>Infofo</h1></a>
-            <form action="POST" id="formSearch">
+            <form method="POST" id="formSearch">
                 <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
             </form>
             
