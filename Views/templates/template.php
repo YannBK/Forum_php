@@ -22,7 +22,7 @@
             <form action="POST" id="formSearch">
                 <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
                 
-                <input type="submit" name="searchok" id="ok" value="Ok">
+                <input type="submit" name="searchok" id="ok" value="ok">
             </form>
             
         </div>

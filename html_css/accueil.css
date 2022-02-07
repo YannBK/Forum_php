@@ -111,7 +111,7 @@ h2 {
 }
 
 #mainContainer aside {
-    margin: 10px 20px 0 0px;
+    margin: 10px 10px 0 0px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
@@ -125,6 +125,8 @@ h2 {
     left: 0;
     top: 100px;
     width: 20vw;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 #mainContainer aside:nth-child(1) div {
@@ -140,6 +142,7 @@ h2 {
     right: 0;
     top: 100px;
     width: 20vw;
+    margin-left: 10px;
 }
 
 #mainContainer aside form {
@@ -509,8 +512,20 @@ label {
 @media screen and (max-width:480px) {
     #mainContainer {
         justify-content: none;
+        flex-direction: column;
+    }
+    #mainContainer #asideL {
+        height: 5%;
+        width: 85%;
     }
     aside:last-child {
         align-self: end;
+    }
+    #mainContainer section {
+        text-align: center;
+        width: 100%;
+    }
+    #mainContainer section a {
+        margin-left: 20px;
     }
 }
