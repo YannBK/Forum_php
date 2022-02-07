@@ -44,11 +44,12 @@
     //on appelle les controlers
     include('Controlers/connexion_controler.php');
     include('Controlers/deconnexion_controler.php');
-    require 'Controlers/'.$p.'_controler.php';
+    require ('Controlers/'.$p.'_controler.php');
 
     //qu'on stocke dans le $content avant d'être effacé
     $content = ob_get_clean();
 
 //on appelle le template, qui remplacera $content par la vue obtenue par le controler
+include('Controlers/template_controler.php');
 require 'Views/templates/template.php';
 ?>

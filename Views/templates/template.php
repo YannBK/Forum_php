@@ -21,8 +21,6 @@
             <a href="index.php?p=home"><h1>Infofo</h1></a>
             <form action="POST" id="formSearch">
                 <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-                
-                <input type="submit" name="searchok" id="ok" value="ok">
             </form>
             
         </div>
@@ -32,7 +30,6 @@
         <nav>
             <ul>
                 <?= $besoinCreation ?> 
-                <!-- <li><a href="index.php?p=compte">Mon compte</a></li> -->
             </ul>
         </nav>
     </header>

@@ -76,7 +76,7 @@ if (isset($_SESSION['login'])) {
         if (isset($_POST['comptesuj'])) {
             $articleCompte = "";
 
-            $req = $sujet->getAllSujetsByUser($aaa['id_users']);
+            $req = $sujet->getAllSujetsBySearch($aaa['id_users'], 'id_users');
 
             $nbRep = 0; //TODO le nombre de commentaires liés à l'article
             while ($donnees = $req->fetch()) {

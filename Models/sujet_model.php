@@ -128,7 +128,7 @@
         }
 
         //Read -> liste de tous les sujets d'un utilisateur
-        public function getAllSujetsByUser($user) {
+        public function getAllSujetsBySearch($search, $champs) {
             $query = "SELECT 
                             sujet.id_sujet, 
                             nom_sujet, 
@@ -152,7 +152,9 @@
                         ON 
                             appartenir.id_categorie = categorie.id_categorie 
                         WHERE 
-                            sujet.id_users = '$user' 
+                            sujet.$champs 
+                        LIKE 
+                            '%$search%' 
                         ORDER BY 
                             id_sujet 
                         DESC";
