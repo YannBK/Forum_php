@@ -1,5 +1,7 @@
 <?php
 
+<<<<<<< HEAD
+=======
 // include('Models/sujet_model.php');
 
 $utils = new Utils();
@@ -38,6 +40,7 @@ $sujet = new Sujet();
 
         }
     }
+>>>>>>> fcaeecc9ece49524f4992b201a310d50e9fdea5c
 
 
 ?>
