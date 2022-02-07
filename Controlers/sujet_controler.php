@@ -52,18 +52,18 @@
 
         $cardSujetActif = "";
         $req = $com->sujetActif();
-        while ($donnees = $req->fetch()) {
+        while ($donnees3 = $req->fetch()) {
             $cardSujetActif .= 
             "<div>
             <p>
-                <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
-                    " . $donnees['nom_sujet'] . "
+                <a href=\"index.php?p=sujet&id=" .$donnees3['id_sujet'] . "\">
+                    " . $donnees3['nom_sujet'] . "
                 </a>, 
                 <a href=\"#\">
-                    <strong>" . $donnees['login_user'] . "  </strong>
+                    <strong>" . $donnees3['login_user'] . "  </strong>
                 </a>  
-                    dans <strong>".ucwords($donnees['nom_cat'])."</strong> 
-                Réponses : ".$donnees['rep']."
+                    dans <strong>".ucwords($donnees3['nom_cat'])."</strong> 
+                Réponses : ".$donnees3['rep']."
             </p>
         </div>";
         }
