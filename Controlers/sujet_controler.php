@@ -119,7 +119,7 @@
                         <form action='' method='POST'>
                             <p>Votre commentaire :</p>
                             <div>
-                                <textarea name='commentaire' cols='100' rows='10'></textarea>
+                                <textarea name='commentaire' cols='50' rows='10'></textarea>
                             </div>
                             <div>
                                 <input type='submit' name='publier' value='Publier votre commentaire'>

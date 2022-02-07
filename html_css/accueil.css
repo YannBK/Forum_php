@@ -497,6 +497,14 @@ input:hover {
     cursor: pointer;
 }
 
+textarea {
+    resize: both;
+    min-width: 100px;
+    min-height: 60px;
+    max-width: 600px;
+    max-height: 400px;
+}
+
 
 /* .close {
     cursor: pointer;
