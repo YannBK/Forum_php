@@ -28,9 +28,7 @@ function affichage($req, $com, $sujetListe) {
                 </a>
             </h3>
             <p>
-                <a href=\"#\">
                     <strong>" . $donnees['login_user'] . "  </strong>
-                </a>  
                   dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
                 " . $ladate . "
                 Réponses : ".$donnees2[0]."

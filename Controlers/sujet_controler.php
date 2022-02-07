@@ -8,7 +8,6 @@
     include("Models/commentaire_model.php");
     $com = new Commentaire();
 
-
     $cardCom="";
     try {   
         //liste catégories
@@ -17,7 +16,7 @@
         while ($donnees = $req->fetch()) {
             $catListe .= 
                         "<p>
-                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". ucwords($donnees['nom_cat']) ."</a>
+                            <a href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\">". ucwords($donnees['nom_cat']) ."</a>
                         </p>";
         }//TODO le lien doit renvoyer sur la page catégorie concernée
         //si l'insertion est réussie
@@ -29,6 +28,7 @@
         $url = $_GET['id'];
         $req = $sujet->getSingleSujet($url);
         $donnees = $req->fetch();
+
         $com->setIdSujetCom($url);
         $nbRep = $com->count();
         $donnees2 = $nbRep->fetch();
@@ -43,14 +43,31 @@
                     " . $donnees['nom_sujet'] . "
                 </h3>
                 <p>
-                    <a href=\"#\">
-                        <strong>" . $donnees['login_user'] . "  </strong>
-                    </a>  
+                    <strong>" . $donnees['login_user'] . "  </strong>
                     " . $ladate . "
                     Réponses : ".$donnees2[0]."
                 </p>
                 <p>" . $donnees['contenu_sujet'] . "</p>
             </div>";
+
+        $cardSujetActif = "";
+        $req = $com->sujetActif();
+        while ($donnees = $req->fetch()) {
+            $cardSujetActif .= 
+            "<div>
+            <p>
+                <a href=\"index.php?p=sujet&id=" .$donnees['id_sujet'] . "\">
+                    " . $donnees['nom_sujet'] . "
+                </a>, 
+                <a href=\"#\">
+                    <strong>" . $donnees['login_user'] . "  </strong>
+                </a>  
+                    dans <strong>".ucwords($donnees['nom_cat'])."</strong> 
+                Réponses : ".$donnees['rep']."
+            </p>
+        </div>";
+        }
+
     } catch(Exception $e) {
         die('Erreur : ' .$e->getMessage());
     }
@@ -87,9 +104,7 @@
             $cardCom .= 
                 "<div>
                     <p>
-                        <a href=\"#\">
-                            <strong>" . $donnees['login_user'] . "  </strong>
-                        </a>  
+                        <strong>" . $donnees['login_user'] . "  </strong>
                         " . $ladate . "
                     </p>
                     <p>" . $donnees['contenu_com'] . "</p>
@@ -112,9 +127,8 @@
                         </form>
                     </CreaCom> 
                     <p> $alert </p>
-                     $cardCom ";
+                    $cardCom ";
     }
-
     //recupération de la vue
     include('Views/sujet_view.php')
 ?>
