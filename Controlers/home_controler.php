@@ -59,15 +59,15 @@
     while ($donnees3 = $req->fetch()) {
         $cardSujetActif .= 
         "<div>
-        <p>
-            <a href=\"index.php?p=sujet&id=" .$donnees3['id_sujet'] . "\">
-                " . $donnees3['nom_sujet'] . "
-            </a>, 
-                <strong>" . $donnees3['login_user'] . "  </strong>
-                dans <strong>".ucwords($donnees3['nom_cat'])."</strong> 
-            Réponses : ".$donnees3['rep']."
-        </p>
-    </div>";
+            <p>
+                <a href=\"index.php?p=sujet&id=" .$donnees3['id_sujet'] . "\">
+                    " . $donnees3['nom_sujet'] . "
+                </a>, 
+                    <strong>" . $donnees3['login_user'] . "  </strong>
+                    dans <strong>".ucwords($donnees3['nom_cat'])."</strong> 
+                Réponses : ".$donnees3['rep']."
+            </p>
+        </div>";
     }
     } catch (Exception $e) {
         die('Erreur : ' . $e->getMessage());

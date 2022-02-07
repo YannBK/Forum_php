@@ -7,7 +7,7 @@
 </aside>
 
 <!--les sujets-->
-<jour>
+<!-- <jour> -->
 <section>
     <h2>Sujets</h2>
     
@@ -24,4 +24,4 @@
     <h2>Les sujets les plus actifs</h2>
     <?= $cardSujetActif ?>
 </aside>
-</jour>
+<!-- </jour> -->
