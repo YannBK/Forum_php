@@ -33,7 +33,7 @@
                 <?= $besoinCreation ?> 
             </ul>
         </nav>
-        <div id="menu-button" class="close">
+        <div id="menu-button" class="closed">
 
         </div>
     </header>

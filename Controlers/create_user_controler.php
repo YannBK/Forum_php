@@ -11,14 +11,14 @@
     $success = 0;
     $msg = "Une erreur est survenue dans le php";
     $data = [];
-    // création de la variable de display info, laissé vide au start pour éviter des erreurs
+// création de la variable de display info, laissé vide au start pour éviter des erreurs
     $log = "";
 
-    // récupération du fuseau horaire
+// récupération du fuseau horaire
 
     date_default_timezone_set('Europe/Paris');
 
-    // création de variables venant limiter la selection de l'age de l'utilisateur 
+// création de variables venant limiter la selection de l'age de l'utilisateur 
 
         $min = intval(date("Y")) - 18; //date retourne en string l'année actuelle que je transforme en entier pour l'additionner avec l'age mini de l'utilisateur.
         $max = intval(date("Y")) - 100;
@@ -38,37 +38,31 @@
     
         
 // fonction de vérification limitant l'utilisation des espaces et caractères spéciaux
-        // function valid_donnees($donnees){
-        //     $donnees = trim($donnees);
-        //     $donnees = stripslashes($donnees);
-        //     $donnees = htmlspecialchars($donnees);
-        //     return $donnees;
-        // } => class Utils
-        // on déclare en amon le mdp et le mdp de confirmation
+// on déclare en amon le mdp et le mdp de confirmation
         $mdp = $_POST['mdp-crea'];
         $mdp1 = $_POST['confirmMdp-crea'];
 
-        //  qu'on réutilise de suite pour les vérifier
+//  qu'on réutilise de suite pour les vérifier
         if($mdp === $mdp1){
             
-            // on déclare les différentes variables auxquelles on applique les fonctions de validations + le hash du mot de passe
-            // grosse moulinette de check des infos entrées par l'utilisateur login et mail
+// on déclare les différentes variables auxquelles on applique les fonctions de validations + le hash du mot de passe
+// grosse moulinette de check des infos entrées par l'utilisateur login et mail
             $login = $utils->valid_donnees($_POST['pseudo-crea']);
             $date = $utils->valid_donnees($_POST['dateN']);
             $mail = $utils->valid_donnees($_POST['email-crea']);
             $mdp = $utils->valid_donnees(password_hash($_POST['mdp-crea'], PASSWORD_BCRYPT));
             $cond = $_POST['condUtilisat'];
 
-            // Avec cette condition on vérifie bien que tout correspond avant d'effectuer les checks au niveau du serveur
+// Avec cette condition on vérifie bien que tout correspond avant d'effectuer les checks au niveau du serveur
             if(strlen($login) <= 20 
                 && preg_match("^[a-zA-Z0-9_]*$^",$login)
                 && filter_var($mail, FILTER_VALIDATE_EMAIL)
             ){
-                // si la condition est respectée on va pouvoir déclarer deux nouvelles classes
+// si la condition est respectée on va pouvoir déclarer deux nouvelles classes
                 $newUser = new Users();
                 $newRole = new Role();
                 
-                //  ici nous allons set les éléments déclarés précédemment
+//  ici nous allons set les éléments déclarés précédemment
                 $newUser->setLoginUser($login);
                 $newUser->setMdpUser($mdp);
                 $newUser->setMailUser($mail);
@@ -147,7 +141,7 @@
         
         if($success == 1){
             
-            // condition connectant un compte utilisateur qui vient d'être créé 
+// condition connectant un compte utilisateur qui vient d'être créé 
             include_once('./Connect/utils.php');
             
             $user->setLoginUser($login);
@@ -171,10 +165,7 @@
                 echo 'alert("Une erreur s\'est produite et nous n\'avons pas pu vous connecter");';
                 echo '</script>';
                 }
-            // je crée un tableau qui contiendra le success, un msg et de la data 
-            $res = ["success" => $success, "msg" => $msg, "data" => $data];
-            // puis j'encode le tout en json pour le retourner
-            echo json_encode($res);
+
         } 
 
 
