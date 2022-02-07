@@ -88,7 +88,7 @@
         <input type='text' name='nom_sujet' min='2' max='50'>
         <label for='cat_sujet'>Catégorie</label>
         <select name='cat_sujet' id='cat_sujet'>
-             $options 
+            $options 
         </select>
         <label for='contenu_sujet'>Votre magnifique texte ici :</label>
         <textarea name='contenu_sujet' cols='80' rows='20' style='margin-top:10px;'></textarea>

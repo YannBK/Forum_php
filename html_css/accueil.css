@@ -54,12 +54,12 @@ body {
     content: '×';
 }
 
-#menu-button.close {
+#menu-button.closed {
     color: #fff;
     background: #000;
 }
 
-#menu-button.close::after {
+#menu-button.closed::after {
     content: '≡';
 }
 
@@ -128,6 +128,7 @@ h1 {
 
 .search {
     width: 100%;
+    min-width: 100%;
     height: 35px;
     padding-left: 20px;
     border-radius: 10px;
@@ -147,7 +148,7 @@ nav ul {
     font-weight: 500;
     text-transform: uppercase;
     align-self: flex-end;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 nav ul li p {
@@ -158,7 +159,7 @@ nav ul li p {
 }
 
 nav li {
-    margin: 0 10px 0 10px;
+    margin: 0 5px 0 5px;
 }
 
 
@@ -264,12 +265,12 @@ h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 95%;
+    width: 80%;
     margin: 10px 10px 10px 10px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
-    word-wrap: wrap;
+    overflow: hidden;
 }
 
 #mainContainer aside ul {
@@ -340,7 +341,7 @@ jour {
     border-radius: 10px;
     padding: 0 15px 0 15px;
     word-break: break-all;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .divSujet h2 {
@@ -447,6 +448,7 @@ footer {
 
 ul {
     list-style: none;
+    padding: 0 10px;
 }
 
 .modal div:first-child {
@@ -533,6 +535,11 @@ label {
     cursor: pointer;
 }
 
+div p {
+    max-width: 400px;
+    overflow: hidden;
+}
+
 
 /*---Footer---*/
 
@@ -595,11 +602,14 @@ label {
         font-size: 1.7vh;
     }
     .heady {
-        flex-wrap: wrap;
+        flex-direction: column;
+        width: 40%;
+    }
+    .search {
+        min-width: 50%;
     }
     header nav ul {
         flex-wrap: wrap;
-        justify-content: flex-start;
     }
     header nav ul li {
         margin-bottom: 5px;
@@ -628,6 +638,9 @@ label {
     header {
         justify-content: none;
     }
+    header p {
+        text-align: center;
+    }
     header nav {
         display: none;
     }
@@ -637,17 +650,23 @@ label {
     #menu {
         display: block;
     }
+    #asideL {
+        display: block;
+    }
     #mainContainer {
         justify-content: none;
         flex-direction: column;
     }
     #mainContainer #asideL {
         height: 10%;
-        width: 85%;
-        margin: auto;
+        max-width: 360px;
+        margin: 2px;
         z-index: 2;
         background-color: white;
-        position: fixed;
+        align-self: flex-end;
+    }
+    div h3 {
+        overflow: hidden;
     }
     #mainContainer aside:last-child {
         align-self: end;
@@ -659,5 +678,11 @@ label {
     }
     #mainContainer section a {
         margin-left: 20px;
+    }
+    #mainContainer section article div {
+        width: 80%;
+    }
+    #mainContainer section article {
+        align-items: none;
     }
 }

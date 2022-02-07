@@ -22,22 +22,6 @@
 <aside id="asideR">
 
     <h2>Les sujets les plus actifs</h2>
-    <ul>
-        <li>
-            <p>Sujet</p>
-            <p>auteur</p>
-            <p>nombre reponses</p>
-        </li>
-        <li>
-            <p>Sujet</p>
-            <p>auteur</p>
-            <p>nombre reponses</p>
-        </li>
-        <li>
-            <p>Sujet</p>
-            <p>auteur</p>
-            <p>nombre reponses</p>
-        </li>
-    </ul>
+    <?= $cardSujetActif ?>
 </aside>
 </jour>

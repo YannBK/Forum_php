@@ -33,7 +33,7 @@
                 <?= $besoinCreation ?> 
             </ul>
         </nav>
-        <div id="menu-button" class="close">
+        <div id="menu-button" class="closed">
 
         </div>
     </header>
@@ -104,7 +104,7 @@
         <div>
             <div class="headerM">
                 <span class="close">&times;</span>
-                <h3>S'inscrire sur Infofo</h3>
+                <h3>Se connecter sur Infofo</h3>
             </div>
             <div>
                 <form action="" method="POST">
@@ -148,7 +148,5 @@
     <footer><div id="admin">Admin</div></footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
     
-
-
 </body>
 </html>

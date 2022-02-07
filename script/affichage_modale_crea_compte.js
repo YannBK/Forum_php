@@ -22,13 +22,13 @@ const openConn = document.getElementById("connCompte");
 if (openCrea) {
     openCrea.addEventListener("click", function() {
         openModal(crea);
-        closeModal(conn)
+        closeModal(conn);
     });
 }
 if (openConn) {
     openConn.addEventListener("click", function() {
         openModal(conn);
-        closeModal(crea)
+        closeModal(crea);
     });
 }
 
@@ -129,7 +129,7 @@ var menu = document.querySelector('#menu');
 // show or hide
 menuButton.addEventListener('click', function() {
     menu.classList.toggle('show-menu');
-    menuButton.classList.toggle('close');
+    menuButton.classList.toggle('closed');
 });
 menuButton.addEventListener('scroll-down', function() {
     menuButton.classList.toggle('close');
