@@ -19,8 +19,8 @@
     <header>
         <div class="heady">
             <a href="index.php?p=home"><h1>Infofo</h1></a>
-            <form method="GET">
-                <input class="search" id="search" name="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
+            <form action="POST" id="formSearch">
+                <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
             </form>
             
         </div>

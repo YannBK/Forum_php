@@ -5,6 +5,7 @@
 
 .heady {
     display: flex;
+    width: 25%;
 }
 
 a {
@@ -13,7 +14,7 @@ a {
 }
 
 a:hover {
-    border-bottom: 1px #000 solid;
+    text-decoration: underline
 }
 
 html,
@@ -37,6 +38,24 @@ header {
     /* z-index: 1; */
 }
 
+header nav {
+    width: 25%;
+}
+
+header a {
+    text-decoration: none !important;
+}
+
+#formSearch {
+    display: flex;
+}
+
+#ok {
+    width: 40px;
+    margin-top: 28px;
+    height: 35px;
+}
+
 header a:hover {
     border-bottom: none;
 }
@@ -46,6 +65,7 @@ h1 {
     font-size: 2rem;
     padding-left: 15px;
     text-transform: uppercase;
+    text-decoration: none !important;
 }
 
 .search {
@@ -54,7 +74,7 @@ h1 {
     padding-left: 20px;
     border-radius: 10px;
     font-size: 1rem;
-    margin: 28px 20px 20px 30px;
+    margin: 28px 0px 20px 30px;
     border: none;
 }
 
@@ -69,7 +89,7 @@ nav ul {
     font-weight: 500;
     text-transform: uppercase;
     align-self: flex-end;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 nav ul li p {
@@ -101,7 +121,7 @@ h2 {
 }
 
 #mainContainer aside {
-    margin: 10px 20px 0 0px;
+    margin: 10px 10px 0 0px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
@@ -115,6 +135,8 @@ h2 {
     left: 0;
     top: 100px;
     width: 20vw;
+    margin-left: 10px;
+    margin-right: 20px;
 }
 
 #mainContainer aside:nth-child(1) div {
@@ -130,6 +152,7 @@ h2 {
     right: 0;
     top: 100px;
     width: 20vw;
+    margin-left: 10px;
 }
 
 #mainContainer aside form {
@@ -166,6 +189,7 @@ h2 {
 
 #asideL {
     position: sticky;
+    margin-left: 20px;
 }
 
 #asideR {
@@ -177,7 +201,7 @@ h2 {
     flex-direction: column;
     align-items: center;
     width: 95%;
-    margin: 10px 10px 0 10px;
+    margin: 10px 10px 10px 10px;
     padding: 10px;
     border: rgb(94, 94, 94) solid 2px;
     border-radius: 10px;
@@ -290,7 +314,7 @@ footer {
 
 .liens:hover {
     cursor: pointer;
-    border-bottom: 1px solid black;
+    text-decoration: underline
 }
 
 .modal {
@@ -493,13 +517,28 @@ label {
     #mainContainer aside:last-child {
         width: 100%;
     }
+    .divCreerArticle h3 {
+        text-align: center;
+    }
 }
 
 @media screen and (max-width:480px) {
     #mainContainer {
         justify-content: none;
+        flex-direction: column;
+    }
+    #mainContainer #asideL {
+        height: 5%;
+        width: 85%;
     }
     aside:last-child {
         align-self: end;
+    }
+    #mainContainer section {
+        text-align: center;
+        width: 100%;
+    }
+    #mainContainer section a {
+        margin-left: 20px;
     }
 }
