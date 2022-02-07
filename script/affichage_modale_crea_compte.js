@@ -121,3 +121,16 @@ window.addEventListener("mousedown", function(event) {
         }
     })
 })
+
+// affichage burger
+var menuButton = document.querySelector('#menu-button');
+var menu = document.querySelector('#menu');
+
+// show or hide
+menuButton.addEventListener('click', function() {
+    menu.classList.toggle('show-menu');
+    menuButton.classList.toggle('close');
+});
+menuButton.addEventListener('scroll-down', function() {
+    menuButton.classList.toggle('close');
+})

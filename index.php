@@ -31,7 +31,6 @@
     if(isset($_SESSION['login'])){
         $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li><li><a href="index.php?p=compte">Mon compte</a></li>';
         $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
-        echo "<script type='text/javascript'>let session='".$_SESSION['login']."'; console.log(session);</script>";
     }
     else{
         $besoinCreation = '<li id="creaCompte" class="liens">Créer un compte</li>
@@ -41,13 +40,19 @@
 
     $resultCreerArticle = "";
 
+    //sauvegarde du terme recherché
+    if (isset($_POST['search'])){
+        $_SESSION['recherche'] = $_POST['search'];
+    }
+
     //on appelle les controlers
     include('Controlers/connexion_controler.php');
     include('Controlers/deconnexion_controler.php');
-    require 'Controlers/'.$p.'_controler.php';
+    require ('Controlers/'.$p.'_controler.php');
 
     //qu'on stocke dans le $content avant d'être effacé
     $content = ob_get_clean();
+
 
 //on appelle le template, qui remplacera $content par la vue obtenue par le controler
 require 'Views/templates/template.php';

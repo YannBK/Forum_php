@@ -71,3 +71,4 @@ Insert into
 	users (date_user,mail_user,login_user, mdp_user, id_role)
 values
 	('1990-05-31','admin@admin.ad','admin','admin',1);
+

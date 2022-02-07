@@ -8,7 +8,6 @@
     include("Models/commentaire_model.php");
     $com = new Commentaire();
 
-
     $cardCom="";
     try {   
         //liste catégories
@@ -17,7 +16,7 @@
         while ($donnees = $req->fetch()) {
             $catListe .= 
                         "<p>
-                            <a href=\"#\" value=\" ".$donnees['id_categorie'] ." \">". ucwords($donnees['nom_cat']) ."</a>
+                            <a href=\"index.php?p=categorie&id=" . $donnees['nom_cat'] . "\">". ucwords($donnees['nom_cat']) ."</a>
                         </p>";
         }//TODO le lien doit renvoyer sur la page catégorie concernée
         //si l'insertion est réussie
@@ -44,9 +43,7 @@
                     " . $donnees['nom_sujet'] . "
                 </h3>
                 <p>
-                    <a href=\"#\">
-                        <strong>" . $donnees['login_user'] . "  </strong>
-                    </a>  
+                    <strong>" . $donnees['login_user'] . "  </strong>
                     " . $ladate . "
                     Réponses : ".$donnees2[0]."
                 </p>
@@ -107,9 +104,7 @@
             $cardCom .= 
                 "<div>
                     <p>
-                        <a href=\"#\">
-                            <strong>" . $donnees['login_user'] . "  </strong>
-                        </a>  
+                        <strong>" . $donnees['login_user'] . "  </strong>
                         " . $ladate . "
                     </p>
                     <p>" . $donnees['contenu_com'] . "</p>

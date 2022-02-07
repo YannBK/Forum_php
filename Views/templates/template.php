@@ -1,6 +1,7 @@
 <?php
     include('Controlers/create_user_controler.php');
     // include('Controlers/connexion_controler.php');
+    echo '<META HTTP-EQUIV="Refresh" Content="60; URL=' . $utils->getUrl() . '">';
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -9,7 +10,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!--Google Fonts-->
-
+        
         <!--CSS-->
         <link rel="stylesheet" href="html_css/accueil.css">
         <title>Document</title>
@@ -19,9 +20,8 @@
     <header>
         <div class="heady">
             <a href="index.php?p=home"><h1>Infofo</h1></a>
-            <form action="POST">
-                <input class="search" id="search" type="search" placeholder="Rechercher un sujet, un utilisateur...">
-                <input type="submit" name="searchok" value="Ok">
+            <form action="index.php?p=search" method="POST" id="formSearch">
+                <input class="search" id="search" type="search" name="search" placeholder="Rechercher un sujet, un utilisateur...">
             </form>
             
         </div>
@@ -31,10 +31,19 @@
         <nav>
             <ul>
                 <?= $besoinCreation ?> 
-                <!-- <li><a href="index.php?p=compte">Mon compte</a></li> -->
             </ul>
         </nav>
+        <div id="menu-button" class="close">
+
+        </div>
     </header>
+
+    <nav id="menu" class="">
+        <ul>
+            <?= $besoinCreation ?>
+        </ul>
+    </nav>
+
 
     <div id="mainContainer">
         <?php echo $content ?>
@@ -74,7 +83,7 @@
                         </li>
                         <li id="check">
                             <input type="checkbox" name="condUtilisat" required>
-                            <label for="condUtilisat">J'accepte les conditions d'utilisation du site'</label>
+                            <label for="condUtilisat">J'accepte les conditions d'utilisation du site</label>
                         </li>
                         <p><?php echo $log; ?></p>
                         <li>
@@ -138,6 +147,8 @@
 
     <footer><div id="admin">Admin</div></footer>
     <script src="script/affichage_modale_crea_compte.js"></script>
+    
+
 
 </body>
 </html>
