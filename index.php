@@ -29,7 +29,7 @@
 
     //vérification connexion
     if(isset($_SESSION['login'])){
-        $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li>';
+        $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li><li><a href="index.php?p=compte">Mon compte</a></li>';
         $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
         echo "<script type='text/javascript'>let session='".$_SESSION['login']."'; console.log(session);</script>";
     }
