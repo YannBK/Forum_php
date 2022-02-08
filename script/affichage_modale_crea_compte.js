@@ -51,6 +51,27 @@ if (openConn2) {
     });
 }
 
+const openCreaSmart = document.getElementById("creaCompteSmart");
+const openDeConnSmart = document.getElementById("deConnCompteSmart");
+const openConnSmart = document.getElementById("connCompteSmart");
+
+if (openCreaSmart) {
+    openCreaSmart.addEventListener("click", function() {
+        openModal(crea);
+        closeModal(conn);
+    });
+}
+if (openConnSmart) {
+    openConnSmart.addEventListener("click", function() {
+        openModal(conn);
+        closeModal(crea);
+    });
+}
+if (openDeConnSmart) {
+    openDeConnSmart.addEventListener("click", function() {
+        openModal(deconn);
+    });
+}
 
 //ouverture de la modale déconnection
 const deconn = document.querySelector("#modal-deconnexion");

@@ -27,15 +27,15 @@
     session_start();
 
     //vérification connexion
-    if(isset($_SESSION['login'])){
-        $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li><li><a href="index.php?p=compte">Mon compte</a></li>';
-        $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
-    }
-    else{
-        $besoinCreation = '<li id="creaCompte" class="liens">Créer un compte</li>
-        <li id="connCompte" class="liens">Se connecter</li>';
-        $message =  '<p>Bonjour visiteur inconnu</p>';
-    }
+    // if(isset($_SESSION['login'])){
+    //     $besoinCreation = '<li id="deConnCompte" class="liens">Se déconnecter</li><li><a href="index.php?p=compte">Mon compte</a></li>';
+    //     $message = "<p>Connecté comme ".$_SESSION['login']."</p>";
+    // }
+    // else{
+    //     $besoinCreation = '<li id="creaCompte" class="liens">Créer un compte</li>
+    //     <li id="connCompte" class="liens">Se connecter</li>';
+    //     $message =  '<p>Bonjour visiteur inconnu</p>';
+    // }
 
     $resultCreerArticle = "";
 

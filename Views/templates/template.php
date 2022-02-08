@@ -1,6 +1,7 @@
 <?php
     include('Controlers/create_user_controler.php');
     // echo '<META HTTP-EQUIV="Refresh" Content="60; URL=' . $utils->getUrl() . '">';
+    $utils = new Utils();
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -25,11 +26,11 @@
             
         </div>
         
-        <?php echo $message ?>
+        <?php echo $utils->messageConnection() ?>
 
         <nav>
             <ul>
-                <?= $besoinCreation ?> 
+                <?= $utils->creerNav("deConnCompte", "creaCompte", "connCompte"); ?> 
             </ul>
         </nav>
         <div id="menu-button" class="closed">
@@ -39,7 +40,7 @@
 
     <nav id="menu" class="">
         <ul>
-            <?= $besoinCreation ?>
+            <?= $utils->creerNav("deConnCompteSmart", "creaCompteSmart", "connCompteSmart"); ?>
         </ul>
     </nav>
 
