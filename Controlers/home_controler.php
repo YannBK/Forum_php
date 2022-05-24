@@ -47,7 +47,7 @@
                     </h3>
                     <p>
                         <strong>" . $donnees['login_user'] . "  </strong>
-                          dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
+                        dans <strong>".ucwords($donnees['nom_cat'])."</strong> le 
                         " . $ladate . "
                         Réponses : ".$donnees2[0]."
                     </p>
